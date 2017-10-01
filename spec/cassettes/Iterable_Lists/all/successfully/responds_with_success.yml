@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/lists?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 01 Oct 2017 22:12:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '241'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '9'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"lists":[{"id":58508,"name":"new users","createdAt":1505330681211,"listType":"Dynamic"},{"id":56545,"name":"Gene''s
+        test list","createdAt":1504308852508,"listType":"Standard"},{"id":56541,"name":"Yuval
+        Test List","createdAt":1504307659386,"listType":"Standard"},{"id":56299,"name":"all
+        users","createdAt":1504224062138,"listType":"Dynamic"},{"id":55790,"name":"[engagement]
+        has been sent an email in the last 6 days","createdAt":1504052753650,"listType":"Dynamic"}]}'
+    http_version: 
+  recorded_at: Sun, 01 Oct 2017 22:12:49 GMT
+recorded_with: VCR 3.0.3

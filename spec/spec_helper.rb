@@ -34,6 +34,12 @@ RSpec.configure do |config|
   config.warnings = true
   config.profile_examples = 10
 
+  config.before do
+    Iterable.configure do |conf|
+      conf.token = ENV['ITERABLE_TOKEN']
+    end
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -45,6 +51,6 @@ VCR.configure do |config|
   config.ignore_localhost         = true
   config.default_cassette_options = { record: :new_episodes }
 
-  config.filter_sensitive_data('<TOKEN>') { ENV['TOKEN'] }
+  config.filter_sensitive_data('<ITERABLE_TOKEN>') { ENV['ITERABLE_TOKEN'] }
   config.configure_rspec_metadata!
 end
