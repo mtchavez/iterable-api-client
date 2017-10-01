@@ -31,5 +31,16 @@ module Iterable
     def create(name)
       Iterable.request(conf, '/lists').post(name: name)
     end
+
+    ##
+    #
+    # Delete an existing list given a list id
+    #
+    # @param name [String|Integer] The id of the list to delete
+    #
+    # @return [Iterable::Response] A response object
+    def delete(list_id)
+      Iterable.request(conf, "/lists/#{list_id}").delete
+    end
   end
 end
