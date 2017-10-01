@@ -1,1 +1,1 @@
-require_relative './iterable'
+require_relative './iterable' # rubocop:disable Style/FileName
