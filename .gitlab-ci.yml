@@ -3,7 +3,7 @@ stages:
   - test
 
 .ruby_template: &ruby_job
-  image: ruby:2.4-alpine
+  image: ruby:2.4
   before_script:
     - bundle
 
