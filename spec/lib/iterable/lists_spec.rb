@@ -55,4 +55,36 @@ RSpec.describe Iterable::Lists, :vcr do
       end
     end
   end
+
+  describe 'delete' do
+    let(:list_id) { '61933' }
+    let(:res) { subject.delete list_id }
+    let(:list) { resp_body }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns success code' do
+        expect(resp_body['code']).to match(/^success/i)
+      end
+    end
+
+    context 'with invalid id' do
+      let(:list_id) { '42' }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+      end
+    end
+  end
 end
