@@ -20,5 +20,16 @@ module Iterable
     def all
       Iterable.request(conf, '/lists').get
     end
+
+    ##
+    #
+    # Create a new list with a name
+    #
+    # @param name [String] The name of the list to create
+    #
+    # @return [Iterable::Response] A response object
+    def create(name)
+      Iterable.request(conf, '/lists').post(name: name)
+    end
   end
 end

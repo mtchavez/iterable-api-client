@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/lists?api_key=<ITERABLE_TOKEN>&name=list-1506900223
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 01 Oct 2017 23:23:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '339'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '4'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"[/api/lists] body: {}, hdrs: ArrayBuffer((X-Forwarded-For,71.204.149.124),
+        (X-Forwarded-Proto,https), (X-Forwarded-Port,443), (Host,api.iterable.com),
+        (X-Amzn-Trace-Id,Root=1-59d17900-1215db970ef21ea15495338c), (Content-Length,2),
+        (Accept,application/json), (Content-Type,application/json), (Accept-Encoding,gzip;q=1.0,deflate;q=0.6,identity;q=0.3),
+        (User-Agent,Ruby))","code":"BadJsonBody","params":{"obj.name":[{"msg":"error.path.missing","args":[]}]}}'
+    http_version: 
+  recorded_at: Sun, 01 Oct 2017 23:23:44 GMT
+- request:
+    method: post
+    uri: https://api.iterable.com/api/lists?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"name":"list-1506900870"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 01 Oct 2017 23:34:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '36'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '10'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"listId":61932}'
+    http_version: 
+  recorded_at: Sun, 01 Oct 2017 23:34:30 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/lists?api_key=<ITERABLE_TOKEN>&name
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 01 Oct 2017 23:23:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '340'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '1'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"[/api/lists] body: {}, hdrs: ArrayBuffer((X-Forwarded-For,71.204.149.124),
+        (X-Forwarded-Proto,https), (X-Forwarded-Port,443), (Host,api.iterable.com),
+        (X-Amzn-Trace-Id,Root=1-59d17901-1e389d764d9c290d0a744a56), (Content-Length,2),
+        (Accept,application/json), (Content-Type,application/json), (Accept-Encoding,gzip;q=1.0,deflate;q=0.6,identity;q=0.3),
+        (User-Agent,Ruby))","code":"BadJsonBody","params":{"obj.name":[{"msg":"error.path.missing","args":[]}]}}'
+    http_version: 
+  recorded_at: Sun, 01 Oct 2017 23:23:45 GMT
+- request:
+    method: post
+    uri: https://api.iterable.com/api/lists?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"name":null}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 01 Oct 2017 23:34:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '353'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '1'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"[/api/lists] body: {\"name\":null}, hdrs: ArrayBuffer((X-Forwarded-For,71.204.149.124),
+        (X-Forwarded-Proto,https), (X-Forwarded-Port,443), (Host,api.iterable.com),
+        (X-Amzn-Trace-Id,Root=1-59d17b87-2afb300b5b9cb4b83698552d), (Content-Length,13),
+        (Accept,application/json), (Content-Type,application/json), (Accept-Encoding,gzip;q=1.0,deflate;q=0.6,identity;q=0.3),
+        (User-Agent,Ruby))","code":"BadJsonBody","params":{"obj.name":[{"msg":"error.expected.jsstring","args":[]}]}}'
+    http_version: 
+  recorded_at: Sun, 01 Oct 2017 23:34:31 GMT
+recorded_with: VCR 3.0.3
