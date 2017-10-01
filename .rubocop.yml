@@ -1,0 +1,39 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - vendor/**/*
+    - tmp/*
+
+Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - '*.gemspec'
+
+Metrics/LineLength:
+  Max: 120
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%': '[]'
+    '%Q': '[]'
+    '%W': '[]'
+    '%i': '[]'
+    '%q': '[]'
+    '%r': '{}'
+    '%s': '[]'
+    '%w': '[]'
+    '%x': '[]'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+

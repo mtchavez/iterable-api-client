@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+
+.ruby_template: &ruby_job
+  image: ruby:2.4
+  before_script:
+    - bundle
+
+test:
+  <<: *ruby_job
+  stage: test
+  script:
+    - bundle exec rspec
+  artifacts:
+    paths:
+      - coverage/
+
+rubocop:
+  <<: *ruby_job
+  stage: test
+  script:
+    - bundle exec rubocop
