@@ -42,5 +42,16 @@ module Iterable
     def delete(list_id)
       Iterable.request(conf, "/lists/#{list_id}").delete
     end
+
+    ##
+    #
+    # Get users for a list
+    #
+    # @param list_id [String|Integer] The id of the list
+    #
+    # @return [Iterable::Response] A response object
+    def users(list_id)
+      Iterable.request(conf, '/lists/getUsers', listId: list_id).get
+    end
   end
 end
