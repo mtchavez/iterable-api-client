@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/campaigns?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 02 Oct 2017 05:00:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1403'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '9'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"campaigns":[{"id":171341,"createdAt":1506044265225,"updatedAt":1506044265269,"name":"Untitled
+        campaign from Workflow 14639","templateId":247466,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":171339,"createdAt":1506043319373,"updatedAt":1506043319373,"name":"price_drop_favorite
+        campaign from Workflow 14639","templateId":247464,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":166453,"createdAt":1505331025461,"updatedAt":1505331025461,"name":"confirmation_welcome
+        campaign from Workflow 14898","templateId":240554,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164264,"createdAt":1504893249772,"updatedAt":1506033231415,"name":"new_listings_smart_alert_workflow","templateId":237425,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164262,"createdAt":1504893208794,"updatedAt":1504893208808,"name":"New
+        Listings - user initiated campaign from Workflow 14639","templateId":237423,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164261,"createdAt":1504893176284,"updatedAt":1504893176284,"name":"New
+        Listings - user initiated campaign from Workflow 14638","templateId":237422,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164260,"createdAt":1504892974055,"updatedAt":1504892974087,"name":"Price
+        Drop - search campaign from Workflow 14638","templateId":237407,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164259,"createdAt":1504892965825,"updatedAt":1506032752250,"name":"price_drop_search_workflow","templateId":237406,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164258,"createdAt":1504892927199,"updatedAt":1504892927223,"name":"Price
+        Drop - user initiated campaign from Workflow 14637","templateId":237405,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164256,"createdAt":1504892903205,"updatedAt":1504892903205,"name":"Price
+        Drop - user initiated campaign from Workflow 14636","templateId":237403,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164255,"createdAt":1504892843311,"updatedAt":1504892843331,"name":"New
+        Car Lead Submit Confirm campaign from Workflow 14636","templateId":237402,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164254,"createdAt":1504892808682,"updatedAt":1505928519387,"name":"confirmation_new_car_lead_submit","templateId":237401,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164253,"createdAt":1504892763435,"updatedAt":1504892763455,"name":"Lead
+        Submit Confirm campaign from Workflow 14635","templateId":237400,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164237,"createdAt":1504890314912,"updatedAt":1505928484216,"name":"confirmation_lead_submit","templateId":237349,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164225,"createdAt":1504889928349,"updatedAt":1504889928367,"name":"Saved
+        Search Confirm campaign from Workflow 14631","templateId":237335,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":164223,"createdAt":1504889915031,"updatedAt":1505928602971,"name":"confirmation_saved_search","templateId":237333,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":163898,"createdAt":1504824921339,"updatedAt":1505928413261,"name":"confirmation_favorites_workflow","templateId":236900,"createdByUserId":"user@example.com","campaignState":"Running","labels":[]},{"id":163863,"createdAt":1504820068303,"updatedAt":1504820068348,"name":"Untitled
+        campaign from Workflow 14555","templateId":236826,"createdByUserId":"user@example.com","campaignState":"Finished","labels":[]},{"id":163859,"createdAt":1504819303370,"updatedAt":1504819303387,"name":"Untitled
+        campaign from Workflow 14554","templateId":236817,"createdByUserId":"user@example.com","campaignState":"Finished","labels":[]},{"id":163226,"createdAt":1504732692503,"updatedAt":1504732692518,"name":"[Clone]
+        [Clone] [Clone] user Test Campaign","templateId":235895,"createdByUserId":"user@example.com","campaignState":"Ready","listIds":[56541],"suppressionListIds":[],"labels":[]},{"id":162016,"createdAt":1504312983581,"updatedAt":1504313005723,"startAt":1504313005721,"endedAt":1504313005789,"name":"[Clone]
+        [Clone] user Test Campaign","templateId":234092,"createdByUserId":"user@example.com","campaignState":"Finished","listIds":[56541],"suppressionListIds":[],"sendSize":1,"labels":[]},{"id":162014,"createdAt":1504312636040,"updatedAt":1504312682692,"startAt":1504312682690,"endedAt":1504312682775,"name":"[Clone]
+        user Test Campaign","templateId":234088,"createdByUserId":"user@example.com","campaignState":"Finished","listIds":[56541],"suppressionListIds":[],"sendSize":1,"labels":[]},{"id":162013,"createdAt":1504312093710,"updatedAt":1504312104934,"startAt":1504312104932,"endedAt":1504312104987,"name":"[Clone]
+        user''s test campaign","templateId":234083,"createdByUserId":"user@example.com","campaignState":"Finished","listIds":[56545],"suppressionListIds":[],"sendSize":3,"labels":[]},{"id":162007,"createdAt":1504309383885,"updatedAt":1504309455972,"startAt":1504309455968,"endedAt":1504309456017,"name":"user''s
+        test campaign","templateId":234074,"createdByUserId":"user@example.com","campaignState":"Finished","listIds":[56545],"suppressionListIds":[],"sendSize":3,"labels":[]},{"id":162005,"createdAt":1504309042311,"updatedAt":1504309070598,"startAt":1504309070595,"endedAt":1504309070655,"name":"[Clone]
+        user Test Campaign","templateId":234072,"createdByUserId":"user@example.com","campaignState":"Finished","listIds":[56541],"suppressionListIds":[],"sendSize":1,"labels":[]},{"id":162003,"createdAt":1504307735263,"updatedAt":1504308790862,"startAt":1504308790860,"endedAt":1504308790976,"name":"user
+        Test Campaign","templateId":234070,"createdByUserId":"user@example.com","campaignState":"Finished","listIds":[56541],"suppressionListIds":[],"sendSize":1,"labels":[]},{"id":151970,"createdAt":1502387811557,"updatedAt":1502387811583,"name":"Campaign
+        created on Thu, Aug 10 2017, 10:56 am","templateId":219435,"createdByUserId":"user@example.com","campaignState":"Ready","listIds":[43142],"suppressionListIds":[],"labels":[]},{"id":151969,"createdAt":1502387764053,"updatedAt":1502387764080,"name":"Campaign
+        created on Thu, Aug 10 2017, 10:55 am","templateId":219434,"createdByUserId":"user@example.com","campaignState":"Ready","listIds":[43142],"suppressionListIds":[],"labels":[]},{"id":134865,"createdAt":1498768441449,"updatedAt":1498768441476,"name":"Template
+        created on Thu, Jun 22 2017, 3:48 PM campaign from Workflow 12218","templateId":195372,"createdByUserId":"user@example.com","campaignState":"Ready","labels":[]},{"id":134864,"createdAt":1498768380703,"updatedAt":1498768380703,"endedAt":1504052278202,"name":"Vehicle
+        Digest campaign from Workflow 12215","templateId":195371,"createdByUserId":"user@example.com","campaignState":"Finished","labels":[]},{"id":133866,"createdAt":1498605482018,"updatedAt":1498605482018,"endedAt":1504052278175,"name":"Template
+        created on Thu, Jun 22 2017, 3:48 PM campaign from Workflow 12092","templateId":194014,"createdByUserId":"user@example.com","campaignState":"Finished","labels":[]},{"id":133865,"createdAt":1498605424769,"updatedAt":1498605424787,"endedAt":1504052278164,"name":"Untitled
+        campaign from Workflow 12073","templateId":194013,"createdByUserId":"user@example.com","campaignState":"Finished","labels":[]},{"id":133864,"createdAt":1498605424725,"updatedAt":1498605424764,"endedAt":1504052278152,"name":"Untitled
+        campaign from Workflow 12073","templateId":194012,"createdByUserId":"user@example.com","campaignState":"Finished","labels":[]},{"id":133029,"createdAt":1498505844537,"updatedAt":1498505844545,"endedAt":1504052278221,"name":"Untitled
+        campaign from Workflow 12073","templateId":192943,"createdByUserId":"user@example.com","campaignState":"Finished","labels":[]},{"id":133028,"createdAt":1498505844502,"updatedAt":1498505844518,"endedAt":1504052278248,"name":"Untitled
+        campaign from Workflow 12073","templateId":192942,"createdByUserId":"user@example.com","campaignState":"Finished","labels":[]}]}'
+    http_version:
+  recorded_at: Mon, 02 Oct 2017 05:00:40 GMT
+recorded_with: VCR 3.0.3

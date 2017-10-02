@@ -1,5 +1,9 @@
 ## Unreleased 0.1.0
 
+### Campaigns
+
+- `/campaigns` endpoint added as `Iterable::Campaigns.new.all`
+
 ### Lists
 
 - `/lists` endpoint added as `Iterable::Lists.new.all`
