@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/campaigns/metrics?api_key=<ITERABLE_TOKEN>&campaignId=163898
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 02 Oct 2017 17:07:02 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '252'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '16'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        id,Average Order Value,Average Order Value,Purchases / M,Purchases / M,Revenue,Revenue,Revenue / M,Revenue / M,Total Complaints,Total Complaints,Total Email Opens,Total Email Opens,Total Email Sends,Total Email Sends,Total Emails Bounced,Total Emails Bounced,Total Emails Clicked,Total Emails Clicked,Total Emails Delivered,Total Emails Delivered,Total Hosted Unsubscribe Clicks,Total Hosted Unsubscribe Clicks,Total Purchases,Total Purchases,Total Unsubscribes,Total Unsubscribes,Unique Email Clicks,Unique Email Clicks,Unique Email Opens Or Clicks,Unique Email Opens Or Clicks,Unique Emails Bounced,Unique Emails Bounced,Unique Hosted Unsubscribe Clicks,Unique Hosted Unsubscribe Clicks,Unique Purchases,Unique Purchases,Unique Unsubscribes,Unique Unsubscribes
+        163898,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,57,57,16,16,0,0,94,94,16.0,16.0,5,5,0,0,0,0,4,4,16,16,0,0,2,2,0,0,0,0
+        176828,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0.0,0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    http_version: 
+  recorded_at: Mon, 02 Oct 2017 17:07:02 GMT
+recorded_with: VCR 3.0.3

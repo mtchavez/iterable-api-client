@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/campaigns/metrics?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 02 Oct 2017 17:06:01 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '7'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: 'id,
+
+'
+    http_version: 
+  recorded_at: Mon, 02 Oct 2017 17:06:01 GMT
+recorded_with: VCR 3.0.3

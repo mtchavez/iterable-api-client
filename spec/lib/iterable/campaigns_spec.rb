@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'csv'
 
 RSpec.describe Iterable::Campaigns, :vcr do
   let(:resp_body) { res.body }
@@ -54,6 +55,61 @@ RSpec.describe Iterable::Campaigns, :vcr do
 
       it 'responds with an error code' do
         expect(res.code).to eq('400')
+      end
+    end
+  end
+
+  describe 'metrics' do
+    let(:campaign_ids) { [176_828, 163_898] }
+    let(:start_time) { nil }
+    let(:end_time) { nil }
+    let(:res) { subject.metrics campaign_ids, start_time, end_time }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns a metrics in CSV format' do
+        expect { CSV.parse(res.body) }.not_to raise_error
+        expect(res.body).to match(/#{campaign_ids.first}/)
+        expect(res.body).to match(/#{campaign_ids.last}/)
+      end
+
+      describe 'with start/end times' do
+        let(:start_time) { Date.parse '2017-09-01' }
+        let(:end_time) { Date.parse '2017-09-30' }
+
+        it 'responds with success' do
+          expect(res).to be_success
+        end
+
+        it 'responds with response object' do
+          expect(res).to be_a(Iterable::Response)
+        end
+
+        it 'returns a metrics in CSV format' do
+          expect { CSV.parse(res.body) }.not_to raise_error
+          expect(res.body).to match(/#{campaign_ids.first}/)
+          expect(res.body).to match(/#{campaign_ids.last}/)
+        end
+      end
+    end
+
+    context 'without required params' do
+      let(:campaign_ids) { [] }
+
+      it 'is successful' do
+        expect(res).to be_success
+      end
+
+      it 'returns empty CSV' do
+        expect { CSV.parse(res.body) }.not_to raise_error
+        expect(res.body).to match(/id,/)
       end
     end
   end
