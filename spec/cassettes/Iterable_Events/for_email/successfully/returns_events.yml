@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/events/user@example.com?api_key=<ITERABLE_TOKEN>&limit=30
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 02 Oct 2017 19:52:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2719'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '14'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"events":[{"city":"Mountain View","ip":"66.249.84.247","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        20:03:32 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"city":"San
+        Francisco","ip":"38.142.75.186","email":"user@example.com","url":"https://www.example.com/user/saved-searches?utm_source=Iterable&utm_medium=email&utm_campaign=new_listings_saved_search","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        20:01:58 +00:00","region":"CA","contentId":876297,"campaignId":164261,"hrefIndex":2,"device":"-","eventType":"emailClick"},{"city":"Mountain
+        View","ip":"66.249.84.247","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        20:01:52 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"city":"San
+        Francisco","ip":"38.142.75.186","email":"user@example.com","url":"https://www.example.com/user/settings/unsubscribe?id=3780773&utm_source=Iterable&utm_medium=email&utm_campaign=new_listings_saved_search","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        20:01:37 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"hostedUnsubscribeClick"},{"city":"San
+        Francisco","ip":"38.142.75.186","email":"user@example.com","url":"https://www.example.com/user/settings?utm_source=Iterable&utm_medium=email&utm_campaign=new_listings_saved_search","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        20:01:26 +00:00","region":"CA","contentId":876297,"campaignId":164261,"hrefIndex":21,"device":"-","eventType":"emailClick"},{"city":"Mountain
+        View","ip":"66.249.84.227","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        20:01:14 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.253","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        20:01:05 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.235","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        20:01:00 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.252","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        19:59:13 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"city":"San
+        Francisco","ip":"38.142.75.186","email":"user@example.com","url":"https://www.example.com/listings/AAAAAAAAAAAAAAAAB?utm_source=Iterable&utm_medium=email&utm_campaign=new_listings_saved_search","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        19:57:26 +00:00","region":"CA","contentId":876297,"campaignId":164261,"hrefIndex":6,"device":"-","eventType":"emailClick"},{"city":"San
+        Francisco","ip":"38.142.75.186","email":"user@example.com","url":"https://www.example.com/listings/AAAAAAAAAAAAAAAAA?utm_source=Iterable&utm_medium=email&utm_campaign=new_listings_saved_search","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        19:57:15 +00:00","region":"CA","contentId":876297,"campaignId":164261,"hrefIndex":4,"device":"-","eventType":"emailClick"},{"city":"Mountain
+        View","ip":"66.249.84.232","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        19:57:12 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.250","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        17:58:18 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.229","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237422,"messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        17:56:48 +00:00","region":"CA","campaignId":164261,"device":"-","eventType":"emailOpen"},{"email":"user@example.com","createdAt":"2017-09-28
+        17:45:11 +00:00","eventName":"new_listings_saved_search","eventType":"customEvent","dataFields":{"formatted_search_params":"All
+        Makes, $0 - Any, within 100 miles of San Francisco, CA","edit_search_link":"https://www.example.com/user/saved-searches/5904710/edit","new_listings":[{"index_date":"2017-09-28","city":"North
+        Hailie","body_type":"in","state":"FL","driveline":"impedit","mileage":143678,"search_make":"quaerat","provider_priority":0.05537,"price":39338,"fuel_type":"voluptatem","price_with_listimate":57012,"year":2011,"has_photos":false,"condition":"provident","primary_photo_url":"http://hahn.info/genoveva","normalized_color_interior":"asperiores","vin":"AAAAAAAAAAAAAAAAA","combined_mpg":25,"lon":-114,"model_name":"dolorem1","normalized_color_exterior":"laboriosam","trim":"aut","make_name":"omnis","transmission":"totam","door_count":3,"lat":26,"search_model":"qui2"},{"index_date":"2017-09-28","city":"New
+        Mayrachester","body_type":"impedit","state":"VA","driveline":"quia","mileage":39052,"search_make":"distinctio","provider_priority":0.78725,"price":41616,"fuel_type":"sunt","price_with_listimate":22206,"year":2007,"has_photos":false,"condition":"voluptatem","primary_photo_url":"http://langosh.co/bridget.weinat","normalized_color_interior":"numquam","vin":"AAAAAAAAAAAAAAAAB","combined_mpg":18,"lon":-140,"model_name":"doloribus3","normalized_color_exterior":"repudiandae","trim":"necessitatibus","make_name":"voluptas","transmission":"dolorum","door_count":4,"lat":-89,"search_model":"rem4"},{"index_date":"2017-09-28","city":"Quitzonhaven","body_type":"dignissimos","state":"FL","driveline":"non","mileage":63669,"search_make":"dolores","provider_priority":0.49952,"price":42229,"fuel_type":"corporis","price_with_listimate":31725,"year":2002,"has_photos":false,"condition":"quidem","primary_photo_url":"http://bernhard.info/jeramie.parisian","normalized_color_interior":"eveniet","vin":"AAAAAAAAAAAAAAAAC","combined_mpg":14,"lon":91,"model_name":"cum5","normalized_color_exterior":"sit","trim":"culpa","make_name":"molestiae","transmission":"fugit","door_count":3,"lat":-60,"search_model":"ea6"}],"view_search_link":"https://www.example.com/listings?utm_medium=email&utm_campaign=transactional_savedsearch&utm_source=email&campaign=transactional_savedsearch#latitude=37.7899158&location=San+Francisco%2C+CA&longitude=-122.40408980000001&radius=100","userId":3780825}},{"email":"user@example.com","transactionalData":"{\"userId\":3780825,\"formatted_search_params\":\"All
+        Makes, $0 - Any, within 100 miles of San Francisco, CA\",\"view_search_link\":\"https://www.example.com/listings?utm_medium=email&utm_campaign=transactional_savedsearch&utm_source=email&campaign=transactional_savedsearch#latitude=37.7899158&location=San+Francisco%2C+CA&longitude=-122.40408980000001&radius=100\",\"edit_search_link\":\"https://www.example.com/user/saved-searches/5904710/edit\",\"new_listings\":[{\"has_photos\":false,\"vin\":\"AAAAAAAAAAAAAAAAA\",\"make_name\":\"omnis\",\"model_name\":\"dolorem1\",\"search_make\":\"quaerat\",\"search_model\":\"qui2\",\"condition\":\"provident\",\"city\":\"North
+        Hailie\",\"state\":\"FL\",\"body_type\":\"in\",\"normalized_color_exterior\":\"laboriosam\",\"normalized_color_interior\":\"asperiores\",\"year\":2011,\"mileage\":143678,\"combined_mpg\":25,\"price\":39338,\"price_with_listimate\":57012,\"door_count\":3,\"transmission\":\"totam\",\"driveline\":\"impedit\",\"fuel_type\":\"voluptatem\",\"lat\":26,\"lon\":-114,\"trim\":\"aut\",\"primary_photo_url\":\"http://hahn.info/genoveva\",\"index_date\":\"2017-09-28\",\"provider_priority\":0.05537},{\"has_photos\":false,\"vin\":\"AAAAAAAAAAAAAAAAB\",\"make_name\":\"voluptas\",\"model_name\":\"doloribus3\",\"search_make\":\"distinctio\",\"search_model\":\"rem4\",\"condition\":\"voluptatem\",\"city\":\"New
+        Mayrachester\",\"state\":\"VA\",\"body_type\":\"impedit\",\"normalized_color_exterior\":\"repudiandae\",\"normalized_color_interior\":\"numquam\",\"year\":2007,\"mileage\":39052,\"combined_mpg\":18,\"price\":41616,\"price_with_listimate\":22206,\"door_count\":4,\"transmission\":\"dolorum\",\"driveline\":\"quia\",\"fuel_type\":\"sunt\",\"lat\":-89,\"lon\":-140,\"trim\":\"necessitatibus\",\"primary_photo_url\":\"http://langosh.co/bridget.weinat\",\"index_date\":\"2017-09-28\",\"provider_priority\":0.78725},{\"has_photos\":false,\"vin\":\"AAAAAAAAAAAAAAAAC\",\"make_name\":\"molestiae\",\"model_name\":\"cum5\",\"search_make\":\"dolores\",\"search_model\":\"ea6\",\"condition\":\"quidem\",\"city\":\"Quitzonhaven\",\"state\":\"FL\",\"body_type\":\"dignissimos\",\"normalized_color_exterior\":\"sit\",\"normalized_color_interior\":\"eveniet\",\"year\":2002,\"mileage\":63669,\"combined_mpg\":14,\"price\":42229,\"price_with_listimate\":31725,\"door_count\":3,\"transmission\":\"fugit\",\"driveline\":\"non\",\"fuel_type\":\"corporis\",\"lat\":-60,\"lon\":91,\"trim\":\"culpa\",\"primary_photo_url\":\"http://bernhard.info/jeramie.parisian\",\"index_date\":\"2017-09-28\",\"provider_priority\":0.49952}],\"email\":\"user@example.com\",\"createdAt\":\"2017-09-28
+        17:45:11 +00:00\",\"eventName\":\"new_listings_saved_search\"}","templateId":237422,"messageBusId":"0100015ec997a292-43e8fc4e-675b-4e4b-8411-fbffbfaf9cde-000000","messageId":"df2c7973406b4c8594ed42a9b9f8d24e","createdAt":"2017-09-28
+        17:45:11 +00:00","contentId":876297,"campaignId":164261,"eventType":"emailSend"},{"city":"Mountain
+        View","ip":"66.249.80.25","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":240554,"messageId":"73f8d2630838479cb147cf7b4f325ffb","createdAt":"2017-09-23
+        01:58:02 +00:00","region":"CA","campaignId":166453,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.88.1","email":"user@example.com","userAgent":"Amazon CloudFront","templateId":240554,"messageId":"a1572aeb72ec40d588f1e31f54c5be19","createdAt":"2017-09-23
+        01:58:02 +00:00","region":"CA","campaignId":166453,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.80.12","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":240554,"messageId":"a1572aeb72ec40d588f1e31f54c5be19","createdAt":"2017-09-23
+        01:22:37 +00:00","region":"CA","campaignId":166453,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.80.15","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":240554,"messageId":"73f8d2630838479cb147cf7b4f325ffb","createdAt":"2017-09-23
+        01:22:37 +00:00","region":"CA","campaignId":166453,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.237","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":240554,"messageId":"a1572aeb72ec40d588f1e31f54c5be19","createdAt":"2017-09-23
+        00:40:07 +00:00","region":"CA","campaignId":166453,"device":"-","eventType":"emailOpen"},{"email":"user@example.com","transactionalData":"{\"userId\":3780825,\"first_name\":\"Gene\",\"zip\":\"94703\"}","templateId":240554,"messageBusId":"0100015eac2d4c80-134a4e71-f387-432c-b965-370b150eb15d-000000","messageId":"a1572aeb72ec40d588f1e31f54c5be19","createdAt":"2017-09-23
+        00:40:03 +00:00","contentId":852858,"campaignId":166453,"eventType":"emailSend"},{"city":"Mountain
+        View","ip":"66.249.84.229","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":240554,"messageId":"73f8d2630838479cb147cf7b4f325ffb","createdAt":"2017-09-23
+        00:39:08 +00:00","region":"CA","campaignId":166453,"device":"-","eventType":"emailOpen"},{"email":"user@example.com","transactionalData":"{\"userId\":3780825,\"first_name\":null,\"zip\":null}","templateId":240554,"messageBusId":"0100015eac2c6351-436ed21c-5e25-43d0-b144-2e331400ea51-000000","messageId":"73f8d2630838479cb147cf7b4f325ffb","createdAt":"2017-09-23
+        00:39:03 +00:00","contentId":852858,"campaignId":166453,"eventType":"emailSend"},{"city":"Mountain
+        View","ip":"66.249.84.252","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237406,"messageId":"f2d2e4e997694ad1843c2f36f8adc8ac","createdAt":"2017-09-22
+        23:01:47 +00:00","region":"CA","campaignId":164259,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.235","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237406,"messageId":"f2d2e4e997694ad1843c2f36f8adc8ac","createdAt":"2017-09-22
+        23:00:25 +00:00","region":"CA","campaignId":164259,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.232","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237406,"messageId":"f2d2e4e997694ad1843c2f36f8adc8ac","createdAt":"2017-09-22
+        23:00:20 +00:00","region":"CA","campaignId":164259,"device":"-","eventType":"emailOpen"},{"city":"Mountain
+        View","ip":"66.249.84.229","email":"user@example.com","userAgent":"Amazon
+        CloudFront","templateId":237403,"messageId":"0012f4456f454774921dfaaf63418428","createdAt":"2017-09-22
+        23:00:17 +00:00","region":"CA","campaignId":164256,"device":"-","eventType":"emailOpen"},{"email":"user@example.com","transactionalData":"{\"userId\":3781177,\"vehicles\":[{\"vin\":\"JTHFN48Y920030063\",\"year\":2002,\"make_name\":\"Lexus\",\"model_name\":\"SC
+        430\",\"trim\":\"Base\",\"mileage\":143777,\"price\":13500,\"price_with_listimate\":13500,\"previous_price\":15000,\"city\":\"Gray
+        Court\",\"state\":\"SC\",\"primary_photo_url\":\"http://www.autabuy.com/photos/2016/02/17/10666810_4143125212609_Original.jpg\",\"pretty_mileage\":\"143,777
+        Miles\"}],\"email\":\"user@example.com\",\"createdAt\":\"2017-09-22 00:57:44
+        +00:00\",\"eventName\":\"price_drop_search\"}","templateId":237406,"messageBusId":"0100015eabd1b20e-cd6d5284-935f-495a-8c2a-48e4309bf1aa-000000","messageId":"f2d2e4e997694ad1843c2f36f8adc8ac","createdAt":"2017-09-22
+        23:00:00 +00:00","contentId":875658,"campaignId":164259,"eventType":"emailSend"},{"email":"user@example.com","transactionalData":"{\"userId\":3781177,\"vehicles\":[{\"vin\":\"JTHFN48Y920030063\",\"year\":2002,\"make_name\":\"Lexus\",\"model_name\":\"SC
+        430\",\"trim\":\"Base\",\"mileage\":143777,\"price\":13500,\"price_with_listimate\":13500,\"previous_price\":15000,\"city\":\"Gray
+        Court\",\"state\":\"SC\",\"primary_photo_url\":\"http://www.autabuy.com/photos/2016/02/17/10666810_4143125212609_Original.jpg\",\"pretty_mileage\":\"143,777
+        Miles\"}],\"email\":\"user@example.com\",\"createdAt\":\"2017-09-22 00:57:43
+        +00:00\",\"eventName\":\"price_drop_favorites\"}","templateId":237403,"messageBusId":"0100015eabd1b20b-5041f1d8-08d4-4b64-b139-cb6a8bf47902-000000","messageId":"0012f4456f454774921dfaaf63418428","createdAt":"2017-09-22
+        23:00:00 +00:00","contentId":875651,"campaignId":164256,"eventType":"emailSend"}]}'
+    http_version:
+  recorded_at: Mon, 02 Oct 2017 19:52:09 GMT
+recorded_with: VCR 3.0.3

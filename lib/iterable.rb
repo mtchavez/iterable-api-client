@@ -10,6 +10,7 @@ files = %w[
   lists
   campaigns
   channels
+  events
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }
