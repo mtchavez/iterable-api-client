@@ -87,4 +87,37 @@ RSpec.describe Iterable::Lists, :vcr do
       end
     end
   end
+
+  describe 'users' do
+    let(:list_id) { '56545' }
+    let(:res) { subject.users list_id }
+    let(:users) { resp_body }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns user emails newline separated' do
+        emails = resp_body.split("\n")
+        expect(emails.size).to be > 0
+      end
+    end
+
+    context 'with invalid id' do
+      let(:list_id) { '42' }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+      end
+    end
+  end
 end
