@@ -3,6 +3,7 @@
 ### Campaigns
 
 - `/campaigns` endpoint added as `Iterable::Campaigns.new.all`
+- `/campaigns/create` endpoint added as `Iterable::Campaigns.new.create`
 
 ### Lists
 
