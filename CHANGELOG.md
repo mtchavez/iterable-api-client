@@ -2,12 +2,13 @@
 
 ### Campaigns
 
-- `/campaigns` endpoint added as `Iterable::Campaigns.new.all`
-- `/campaigns/create` endpoint added as `Iterable::Campaigns.new.create`
+- `/campaigns` endpoint added as `Iterable::Campaigns#all`
+- `/campaigns/create` endpoint added as `Iterable::Campaigns#create`
+- `/campaigns/metrics` endpoint added as `Iterable::Campaigns#metrics`
 
 ### Lists
 
-- `/lists` endpoint added as `Iterable::Lists.new.all`
-- Create a list with `Iterable::Lists.new.create('foobar')`
-- Delete a list with `Iterable::Lists.new.delete('1234')`
-- `/lists/getUsers` with `Iterable::Lists.users('1234')`
+- `/lists` endpoint added as `Iterable::Lists#all`
+- Create a list with `Iterable::Lists#create`
+- Delete a list with `Iterable::Lists#delete`
+- `/lists/getUsers` with `Iterable::Lists#users`

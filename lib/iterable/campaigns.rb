@@ -35,5 +35,23 @@ module Iterable
       body = attrs.merge(name: name, templateId: template_id, listIds: list_ids)
       Iterable.request(conf, '/campaigns/create').post(body)
     end
+
+    ##
+    #
+    # Export metrics in CSV format for one or more campaigns
+    #
+    # @param name [Array] An array of campaign ids, must have at least one
+    # @param start_time [Date|Time] Start of metrics to query for
+    # @param end_time [Date|Time] End of metrics to query for
+    #
+    # @return [Iterable::Response] A response object
+    def metrics(campaign_ids = [], start_time = nil, end_time = nil)
+      params = { campaignId: campaign_ids }
+      if start_time
+        params[:startTime] = start_time.to_date.strftime(Iterable::DATE_FORMAT)
+        params[:endTime] = end_time.to_date.strftime(Iterable::DATE_FORMAT)
+      end
+      Iterable.request(conf, '/campaigns/metrics', params).get
+    end
   end
 end
