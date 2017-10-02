@@ -6,6 +6,10 @@
 - `/campaigns/create` endpoint added as `Iterable::Campaigns#create`
 - `/campaigns/metrics` endpoint added as `Iterable::Campaigns#metrics`
 
+### Channels
+
+- `/channels` endpoint added as `Iterable::Channels#all`
+
 ### Lists
 
 - `/lists` endpoint added as `Iterable::Lists#all`
