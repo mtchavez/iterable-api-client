@@ -8,6 +8,7 @@ files = %w[
   response
   request
   lists
+  campaigns
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }
