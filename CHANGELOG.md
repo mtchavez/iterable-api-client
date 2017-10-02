@@ -10,6 +10,10 @@
 
 - `/channels` endpoint added as `Iterable::Channels#all`
 
+### Events
+
+- `/events/{emaail}` endpoint added for user events as `Iterable::Events#for_email`
+
 ### Lists
 
 - `/lists` endpoint added as `Iterable::Lists#all`
