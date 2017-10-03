@@ -12,6 +12,13 @@ module Iterable
   #   conf = Iterable::Config.new(token: 'new-token')
   #   message_types = Iterable::MessageTypes.new(config)
   class MessageTypes < ApiResource
+    # Message mediums
+    MEDIUMS = [
+      EMAIL_MEDIUM  = 'Email'.freeze,
+      PUSH_MEDIUM   = 'Push'.freeze,
+      IN_APP_MEDIUM = 'InApp'.freeze,
+      SMS_MEDIUM    = 'SMS'.freeze
+    ].freeze
     ##
     #
     # Get all message_types
