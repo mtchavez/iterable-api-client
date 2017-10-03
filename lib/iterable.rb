@@ -11,6 +11,7 @@ files = %w[
   campaigns
   channels
   events
+  message_types
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }

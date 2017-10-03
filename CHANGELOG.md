@@ -20,3 +20,7 @@
 - Create a list with `Iterable::Lists#create`
 - Delete a list with `Iterable::Lists#delete`
 - `/lists/getUsers` with `Iterable::Lists#users`
+
+### MessageTypes
+
+- `/messageTypes` endpoint added as `Iterable::MessageTypes#all`
