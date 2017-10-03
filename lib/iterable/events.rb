@@ -23,5 +23,18 @@ module Iterable
     def for_email(email, limit = 30)
       Iterable.request(conf, "/events/#{email}", limit: limit).get
     end
+
+    ##
+    #
+    # Track an event
+    #
+    # @param name [String] Required name of event
+    # @param attrs [Hash] Event values and fields to include
+    #
+    # @return [Iterable::Response] A response object
+    def track(name, email = nil, attrs = {})
+      event_data = attrs.merge(eventName: name, email: email)
+      Iterable.request(conf, '/events/track').post(event_data)
+    end
   end
 end
