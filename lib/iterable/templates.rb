@@ -28,5 +28,10 @@ module Iterable
     def all(params = {})
       Iterable.request(conf, '/templates', params).get
     end
+
+    def for_client_template_id(client_template_id)
+      params = { clientTemplateId: client_template_id }
+      Iterable.request(conf, '/templates/getByClientTemplateId', params).get
+    end
   end
 end
