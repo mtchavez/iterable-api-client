@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/templates?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 03 Oct 2017 16:41:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '656'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '8'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"templates":[{"templateId":231252,"createdAt":1504047708064,"updatedAt":1506363098303,"name":"new_listings_smart_alert","creatorUserId":"user@example.com","messageTypeId":7089},{"templateId":251803,"createdAt":1506567579500,"updatedAt":1506568661932,"name":"Letterhead
+        (09-27-17)","creatorUserId":"user@example.com","messageTypeId":7089},{"templateId":231183,"createdAt":1504043413023,"updatedAt":1506121923553,"name":"new_listings_saved_search","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":247464,"createdAt":1506043319356,"updatedAt":1506043319356,"name":"price_drop_favorite","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":231236,"createdAt":1504046542353,"updatedAt":1506036568023,"name":"price_drop_search","creatorUserId":"user@example.com","messageTypeId":7089},{"templateId":241934,"createdAt":1505433674282,"updatedAt":1506035028450,"name":"test
+        template","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":231165,"createdAt":1504042141119,"updatedAt":1505930402062,"name":"confirmation_saved_search","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":231184,"createdAt":1504043427352,"updatedAt":1506036641331,"name":"price_drop_favorite","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":231156,"createdAt":1504041565975,"updatedAt":1505927797889,"name":"confirmation_new_car_lead_submit","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":231164,"createdAt":1504042125194,"updatedAt":1505840448563,"name":"confirmation_lead_submit","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":231155,"createdAt":1504041547692,"updatedAt":1505924945760,"name":"confirmation_favorite","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":242882,"createdAt":1505520066812,"updatedAt":1505521040711,"name":"Iterable
+        Testing - confirmation_saved_search","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":240554,"createdAt":1505331025440,"updatedAt":1505331025440,"name":"confirmation_welcome","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":231154,"createdAt":1504041532930,"updatedAt":1505420664414,"name":"confirmation_welcome","creatorUserId":"user@example.com","messageTypeId":7090},{"templateId":195371,"createdAt":1498768380694,"updatedAt":1499464937156,"name":"Vehicle
+        Digest","creatorUserId":"user@example.com","messageTypeId":7089},{"templateId":194014,"createdAt":1498605482010,"updatedAt":1498605482010,"name":"Template
+        created on Thu, Jun 22 2017, 3:48 PM","creatorUserId":"user@example.com","messageTypeId":7089}]}'
+    http_version: 
+  recorded_at: Tue, 03 Oct 2017 16:41:15 GMT
+recorded_with: VCR 3.0.3
