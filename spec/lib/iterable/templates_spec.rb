@@ -40,4 +40,42 @@ RSpec.describe Iterable::Templates, :vcr do
       end
     end
   end
+
+  describe 'for_client_template_id' do
+    let(:client_template_id) { 1 }
+    let(:res) { subject.for_client_template_id client_template_id }
+    let(:templates) { res.body['templates'] }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns templates' do
+        expect(templates).to be_a(Array)
+        expect(templates.size).to eq(1)
+      end
+    end
+
+    context 'non existing client id' do
+      let(:client_template_id) { 42 }
+
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns templates' do
+        expect(templates).to be_a(Array)
+        expect(templates.size).to be_zero
+      end
+    end
+  end
 end

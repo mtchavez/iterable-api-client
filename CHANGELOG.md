@@ -24,3 +24,8 @@
 ### MessageTypes
 
 - `/messageTypes` endpoint added as `Iterable::MessageTypes#all`
+
+### Templates
+
+- `/templates` endpoint added as `Iterable::Templates#all`
+- `/templates/getByClientTemplateId` endpoint added as `Iterable::Templates#for_client_template_id`
