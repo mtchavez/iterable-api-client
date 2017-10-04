@@ -24,5 +24,18 @@ module Iterable
       params['templateId'] = template_id
       Iterable.request(conf, '/templates/email/get', params).get
     end
+
+    ##
+    #
+    # Update an email template
+    #
+    # @param template_id [String|Integer] An email template id
+    # @param attrs [Hash] Update attributes
+    #
+    # @return [Iterable::Response] A response object
+    def update(template_id, attrs = {})
+      attrs['templateId'] = template_id
+      Iterable.request(conf, '/templates/email/update').post(attrs)
+    end
   end
 end

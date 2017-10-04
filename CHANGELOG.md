@@ -10,6 +10,11 @@
 
 - `/channels` endpoint added as `Iterable::Channels#all`
 
+### EmailTemplates
+
+- `/templates/email/get` endpiont added as `Iterable::EmailTemplates#get`
+- `/templates/email/update` endpiont added as `Iterable::EmailTemplates#update`
+
 ### Events
 
 - `/events/{emaail}` endpoint added for user events as `Iterable::Events#for_email`
