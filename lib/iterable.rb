@@ -13,6 +13,7 @@ files = %w[
   events
   message_types
   templates
+  email_templates
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }
