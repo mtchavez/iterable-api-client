@@ -31,6 +31,12 @@
 
 - `/messageTypes` endpoint added as `Iterable::MessageTypes#all`
 
+### PushTemplates
+
+- `/templates/push/get` endpiont added as `Iterable::PushTemplates#get`
+- `/templates/push/update` endpiont added as `Iterable::PushTemplates#update`
+- `/templates/push/upsert` endpiont added as `Iterable::PushTemplates#upsert`
+
 ### Templates
 
 - `/templates` endpoint added as `Iterable::Templates#all`
