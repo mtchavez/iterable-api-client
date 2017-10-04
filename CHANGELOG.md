@@ -14,6 +14,7 @@
 
 - `/templates/email/get` endpiont added as `Iterable::EmailTemplates#get`
 - `/templates/email/update` endpiont added as `Iterable::EmailTemplates#update`
+- `/templates/email/upsert` endpiont added as `Iterable::EmailTemplates#upsert`
 
 ### Events
 

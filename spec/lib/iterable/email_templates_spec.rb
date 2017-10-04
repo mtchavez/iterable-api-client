@@ -80,4 +80,32 @@ RSpec.describe Iterable::EmailTemplates, :vcr do
       end
     end
   end
+
+  describe 'upsert' do
+    let(:client_template_id) { '2' }
+    let(:upsert_attrs) do
+      {
+        ccEmails: %w[
+          sample@example.com
+        ],
+        html: '{{unsubscribeUrl}}, {{unsubscribeMessageTypeUrl}}'
+      }
+    end
+    let(:res) { subject.upsert client_template_id, upsert_attrs }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns success code' do
+        expect(res.body['code']).to match(/success/i)
+        expect(res.body['msg']).to match(/upserted \d+ templates/i)
+      end
+    end
+  end
 end
