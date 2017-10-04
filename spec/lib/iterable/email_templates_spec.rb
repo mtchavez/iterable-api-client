@@ -37,4 +37,47 @@ RSpec.describe Iterable::EmailTemplates, :vcr do
       end
     end
   end
+
+  describe 'update' do
+    let(:template_id) { 195_371 }
+    let(:update_attrs) do
+      {
+        ccEmails: %w[
+          sample@example.com
+        ]
+      }
+    end
+    let(:res) { subject.update template_id, update_attrs }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns success code' do
+        expect(res.body['code']).to match(/success/i)
+      end
+    end
+
+    context 'non existing client id' do
+      let(:template_id) { 42 }
+
+      it 'responds as unsuccessful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns bad params' do
+        expect(res.code).to eq('400')
+        expect(res.body['code']).to eq('BadParams')
+      end
+    end
+  end
 end
