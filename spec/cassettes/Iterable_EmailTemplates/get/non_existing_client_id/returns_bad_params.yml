@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/templates/email/get?api_key=<ITERABLE_TOKEN>&templateId=42
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 04 Oct 2017 03:10:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '103'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '5'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Template ID: 42 does not exist for this project","code":"BadParams","params":null}'
+    http_version: 
+  recorded_at: Wed, 04 Oct 2017 03:10:53 GMT
+recorded_with: VCR 3.0.3
