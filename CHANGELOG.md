@@ -1,4 +1,4 @@
-## Unreleased 0.1.0
+## Unreleased
 
 ### Campaigns
 
@@ -41,3 +41,7 @@
 
 - `/templates` endpoint added as `Iterable::Templates#all`
 - `/templates/getByClientTemplateId` endpoint added as `Iterable::Templates#for_client_template_id`
+
+## v0.1.0 - 2017-10-04
+
+Initial gem setup without any functionality implemented.
