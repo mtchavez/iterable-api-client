@@ -131,6 +131,38 @@ RSpec.describe Iterable::Users, :vcr do
     end
   end
 
+  describe 'delete_by_id' do
+    let(:user_id) { '1' }
+    let(:res) { subject.delete_by_id user_id }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns success code' do
+        expect(res.body['code']).to match(/success/i)
+      end
+    end
+
+    describe 'not found' do
+      let(:user_id) { '42' }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+        expect(res.body['code']).to eq('BadParams')
+      end
+    end
+  end
+
   describe 'for_id' do
     let(:email) { 'sample-1507173084@example.com' }
     let(:user_id) { '1' }

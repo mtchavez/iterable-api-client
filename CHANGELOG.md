@@ -50,6 +50,7 @@
 - `/users/getFields` endpoint added as `Iterable::Users#fields`
 - `/users/updateEmail` endpoint added as `Iterable::Users#update_email`
 - `/users/{email}` delete endpoint added as `Iterable::Users#delete`
+- `/users/byUserId/{userId}` delete endpoint added as `Iterable::Users#delete_by_id`
 
 ## v0.1.0 - 2017-10-04
 
