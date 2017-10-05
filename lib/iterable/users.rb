@@ -36,5 +36,16 @@ module Iterable
     def for_email(email)
       Iterable.request(conf, "/users/#{email}").get
     end
+
+    ##
+    #
+    # Get a user by their userId
+    #
+    # @param user_id [String] The user ID of the user to get
+    #
+    # @return [Iterable::Response] A response object
+    def for_id(user_id)
+      Iterable.request(conf, "/users/byUserId/#{user_id}").get
+    end
   end
 end

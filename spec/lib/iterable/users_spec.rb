@@ -65,4 +65,39 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
   end
+
+  describe 'for_id' do
+    let(:email) { 'sample-1507173084@example.com' }
+    let(:user_id) { '1' }
+    let(:res) { subject.for_id user_id }
+    let(:user) { res.body['user'] }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns user fields' do
+        expect(user).to have_key('dataFields')
+        expect(user['email']).to eq(email)
+        expect(user['userId']).to eq(user_id)
+      end
+    end
+
+    describe 'not found' do
+      let(:user_id) { '42' }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+      end
+    end
+  end
 end
