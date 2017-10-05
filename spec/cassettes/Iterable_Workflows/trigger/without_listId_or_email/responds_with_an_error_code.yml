@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/workflows/triggerWorkflow?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"workflowId":14898}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 05 Oct 2017 18:57:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '97'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '7'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Must provide either an email or list id","code":"GenericError","params":null}'
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 18:57:38 GMT
+recorded_with: VCR 3.0.3
