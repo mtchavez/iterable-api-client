@@ -100,4 +100,22 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
   end
+
+  describe 'fields' do
+    let(:res) { subject.fields }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns user fields' do
+        expect(res.body['fields']).to be_a(Hash)
+      end
+    end
+  end
 end
