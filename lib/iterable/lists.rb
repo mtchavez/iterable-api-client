@@ -53,5 +53,13 @@ module Iterable
     def users(list_id)
       Iterable.request(conf, '/lists/getUsers', listId: list_id).get
     end
+
+    def subscribe(list_id, subscribers = [])
+      attrs = {
+        listId: list_id,
+        subscribers: subscribers
+      }
+      Iterable.request(conf, '/lists/subscribe').post(attrs)
+    end
   end
 end
