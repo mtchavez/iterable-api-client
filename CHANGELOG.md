@@ -42,6 +42,10 @@
 - `/templates` endpoint added as `Iterable::Templates#all`
 - `/templates/getByClientTemplateId` endpoint added as `Iterable::Templates#for_client_template_id`
 
+### Users
+
+- `/users/update` endpoint added as `Iterable::Users#update`
+
 ## v0.1.0 - 2017-10-04
 
 Initial gem setup without any functionality implemented.
