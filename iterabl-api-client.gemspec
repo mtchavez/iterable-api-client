@@ -16,6 +16,9 @@ Gem::Specification.new do |s|
   s.cert_chain            = %w[certs/mtchavez.pem]
   s.signing_key           = File.join(Gem.user_home, '.ssh', 'gem-private_key.pem') if $PROGRAM_NAME.end_with?('gem')
 
+  # Runtime dependencies
+  s.add_dependency 'multi_json', '>= 1.12.0'
+
   # Dev Dependencies
   s.add_development_dependency 'coveralls',  '~> 0.8.21'
   s.add_development_dependency 'dotenv',     '~> 2.2.0'

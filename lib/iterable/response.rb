@@ -38,8 +38,8 @@ module Iterable
     # @return [Hash,Array,String] A parsed JSON object or the original response body
     def parsed_body
       response_body = @resp.body
-      JSON.parse response_body
-    rescue JSON::ParserError
+      MultiJson.load response_body
+    rescue MultiJson::ParseError
       response_body
     end
   end
