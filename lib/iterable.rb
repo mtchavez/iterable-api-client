@@ -15,6 +15,7 @@ files = %w[
   templates
   email_templates
   push_templates
+  users
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }
