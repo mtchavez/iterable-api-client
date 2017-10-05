@@ -52,6 +52,10 @@
 - `/users/{email}` delete endpoint added as `Iterable::Users#delete`
 - `/users/byUserId/{userId}` delete endpoint added as `Iterable::Users#delete_by_id`
 
+### Workflows
+
+- `/workflows/triggerWorkflow` endpoint addes as `Iterable::Workflows#trigger`
+
 ## v0.1.0 - 2017-10-04
 
 Initial gem setup without any functionality implemented.
