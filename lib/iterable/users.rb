@@ -39,6 +39,18 @@ module Iterable
 
     ##
     #
+    # Update a user email
+    #
+    # @param email [String] The email of the user to get
+    #
+    # @return [Iterable::Response] A response object
+    def update_email(email, new_email)
+      attrs = { currentEmail: email, newEmail: new_email }
+      Iterable.request(conf, '/users/updateEmail').post(attrs)
+    end
+
+    ##
+    #
     # Get a user by their userId
     #
     # @param user_id [String] The user ID of the user to get

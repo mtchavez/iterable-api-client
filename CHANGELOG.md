@@ -48,6 +48,7 @@
 - `/users/{email}` endpoint added as `Iterable::Users#for_email`
 - `/users/byUserId/{userId}` endpoint added as `Iterable::Users#for_id`
 - `/users/getFields` endpoint added as `Iterable::Users#fields`
+- `/users/updateEmail` endpoint added as `Iterable::Users#update_email`
 
 ## v0.1.0 - 2017-10-04
 
