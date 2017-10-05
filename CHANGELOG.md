@@ -27,6 +27,7 @@
 - Delete a list with `Iterable::Lists#delete`
 - `/lists/getUsers` with `Iterable::Lists#users`
 - `/lists/subscribe` endpoint added as `Iterable::Lists#subscribe`
+- `/lists/unsubscribe` endpoint added as `Iterable::Lists#unsubscribe`
 
 ### MessageTypes
 

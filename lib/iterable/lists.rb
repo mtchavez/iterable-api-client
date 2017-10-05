@@ -54,12 +54,36 @@ module Iterable
       Iterable.request(conf, '/lists/getUsers', listId: list_id).get
     end
 
+    ##
+    #
+    # Subscribe users to a list
+    #
+    # @param list_id [String|Integer] The id of the list
+    # @param subscribes [Array[Hash]] An array of hashes of user emails and data fields
+    #
+    # @return [Iterable::Response] A response object
     def subscribe(list_id, subscribers = [])
       attrs = {
         listId: list_id,
         subscribers: subscribers
       }
       Iterable.request(conf, '/lists/subscribe').post(attrs)
+    end
+
+    ##
+    #
+    # Subscribe users to a list
+    #
+    # @param list_id [String|Integer] The id of the list
+    # @param subscribes [Array[Hash]] An array of hashes with an email
+    #
+    # @return [Iterable::Response] A response object
+    def unsubscribe(list_id, subscribers = [])
+      attrs = {
+        listId: list_id,
+        subscribers: subscribers
+      }
+      Iterable.request(conf, '/lists/unsubscribe').post(attrs)
     end
   end
 end
