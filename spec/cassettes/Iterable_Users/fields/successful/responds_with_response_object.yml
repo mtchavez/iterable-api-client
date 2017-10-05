@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/users/getFields?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 05 Oct 2017 04:00:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '462'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '6'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"fields":{"is_ios":"boolean","first_name":"string","total_user_saved_searches":"long","city":"string","ip":"string","unsubscribe_reason":"long","has_ever_favorited":"boolean","disable_smart_alerts":"boolean","is_android":"boolean","email":"string","unsubscribedChannelIds":"long","signup_source":"string","autolist_zip":"string","last_lead_submit_at":"date","total_leads_submitted":"long","last_searched_platform":"string","unsubscribe_date":"date","days_to_purchase":"long","autolist_state":"string","country":"string","accepts_smart_alerts":"boolean","last_favorited_at":"date","user_id":"long","has_ever_saved_a_search":"boolean","accepts_price_alerts":"boolean","emailListIds":"long","accepts_marketing_emails":"boolean","accepts_price_emails":"boolean","signupDate":"date","survey_completion":"date","last_user_saved_searches_at":"date","last_name":"string","last_searched_at":"date","signup_campaign":"string","profileUpdatedAt":"date","total_favorites":"long","accepts_search_alerts":"boolean","signupSource":"string","unsubscribedMessageTypeIds":"long","region":"string","is_paid":"boolean","created_at":"date","accepts_search_emails":"boolean","userId":"string","first_visit_campaign":"string","updated_at":"date","autolist_city":"string","timeZone":"string","email_sign_up_date":"date","phone":"string"}}'
+    http_version: 
+  recorded_at: Thu, 05 Oct 2017 04:00:59 GMT
+recorded_with: VCR 3.0.3

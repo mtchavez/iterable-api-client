@@ -47,5 +47,14 @@ module Iterable
     def for_id(user_id)
       Iterable.request(conf, "/users/byUserId/#{user_id}").get
     end
+
+    ##
+    #
+    # Get the user fields with mappings from field to type
+    #
+    # @return [Iterable::Response] A response object
+    def fields
+      Iterable.request(conf, '/users/getFields').get
+    end
   end
 end
