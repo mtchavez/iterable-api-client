@@ -25,5 +25,16 @@ module Iterable
       attrs['email'] = email
       Iterable.request(conf, '/users/update').post(attrs)
     end
+
+    ##
+    #
+    # Get a user by their email
+    #
+    # @param email [String] The email of the user to get
+    #
+    # @return [Iterable::Response] A response object
+    def for_email(email)
+      Iterable.request(conf, "/users/#{email}").get
+    end
   end
 end

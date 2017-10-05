@@ -31,4 +31,38 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
   end
+
+  describe 'for_email' do
+    let(:email) { 'sample-1507173084@example.com' }
+    let(:res) { subject.for_email email }
+    let(:user) { res.body['user'] }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns user fields' do
+        expect(user).to have_key('dataFields')
+        expect(user['email']).to eq(email)
+      end
+    end
+
+    describe 'not found' do
+      let(:email) { 'foo@' }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+        expect(res.body['code']).to eq('InvalidEmailAddressError')
+      end
+    end
+  end
 end
