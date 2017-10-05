@@ -2,6 +2,8 @@ require 'json'
 require 'net/http'
 require 'uri'
 
+require 'multi_json'
+
 files = %w[
   api_resource
   config
