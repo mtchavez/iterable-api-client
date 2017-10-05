@@ -51,6 +51,17 @@ module Iterable
 
     ##
     #
+    # Delete a user by their email
+    #
+    # @param email [String] The email of the user to delete
+    #
+    # @return [Iterable::Response] A response object
+    def delete(email)
+      Iterable.request(conf, "/users/#{email}").delete
+    end
+
+    ##
+    #
     # Get a user by their userId
     #
     # @param user_id [String] The user ID of the user to get
