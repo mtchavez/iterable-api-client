@@ -186,4 +186,70 @@ RSpec.describe Iterable::Lists, :vcr do
       end
     end
   end
+
+  describe 'unsubscribe' do
+    let(:list_id) { 58_508 }
+    let(:subscribers) do
+      [
+        { email: 'sample@example.com' }
+      ]
+    end
+    let(:res) { subject.unsubscribe list_id, subscribers }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns subscribe details' do
+        expect(res.body['successCount']).to eq(1)
+        expect(res.body['failCount']).to be_zero
+        expect(res.body['invalidEmails']).to be_empty
+      end
+    end
+
+    context 'without subscribers' do
+      let(:subscribers) { [] }
+
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns subscribe details' do
+        expect(res.body['successCount']).to be_zero
+        expect(res.body['failCount']).to be_zero
+        expect(res.body['invalidEmails']).to be_empty
+      end
+    end
+
+    context 'with invalid emails' do
+      let(:subscribers) do
+        [
+          { email: 'user@' }
+        ]
+      end
+
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns subscribe details' do
+        expect(res.body['successCount']).to be_zero
+        expect(res.body['failCount']).to eq(1)
+        expect(res.body['invalidEmails']).to include('user@')
+      end
+    end
+  end
 end
