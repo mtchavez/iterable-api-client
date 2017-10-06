@@ -29,6 +29,10 @@ module Iterable
       execute :post, body
     end
 
+    def put(body = {})
+      execute :put, body
+    end
+
     def delete
       execute :delete
     end
