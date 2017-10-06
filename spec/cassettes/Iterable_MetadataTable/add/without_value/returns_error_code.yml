@@ -45,4 +45,49 @@ http_interactions:
          {"value":null}
     http_version: 
   recorded_at: Fri, 06 Oct 2017 16:32:32 GMT
+- request:
+    method: put
+    uri: https://api.iterable.com/api/metadata/exampletable/foo?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"value":null}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 06 Oct 2017 16:55:10 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '94'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '4'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        Json error: {"obj.value":[{"msg":"error.expected.jsobject","args":[]}]}
+         {"value":null}
+    http_version: 
+  recorded_at: Fri, 06 Oct 2017 16:55:10 GMT
 recorded_with: VCR 3.0.3

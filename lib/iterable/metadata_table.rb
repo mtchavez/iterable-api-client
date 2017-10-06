@@ -28,6 +28,19 @@ module Iterable
 
     ##
     #
+    # Get metadata table keys
+    #
+    # @params next_marker [String] next result set id if more hits exist
+    #
+    # @return [Iterable::Response] A response object
+    def list_keys(next_marker = nil)
+      params = {}
+      params['nextMarker'] = next_marker if next_marker
+      Iterable.request(conf, base_path, params).get
+    end
+
+    ##
+    #
     # Add metadata for table
     #
     # @param key [String] Key of metadata to add
