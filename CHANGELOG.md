@@ -33,6 +33,15 @@
 
 - `/messageTypes` endpoint added as `Iterable::MessageTypes#all`
 
+### Metadata
+
+- `/metadata` endpoint added as `Iterable::Metadata#get`
+- `/metadata/{table}` endpoint added as `Iterable::MetadataTable#list_keys`
+- `/metadata/{table}` delete endpoint added as `Iterable::MetadataTable#delete`
+- `/metadata/{table}/{key}` endpoint added as `Iterable::MetadataTable#get`
+- `/metadata/{table}/{key}` delete endpoint added as `Iterable::MetadataTable#remove`
+- `/metadata/{table}/{key}` put endpoint added as `Iterable::MetadataTable#add`
+
 ### PushTemplates
 
 - `/templates/push/get` endpiont added as `Iterable::PushTemplates#get`

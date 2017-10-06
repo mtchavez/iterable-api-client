@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api.iterable.com/api/metadata/exampletable/foo?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"value":{"bar":"bling"}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 06 Oct 2017 16:43:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '98'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '18'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Successfully updated object foo in table exampletable","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Fri, 06 Oct 2017 16:43:36 GMT
+recorded_with: VCR 3.0.3
