@@ -55,11 +55,22 @@ module Iterable
     #
     # Get metadata key for table
     #
-    # @param key [String] Key of metadata to add
+    # @param key [String] Key of metadata to get
     #
     # @return [Iterable::Response] A response object
     def get(key)
       Iterable.request(conf, base_path(key)).get
+    end
+
+    ##
+    #
+    # Remove metadata key for table
+    #
+    # @param key [String] Key of metadata to delete
+    #
+    # @return [Iterable::Response] A response object
+    def remove(key)
+      Iterable.request(conf, base_path(key)).delete
     end
 
     private
