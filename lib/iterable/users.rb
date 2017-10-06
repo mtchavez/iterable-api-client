@@ -28,6 +28,20 @@ module Iterable
 
     ##
     #
+    # Bulk update user data or adds it if does not exist. Data is merged and
+    # missing fields are not deleted
+    #
+    # @param users [Array[Hash]] Array of hashes of user details
+    #
+    # @return [Iterable::Response] A response object
+    #
+    # @note User fields can be email [String], dataFields [Hash], or userId [String]
+    def bulk_update(users = [])
+      Iterable.request(conf, '/users/bulkUpdate').post(users: users)
+    end
+
+    ##
+    #
     # Get a user by their email
     #
     # @param email [String] The email of the user to get
