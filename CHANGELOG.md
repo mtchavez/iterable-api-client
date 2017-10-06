@@ -16,6 +16,10 @@
 - `/templates/email/update` endpiont added as `Iterable::EmailTemplates#update`
 - `/templates/email/upsert` endpiont added as `Iterable::EmailTemplates#upsert`
 
+### Experiments
+
+- `/experiments/metrics` endpiont added as `Iterable::Experiments#metrics`
+
 ### Events
 
 - `/events/{emaail}` endpoint added for user events as `Iterable::Events#for_email`
