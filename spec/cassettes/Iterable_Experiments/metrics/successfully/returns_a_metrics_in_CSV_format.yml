@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/experiments/metrics?api_key=<ITERABLE_TOKEN>&campaignId=176828&experimentId=12041
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 06 Oct 2017 23:13:23 GMT
+      Content-Length:
+      - '430'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '50'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: "Campaign ID,Experiment ID,Template ID,Name,Type,Created by,Creation
+        Date,Last modified,Subject,Improvement,Confidence,Total Email Sends,Email
+        Delivery Rate,Total Emails Delivered,Total Email Opens,Unique Email Opens
+        Or Clicks,Email Open Rate,Total Emails Clicked,Unique Email Clicks,Clicks
+        / Opens,Email Click Rate,Total Hosted Unsubscribe Clicks,Unique Hosted Unsubscribe
+        Clicks,Total Complaints,Complaint Rate,Total Emails Bounced,Unique Emails
+        Bounced,Email Bounce Rate,Total Unsubscribes,Unique Unsubscribes,Email Unsubscribe
+        Rate,Revenue,Total Purchases,Unique Purchases,Average Order Value,Purchases
+        / M,Revenue / M\r\n176828,12041,254381,confirmation_favorite,Control,user@example.com,2017-10-02T16:15:33.780Z,2017-10-02T16:15:33.834Z,Your
+        favorite vehicles,N/A,N/A,,,,,,,,,,,,,,,,,,,,,,,,,,\r\n176828,12041,258425,Variation
+        1,-,user@example.com,2017-10-06T22:55:34.807Z,2017-10-06T22:55:34.807Z,Your
+        favorite vehicles,N/A,NaN,,,,,,,,,,,,,,,,,,,,,,,,,,"
+    http_version: 
+  recorded_at: Fri, 06 Oct 2017 23:13:23 GMT
+recorded_with: VCR 3.0.3
