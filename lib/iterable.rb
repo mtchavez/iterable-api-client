@@ -19,6 +19,7 @@ files = %w[
   push_templates
   users
   workflows
+  metadata
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }
