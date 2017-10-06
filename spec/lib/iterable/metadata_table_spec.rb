@@ -67,4 +67,36 @@ RSpec.describe Iterable::MetadataTable, :vcr do
       end
     end
   end
+
+  describe 'get' do
+    let(:key) { 'foo' }
+    let(:res) { subject.get key }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns key metadata' do
+        expect(res.body['key']).to eq(key)
+        expect(res.body['value']).to have_key('bar')
+      end
+    end
+
+    context 'key not found' do
+      let(:key) { 'dnuofton' }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'returns error code' do
+        expect(res.code).to eq('404')
+      end
+    end
+  end
 end

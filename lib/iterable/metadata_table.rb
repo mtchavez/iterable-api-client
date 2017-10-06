@@ -51,6 +51,17 @@ module Iterable
       Iterable.request(conf, base_path(key)).put(value: value)
     end
 
+    ##
+    #
+    # Get metadata key for table
+    #
+    # @param key [String] Key of metadata to add
+    #
+    # @return [Iterable::Response] A response object
+    def get(key)
+      Iterable.request(conf, base_path(key)).get
+    end
+
     private
 
     def base_path(key = nil)
