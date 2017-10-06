@@ -41,6 +41,15 @@ module Iterable
 
     ##
     #
+    # Delete metadata table
+    #
+    # @return [Iterable::Response] A response object
+    def delete
+      Iterable.request(conf, base_path).delete
+    end
+
+    ##
+    #
     # Add metadata for table
     #
     # @param key [String] Key of metadata to add

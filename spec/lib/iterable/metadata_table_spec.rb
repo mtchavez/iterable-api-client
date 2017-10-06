@@ -36,6 +36,36 @@ RSpec.describe Iterable::MetadataTable, :vcr do
     end
   end
 
+  describe 'delete' do
+    let(:res) { subject.delete }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns success code' do
+        expect(res.body['code']).to match(/success/i)
+      end
+    end
+
+    context 'table not found' do
+      let(:name) { 'dnuofton' }
+
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'returns success code' do
+        expect(res.body['code']).to match(/success/i)
+      end
+    end
+  end
+
   describe 'add' do
     let(:key) { 'foo' }
     let(:value) { { bar: 'bling' } }
