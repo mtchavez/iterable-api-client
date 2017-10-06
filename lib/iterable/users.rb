@@ -104,5 +104,22 @@ module Iterable
     def fields
       Iterable.request(conf, '/users/getFields').get
     end
+
+    ##
+    #
+    # Register a browser token for a user
+    #
+    # @param email [String] An email of a user
+    # @param token [String] The browser token to register
+    # @param attrs [Hash] Additional attrs like userId to pass along
+    #
+    # @return [Iterable::Response] A response object
+    #
+    # @note An email or userId is required
+    def register_browser_token(email, token, attrs = {})
+      attrs[:email] = email
+      attrs[:browserToken] = token
+      Iterable.request(conf, '/users/registerBrowserToken').post(attrs)
+    end
   end
 end
