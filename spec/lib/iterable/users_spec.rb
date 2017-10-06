@@ -32,6 +32,45 @@ RSpec.describe Iterable::Users, :vcr do
     end
   end
 
+  describe 'bulk_update' do
+    let(:users) do
+      [
+        { email: 'sample@example.com' },
+        { email: 'bad@' }
+      ]
+    end
+    let(:res) { subject.bulk_update users }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns update details' do
+        expect(res.body['successCount']).to eq(1)
+        expect(res.body['failCount']).to eq(1)
+        expect(res.body['invalidEmails']).to include('bad@')
+      end
+    end
+
+    describe 'without users' do
+      let(:users) { [] }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+        expect(res.body['code']).to match(/InvalidEmailAddressError/i)
+      end
+    end
+  end
+
   describe 'for_email' do
     let(:email) { 'sample-1507173084@example.com' }
     let(:res) { subject.for_email email }

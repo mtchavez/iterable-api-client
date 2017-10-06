@@ -56,6 +56,7 @@
 ### Users
 
 - `/users/update` endpoint added as `Iterable::Users#update`
+- `/users/bulkUpdate` endpoint added as `Iterable::Users#bulkUpdate`
 - `/users/{email}` endpoint added as `Iterable::Users#for_email`
 - `/users/byUserId/{userId}` endpoint added as `Iterable::Users#for_id`
 - `/users/getFields` endpoint added as `Iterable::Users#fields`
