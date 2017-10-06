@@ -254,4 +254,54 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
   end
+
+  describe 'register_browser_token' do
+    let(:email) { 'sample-1507173084@example.com' }
+    let(:token) { (1..10).to_a.join('') }
+    let(:res) { subject.register_browser_token email, token }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns success code' do
+        expect(res.body['code']).to match(/success/i)
+      end
+    end
+
+    describe 'without email or userId' do
+      let(:email) { '' }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+      end
+    end
+  end
+
+  describe 'fields' do
+    let(:res) { subject.fields }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns user fields' do
+        expect(res.body['fields']).to be_a(Hash)
+      end
+    end
+  end
 end
