@@ -1,4 +1,5 @@
 require 'openssl'
+require 'uri'
 
 module Iterable
   # @!visibility private
@@ -75,7 +76,24 @@ module Iterable
       @net.start do |http|
         response = http.request(req, nil, &:read_body)
       end
-      Response.new response
+      handle_response response
+    end
+
+    def handle_response(response)
+      redirected = response.is_a?(Net::HTTPRedirection) || response.code == '303'
+      if redirected && response['location']
+        Response.new Net::HTTP.get_response(uri_for_redirect(response))
+      else
+        Response.new response
+      end
+    end
+
+    def uri_for_redirect(response)
+      uri = @config.uri
+      redirect_uri = URI(response['location'])
+      uri.path = redirect_uri.path
+      uri.query = redirect_uri.query
+      uri
     end
   end
 end
