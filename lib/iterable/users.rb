@@ -135,5 +135,20 @@ module Iterable
       attrs[:browserToken] = token
       Iterable.request(conf, '/users/registerBrowserToken').post(attrs)
     end
+
+    ##
+    #
+    # Disable a device
+    #
+    # @param token [String] A device token to disable
+    # @param email [String] Optional user email device belongs to to disable
+    # @param user_id [String] Optional user_id device belongs to to disable
+    # @note An email or userId is required
+    def disable_device(token, email = nil, user_id = nil)
+      attrs = { token: token }
+      attrs[:email] = email if email
+      attrs[:userId] = user_id if user_id
+      Iterable.request(conf, '/users/disableDevice').post(attrs)
+    end
   end
 end

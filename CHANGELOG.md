@@ -73,6 +73,7 @@
 - `/users/{email}` delete endpoint added as `Iterable::Users#delete`
 - `/users/byUserId/{userId}` delete endpoint added as `Iterable::Users#delete_by_id`
 - `/users/registerBrowserToken` endpoint added as `Iterable::Users#register_browser_token`
+- `/users/disableDevice` endpoint added as `Iterable::Users#disable_device`
 
 ### Workflows
 
