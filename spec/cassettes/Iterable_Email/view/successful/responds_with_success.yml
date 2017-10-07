@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/email/viewInBrowser?api_key=<ITERABLE_TOKEN>&email=user@example.com&messageId=975dc1f8917643bda9312b0d22a8f152
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 303
+      message: See Other
+    headers:
+      Date:
+      - Sat, 07 Oct 2017 00:09:11 GMT
+      Content-Length:
+      - '20'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Location:
+      - "/e/viewInBrowser?index=ab5b93ea90ae44b4a499e67fbd078b31&email=user@example.com&messageId=975dc1f8917643bda9312b0d22a8f152"
+      Request-Time:
+      - '0'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version:
+  recorded_at: Sat, 07 Oct 2017 00:09:11 GMT
+- request:
+    method: get
+    uri: https://api.iterable.com/e/viewInBrowser?email=user@example.com&index=ab5b93ea90ae44b4a499e67fbd078b31&messageId=975dc1f8917643bda9312b0d22a8f152
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 07 Oct 2017 00:09:11 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '8008'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '31'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: "<html><head><title></title></head><body>Email</body></html>"
+    http_version:
+  recorded_at: Sat, 07 Oct 2017 00:09:11 GMT
