@@ -42,6 +42,20 @@ module Iterable
 
     ##
     #
+    # Update user subscriptions. Overwrites existing data if the field is
+    # provided and not null
+    #
+    # @param email [String] User email to update
+    # @param attrs [Hash] Additional data to update
+    #
+    # @return [Iterable::Response] A response object
+    def update_subscriptions(email, attrs = {})
+      attrs['email'] = email
+      Iterable.request(conf, '/users/updateSubscriptions').post(attrs)
+    end
+
+    ##
+    #
     # Get a user by their email
     #
     # @param email [String] The email of the user to get
