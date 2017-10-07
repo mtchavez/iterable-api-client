@@ -22,6 +22,7 @@ files = %w[
   metadata
   metadata_table
   experiments
+  email
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }

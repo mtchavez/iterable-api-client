@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/email/viewInBrowser?api_key=<ITERABLE_TOKEN>&email=marge@example.com&messageId=975dc1f8917643bda9312b0d22a8f152
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 303
+      message: See Other
+    headers:
+      Date:
+      - Sat, 07 Oct 2017 00:08:58 GMT
+      Content-Length:
+      - '20'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Location:
+      - "/e/viewInBrowser?index=ab5b93ea90ae44b4a499e67fbd078b31&email=marge%40example.com&messageId=975dc1f8917643bda9312b0d22a8f152"
+      Request-Time:
+      - '5'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version: 
+  recorded_at: Sat, 07 Oct 2017 00:08:58 GMT
+- request:
+    method: get
+    uri: https://api.iterable.com/e/viewInBrowser?email=marge@example.com&index=ab5b93ea90ae44b4a499e67fbd078b31&messageId=975dc1f8917643bda9312b0d22a8f152
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sat, 07 Oct 2017 00:08:58 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '102'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '4'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: 'Invalid messageId: 975dc1f8917643bda9312b0d22a8f152 for index: ab5b93ea90ae44b4a499e67fbd078b31'
+    http_version: 
+  recorded_at: Sat, 07 Oct 2017 00:08:59 GMT
+recorded_with: VCR 3.0.3
