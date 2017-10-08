@@ -367,4 +367,35 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
   end
+
+  describe 'sent_messages' do
+    let(:email) { 'user@example.com' }
+    let(:res) { subject.sent_messages email }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns messages' do
+        expect(res.body['messages'].size).to eq(10)
+      end
+    end
+
+    describe 'without messages for email' do
+      let(:email) { 'sample@example.com' }
+
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'returns empty messages' do
+        expect(res.body['messages']).to be_empty
+      end
+    end
+  end
 end

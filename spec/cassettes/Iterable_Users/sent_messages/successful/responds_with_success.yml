@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/users/getSentMessages?api_key=<ITERABLE_TOKEN>&email=user@example.com
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 08 Oct 2017 00:39:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '405'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '13'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"messages":[{"messageId":"975dc1f8917643bda9312b0d22a8f152","campaignId":164264,"templateId":237425,"createdAt":"2017-10-04
+        22:07:03 +00:00"},{"messageId":"3799163ee14745c892b93ef07fd4b9e2","campaignId":164264,"templateId":237425,"createdAt":"2017-10-04
+        22:05:57 +00:00"},{"messageId":"ce0439d0012a4d19b0cfcd0988c793d9","campaignId":164264,"templateId":237425,"createdAt":"2017-10-04
+        21:23:16 +00:00"},{"messageId":"a3a06fbd556842309740d66b75a5de7a","campaignId":164261,"templateId":237422,"createdAt":"2017-10-04
+        18:28:59 +00:00"},{"messageId":"bce2cf4a1a0f4f45804b51ebf41891be","campaignId":164261,"templateId":237422,"createdAt":"2017-09-22
+        00:48:58 +00:00"},{"messageId":"d0a5629d8f92412b93a7b278c0657d07","campaignId":164261,"templateId":237422,"createdAt":"2017-09-22
+        00:08:29 +00:00"},{"messageId":"4f7776fdbf3944449e89a748c0bb95cd","campaignId":164261,"templateId":237422,"createdAt":"2017-09-22
+        00:04:00 +00:00"},{"messageId":"a8eaec488c23401e849911458b84eb6a","campaignId":164261,"templateId":237422,"createdAt":"2017-09-21
+        23:32:11 +00:00"},{"messageId":"0bce71002d9c43c49192399d48ac2026","campaignId":164264,"templateId":237425,"createdAt":"2017-09-21
+        23:32:11 +00:00"},{"messageId":"f32a98e23c014f6fa40155f20d9fa30c","campaignId":164259,"templateId":237406,"createdAt":"2017-09-21
+        22:49:15 +00:00"}]}'
+    http_version: 
+  recorded_at: Sun, 08 Oct 2017 00:39:57 GMT
+recorded_with: VCR 3.0.3

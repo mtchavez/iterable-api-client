@@ -143,12 +143,32 @@ module Iterable
     # @param token [String] A device token to disable
     # @param email [String] Optional user email device belongs to to disable
     # @param user_id [String] Optional user_id device belongs to to disable
+    #
+    # @return [Iterable::Response] A response object
+    #
     # @note An email or userId is required
     def disable_device(token, email = nil, user_id = nil)
       attrs = { token: token }
       attrs[:email] = email if email
       attrs[:userId] = user_id if user_id
       Iterable.request(conf, '/users/disableDevice').post(attrs)
+    end
+
+    ##
+    #
+    # Get sent messages for a user
+    #
+    # @param email [String] An email for a user to retreive messages for
+    # @param start_time [Time] An optional start time for range of messages
+    # @param end_time [Time] An optional end time for range of messages
+    # @param params [Hash] Additional params to use to filter messages further
+    #
+    # @return [Iterable::Response] A response object
+    def sent_messages(email, start_time = nil, end_time = nil, params = {})
+      params[:email] = email
+      params[:startTime] = start_time.to_s if start_time
+      params[:endTime] = end_time.to_s if end_time
+      Iterable.request(conf, '/users/getSentMessages', params).get
     end
   end
 end
