@@ -56,6 +56,22 @@ module Iterable
 
     ##
     #
+    # Update user subscriptions in bulk. Overwrites existing data if the field is
+    # provided and not null
+    #
+    # @param subscriptions [Array[Hash]] An array of subscription update attributes
+    #
+    # @return [Iterable::Response] A response object
+    #
+    # @note Refer to [Iterable::Users#update_subscriptions] for what subscription
+    # information is needed such as email
+    def bulk_update_subscriptions(subscriptions = [])
+      attrs = { updateSubscriptionsRequests: subscriptions }
+      Iterable.request(conf, '/users/bulkUpdateSubscriptions').post(attrs)
+    end
+
+    ##
+    #
     # Get a user by their email
     #
     # @param email [String] The email of the user to get
