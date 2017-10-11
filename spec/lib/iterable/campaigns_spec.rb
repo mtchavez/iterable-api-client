@@ -59,6 +59,39 @@ RSpec.describe Iterable::Campaigns, :vcr do
     end
   end
 
+  describe 'recurring' do
+    let(:campaign_id) { 181_029 }
+    let(:res) { subject.recurring campaign_id }
+    let(:campaigns) { resp_body['campaigns'] }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns campaigns' do
+        expect(campaigns).to be_a(Array)
+        expect(campaigns.size).to be_zero
+      end
+    end
+
+    context 'non-recurring campaign id' do
+      let(:campaign_id) { 181_030 }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'returns error message' do
+        expect(res.body['msg']).to match(/not a recurring campaign/i)
+      end
+    end
+  end
+
   describe 'metrics' do
     let(:campaign_ids) { [176_828, 163_898] }
     let(:start_time) { nil }

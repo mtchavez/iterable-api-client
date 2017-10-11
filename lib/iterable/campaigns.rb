@@ -38,6 +38,17 @@ module Iterable
 
     ##
     #
+    # Get recurring child campaigns for a campaign
+    #
+    # @param campaign_id [Integer] Root campaign ID to get child recurring campaigns for
+    #
+    # @return [Iterable::Response] A response object
+    def recurring(campaign_id)
+      Iterable.request(conf, "/campaigns/recurring/#{campaign_id}/childCampaigns").get
+    end
+
+    ##
+    #
     # Export metrics in CSV format for one or more campaigns
     #
     # @param name [Array] An array of campaign ids, must have at least one

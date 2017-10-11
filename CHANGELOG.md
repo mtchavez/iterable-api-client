@@ -5,6 +5,7 @@
 - `/campaigns` endpoint added as `Iterable::Campaigns#all`
 - `/campaigns/create` endpoint added as `Iterable::Campaigns#create`
 - `/campaigns/metrics` endpoint added as `Iterable::Campaigns#metrics`
+- `/campaigns/recurring/{id}/childCampaigns` endpoint added as `Iterable::Campaigns#recurring`
 
 ### Channels
 
