@@ -29,12 +29,31 @@ module Iterable
     # Track an event
     #
     # @param name [String] Required name of event
+    # @param email [String] Email of user to track event for
     # @param attrs [Hash] Event values and fields to include
     #
     # @return [Iterable::Response] A response object
     def track(name, email = nil, attrs = {})
-      event_data = attrs.merge(eventName: name, email: email)
-      Iterable.request(conf, '/events/track').post(event_data)
+      attrs[:eventName] = name
+      attrs[:email] = email
+      Iterable.request(conf, '/events/track').post(attrs)
+    end
+
+    ##
+    #
+    # Track an event
+    #
+    # @param campaign_id [String] Campaign ID of the push event to track
+    # @param message_id [String] Message ID of the push event to track
+    # @param email [String] Email of user to track push event for
+    # @param attrs [Hash] Event values and fields to include
+    #
+    # @return [Iterable::Response] A response object
+    def track_push_open(campaign_id, message_id, email, attrs = {})
+      attrs[:campaignId] = campaign_id
+      attrs[:messageId] = message_id
+      attrs[:email] = email
+      Iterable.request(conf, '/events/trackPushOpen').post(attrs)
     end
   end
 end
