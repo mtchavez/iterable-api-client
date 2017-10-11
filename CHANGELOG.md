@@ -12,7 +12,7 @@
 
 ### Email
 
-- `/mail/viewInBrowser` endpoint added for user events as `Iterable::Email#view`
+- `/mail/viewInBrowser` endpoint added as `Iterable::Email#view`
 
 ### EmailTemplates
 
@@ -26,7 +26,9 @@
 
 ### Events
 
-- `/events/{emaail}` endpoint added for user events as `Iterable::Events#for_email`
+- `/events/{email}` endpoint added as `Iterable::Events#for_email`
+- `/events/track` endpoint added as `Iterable::Events#track`
+- `/events/trackPushOpen` endpoint added as `Iterable::Events#track_push_open`
 
 ### Lists
 

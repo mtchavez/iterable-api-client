@@ -36,13 +36,46 @@ RSpec.describe Iterable::Events, :vcr do
         expect(res).to be_a(Iterable::Response)
       end
 
-      it 'returns events' do
+      it 'returns success code' do
         expect(res.body['code']).to match(/success/i)
       end
     end
 
     context 'without a name' do
       let(:name) { nil }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+      end
+    end
+  end
+
+  describe 'track_push_open' do
+    let(:campaign_id) { 181_028 }
+    let(:message_id) { '7091' }
+    let(:email) { 'user@example.com' }
+    let(:res) { subject.track_push_open campaign_id, message_id, email }
+
+    context 'successfully' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns success code' do
+        expect(res.body['code']).to match(/success/i)
+      end
+    end
+
+    context 'without an email or user id' do
+      let(:email) { nil }
 
       it 'is not successful' do
         expect(res).not_to be_success

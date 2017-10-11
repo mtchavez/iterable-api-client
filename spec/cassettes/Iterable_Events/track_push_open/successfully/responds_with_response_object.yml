@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/events/trackPushOpen?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"campaignId":181028,"messageId":"7091","email":"user@example.com"}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 11 Oct 2017 01:06:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '58'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '4'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Wed, 11 Oct 2017 01:06:20 GMT
+recorded_with: VCR 3.0.3
