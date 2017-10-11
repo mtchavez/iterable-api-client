@@ -11,6 +11,10 @@
 
 - `/channels` endpoint added as `Iterable::Channels#all`
 
+## Device
+
+- `/users/registerDeviceToken` endpoint added as `Iterable::Device#register`
+
 ### Email
 
 - `/mail/viewInBrowser` endpoint added as `Iterable::Email#view`
