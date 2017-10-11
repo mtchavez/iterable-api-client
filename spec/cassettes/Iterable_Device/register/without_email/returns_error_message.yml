@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/users/registerDeviceToken?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"device":{"token":"12345678910","applicationName":"devAPNS","platform":"APNS_SANDBOX","dataFields":{}},"email":""}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 11 Oct 2017 03:41:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '81'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '9'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Invalid email: ","code":"InvalidEmailAddressError","params":null}'
+    http_version: 
+  recorded_at: Wed, 11 Oct 2017 03:41:34 GMT
+recorded_with: VCR 3.0.3
