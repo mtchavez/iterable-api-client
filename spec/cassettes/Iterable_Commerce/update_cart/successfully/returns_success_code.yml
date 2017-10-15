@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/commerce/updateCart?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"items":[{"id":"3548dcc6-4970-47c8-9eb5-eeb253b8085d","name":"Sample
+        Item","price":100.0,"quantity":1}],"user":{"userId":"1","email":"sample@example.com"}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Oct 2017 03:08:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '58'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '1'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Sun, 15 Oct 2017 03:08:30 GMT
+recorded_with: VCR 3.0.3
