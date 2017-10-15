@@ -24,6 +24,7 @@ files = %w[
   experiments
   email
   device
+  commerce
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }

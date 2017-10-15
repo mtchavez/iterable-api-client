@@ -11,6 +11,10 @@
 
 - `/channels` endpoint added as `Iterable::Channels#all`
 
+### Comerce
+
+- `/commerce/trackPurchase` endpoint added as `Iterable::Commerce#track_purchase`
+
 ## Device
 
 - `/users/registerDeviceToken` endpoint added as `Iterable::Device#register`
