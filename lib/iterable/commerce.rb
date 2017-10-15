@@ -32,5 +32,22 @@ module Iterable
       data.merge!(attrs)
       Iterable.request(conf, '/commerce/trackPurchase').post(data)
     end
+
+    ##
+    #
+    # Updates the 'shoppingCartItems' field on the user profile with shopping
+    # cart items. User profile is updated (created otherwise) via the user field.
+    #
+    # @param user [Hash] User update request details to update or create user
+    # @param items [Array[Hash]] Array of hashes of commerce items
+    #
+    # @return [Iterable::Response] A response object
+    def update_cart(user = {}, items = [])
+      data = {
+        items: items,
+        user: user
+      }
+      Iterable.request(conf, '/commerce/updateCart').post(data)
+    end
   end
 end
