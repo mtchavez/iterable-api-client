@@ -141,7 +141,7 @@ reponse.uri
   * [Disable Device](#users-disable-device)
   * [Get Sent Messages](#users-get-messages)
 * [Workflows](#workflows)
-  * [Trigger](#workflows-trigger)
+  * [Trigger](#trigger)
 
 ### [message types](#message-types)
 
@@ -312,9 +312,9 @@ start_time = end_time - (60 * 60* 24 * 7) # 7 days ago
 response = users.sent_messages 'user@example.com', start_time, end_time, params
 ```
 
-### [workflows](#workflows)
+### Workflows
 
-#### [trigger](#workflows-trigger)
+#### Trigger
 
 Endpoint: `POST /workflows/triggerWorkflow`
 
