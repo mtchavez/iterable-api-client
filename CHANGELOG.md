@@ -11,7 +11,7 @@
 
 - `/channels` endpoint added as `Iterable::Channels#all`
 
-### Comerce
+### Commerce
 
 - `/commerce/trackPurchase` endpoint added as `Iterable::Commerce#track_purchase`
 - `/commerce/updateCart` endpoint added as `Iterable::Commerce#update_cart`
