@@ -143,9 +143,9 @@ reponse.uri
 * [Workflows](#workflows)
   * [Trigger](#workflows-trigger)
 
-### [Message Types](#message-types)
+### [message types](#message-types)
 
-#### [All](#message-types-all)
+#### [all](#message-types-all)
 
 Endpoint: `GET /messageTypes`
 
@@ -154,9 +154,9 @@ metadata = Iterable::MessageTypes.new
 response = metadata.all
 ```
 
-### [Metadata](#metadata)
+### [metadata](#metadata)
 
-#### [Get](#metadata-get)
+#### [get](#metadata-get)
 
 Endpoint: `GET /metadata`
 
@@ -165,7 +165,7 @@ metadata = Iterable::Metadata.new
 response = metadata.get
 ```
 
-#### [List Keys](#metadata-list-keys)
+#### [list keys](#metadata-list-keys)
 
 Endpoint: `GET /metadata/{table}`
 
@@ -178,7 +178,7 @@ response = metadata_table.list_keys
 response = metadata_table.list_keys 'next-marker-id'
 ```
 
-#### [Delete](#metadata-delete)
+#### [delete](#metadata-delete)
 
 Endpoint: `DELETE /metadata/{table}`
 
@@ -187,7 +187,7 @@ metadata_table = Iterable::MetadataTable.new 'table-name'
 response = metadata_table.delete
 ```
 
-#### [Get Key](#metadata-get-key)
+#### [get key](#metadata-get-key)
 
 Endpoint: `GET /metadata/{table}/{key}`
 
@@ -196,7 +196,7 @@ metadata_table = Iterable::MetadataTable.new 'table-name'
 response = metadata_table.get 'metadata-key'
 ```
 
-#### [Remove Key](#metadata-remove-key)
+#### [remove key](#metadata-remove-key)
 
 Endpoint: `DELETE /metadata/{table}/{key}`
 
@@ -205,7 +205,7 @@ metadata_table = Iterable::MetadataTable.new 'table-name'
 response = metadata_table.remove 'metadata-key'
 ```
 
-#### [Add Key](#metadata-add-key)
+#### [add key](#metadata-add-key)
 
 Endpoint: `PUT /metadata/{table}/{key}`
 
@@ -215,9 +215,9 @@ value = { foo: 'bar', data: 'stuffs' }
 response = metadata_table.add 'metadata-key', value
 ```
 
-### [Push Templates](#push-templates)
+### [push templates](#push-templates)
 
-#### [Get](#push-templates-get)
+#### [get](#push-templates-get)
 
 Endpoint: `GET /templates/push/get`
 
@@ -228,7 +228,7 @@ params = { locale: 'en-US' }
 response = templates.get 'template-id', params
 ```
 
-#### [Update](#push-templates-update)
+#### [update](#push-templates-update)
 
 Endpoint: `POST /templates/push/update`
 
@@ -239,7 +239,7 @@ attrs = { name: 'Template', message: 'Template message'}
 response = templates.update 'client-template-id', attrs
 ```
 
-#### [Upsert](#push-templates-upsert)
+#### [upsert](#push-templates-upsert)
 
 Endpoint: `POST /templates/push/upsert`
 
@@ -250,9 +250,9 @@ attrs = { name: 'Template', message: 'Template message'}
 response = templates.upsert 'client-template-id', attrs
 ```
 
-### [Templates](#templates)
+### [templates](#templates)
 
-#### [All](#templates-all)
+#### [all](#templates-all)
 
 Endpoint: `GET /templates`
 
@@ -263,7 +263,7 @@ params = { templateType: Iterable::Templates::BLAST_TYPE, messageMedium: Iterabl
 response = templates.all params
 ```
 
-#### [Get](#templates-get)
+#### [get](#templates-get)
 
 Endpoint: `GET /templates/getByClientTemplateId`
 
@@ -272,9 +272,9 @@ templates = Iterable::Templates.new
 response = templates.for_client_template_id 'client-template-id'
 ```
 
-### [Users](#users)
+### [users](#users)
 
-#### [Update](#users-update)
+#### [update](#users-update)
 
 Endpoint: `POST /users/update`
 
@@ -285,7 +285,7 @@ attrs = { userID: 'custom-id' }
 response = users.update 'user@example.com', attrs
 ```
 
-#### [Bulk Update](#users-bulk-update)
+#### [bulk update](#users-bulk-update)
 
 Endpoint: `POST /users/bulkUpdate`
 
@@ -299,7 +299,7 @@ users = [
 response = users.bulk_update users
 ```
 
-#### [Get Sent Messages](#users-get-messages)
+#### [get sent messages](#users-get-messages)
 
 Endpoint: `POST /users/update`
 
@@ -312,9 +312,9 @@ start_time = end_time - (60 * 60* 24 * 7) # 7 days ago
 response = users.sent_messages 'user@example.com', start_time, end_time, params
 ```
 
-### [Workflows](#workflows)
+### [workflows](#workflows)
 
-#### [Trigger](#workflows-trigger)
+#### [trigger](#workflows-trigger)
 
 Endpoint: `POST /workflows/triggerWorkflow`
 
