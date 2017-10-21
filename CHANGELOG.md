@@ -30,15 +30,15 @@
 - `/templates/email/update` endpiont added as `Iterable::EmailTemplates#update`
 - `/templates/email/upsert` endpiont added as `Iterable::EmailTemplates#upsert`
 
-### Experiments
-
-- `/experiments/metrics` endpiont added as `Iterable::Experiments#metrics`
-
 ### Events
 
 - `/events/{email}` endpoint added as `Iterable::Events#for_email`
 - `/events/track` endpoint added as `Iterable::Events#track`
 - `/events/trackPushOpen` endpoint added as `Iterable::Events#track_push_open`
+
+### Experiments
+
+- `/experiments/metrics` endpiont added as `Iterable::Experiments#metrics`
 
 ### Lists
 

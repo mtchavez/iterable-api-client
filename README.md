@@ -97,12 +97,12 @@ reponse.uri
   * [Get](#email-templates-get)
   * [Update](#email-templates-update)
   * [Upsert](#email-templates-upsert)
-* [Experiments](#experiments)
-  * [Metrics](#experiments-metrics)
 * [Events](#events)
   * [For Email](#events-for-email)
   * [Track](#events-track)
   * [Track Push Open](#events-track-push-open)
+* [Experiments](#experiments)
+  * [Metrics](#experiments-metrics)
 * [Lists](#lists)
   * [All](#lists-all)
   * [Create](#lists-create)
@@ -142,6 +142,152 @@ reponse.uri
   * [Get Sent Messages](#users-get-messages)
 * [Workflows](#workflows)
   * [Trigger](#workflows-trigger)
+
+### Email Templates
+
+#### Email Templates Get
+
+Endpoint: `GET /templates/email/get`
+
+```ruby
+templates = Iterable::EmailTemplates.new
+response = templates.get 'template-id'
+```
+
+#### Email Templates Update
+
+Endpoint: `POST /templates/email/update`
+
+```ruby
+templates = Iterable::EmailTemplates.new
+# Additional template attributes
+attrs = { metadata: {}, name: 'name', fromEmail: 'co@co.co' }
+response = templates.update 'template-id', attrs
+```
+
+#### Email Templates Upsert
+
+Endpoint: `POST /templates/email/update`
+
+```ruby
+templates = Iterable::EmailTemplates.new
+# Additional template attributes
+attrs = { metadata: {}, name: 'name', fromEmail: 'co@co.co' }
+response = templates.upsert 'client-template-id', attrs
+```
+
+### Events
+
+#### Events for Email
+
+Endpoint: `GET /events/{email}`
+
+```ruby
+events = Iterable::Events.new
+# Default limit of 30
+response = events.for_email 'user@example.com'
+```
+
+#### Events Track
+
+Endpoint: `POST /events/track`
+
+```ruby
+events = Iterable::Events.new
+# Any aditional attributes for the event
+attrs = { campaignId: 42, dataFields: {} }
+response = events.track 'event-name', 'user@example.com', attrs
+```
+
+#### Events Track Push Open
+
+Endpoint: `GET /events/{email}`
+
+```ruby
+events = Iterable::Events.new
+response = events.for_email 'user@example.com'
+campaign_id = 42
+message_id = 123
+# Any aditional attributes for the event
+attrs = { dataFields: {} }
+response = events.track_push_open campaign_id, message_id, 'user@example.com', attrs
+```
+
+### Experiments
+
+#### Experiments Metrics
+
+Endpoint: `GET /experiments/metrics`
+
+```ruby
+experiment_ids = [1, 2, 3, 4]
+experiments = Iterable::Experiments.new experiment_ids
+end_time = Time.now
+start_time = end_time - (60 * 60* 24 * 7) # 7 days ago
+response = experiments.metrics campaign_ids, start_time, end_time
+```
+
+### Lists
+
+#### Lists All
+
+Endpoint: `GET /lists`
+
+```ruby
+lists = Iterable::Lists.new
+response = lists.all
+```
+
+#### Lists Create
+
+Endpoint: `POST /lists`
+
+```ruby
+lists = Iterable::Lists.new
+response = lists.create 'list-name'
+```
+
+#### Lists Delete
+
+Endpoint: `DELETE /lists/{listId}`
+
+```ruby
+lists = Iterable::Lists.new
+response = lists.delete 'list-id'
+```
+
+#### Lists Get Users
+
+Endpoint: `GET /lists/getUsers`
+
+```ruby
+lists = Iterable::Lists.new
+response = lists.users 'list-id'
+```
+
+#### Lists Subscribe
+
+Endpoint: `POST /lists/subscribe`
+
+```ruby
+lists = Iterable::Lists.new
+subscribers = [
+	{ email: 'user@example.com', dataFields: {}, userId: '42' }
+]
+response = lists.subscribe 'list-id', subscribers
+```
+
+#### Lists Unsubscribe
+
+Endpoint: `POST /lists/unsubscribe`
+
+```ruby
+lists = Iterable::Lists.new
+subscribers = [
+	{ email: 'user@example.com', dataFields: {}, userId: '42' }
+]
+response = lists.unsubscribe 'list-id', subscribers
+```
 
 ### Message Types
 
