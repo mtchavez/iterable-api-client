@@ -90,7 +90,7 @@ reponse.uri
   * [Track Purchase](#commerce-track-purchase)
   * [Update Cart](#commerce-update-cart)
 * [Device](#device)
-  * [Register Device Token](#device-register)
+  * [Register Device Token](#device-register-token)
 * [Email](#email)
   * [View](#email-view)
 * [Email Templates](#email-templates)
@@ -142,6 +142,131 @@ reponse.uri
   * [Get Sent Messages](#users-get-messages)
 * [Workflows](#workflows)
   * [Trigger](#workflows-trigger)
+
+### Campaigns
+
+#### Campaigns All
+
+Endpoint: `GET /campaigns`
+
+```ruby
+campaigns = Iterable::Campaigns.new
+response = campaigns.all
+```
+
+#### Campaigns Create
+
+Endpoint: `POST /campaigns/create`
+
+```ruby
+campaigns = Iterable::Campaigns.new
+# List IDs to associate with the campaign
+list_ids = [1234, 1235, 1236]
+# Additional campaign attributes
+attrs = { dataFields: { foo: 'bar' } }
+response = campaigns.create 'name', 'template-id', list_ids, attrs
+```
+
+#### Campaigns Metrics
+
+Endpoint: `GET /campaigns/metrics`
+
+```ruby
+campaigns = Iterable::Campaigns.new
+campaign_ids = [754321, 4321, 3456]
+end_time = Time.now
+start_time = end_time - (60 * 60* 24 * 7) # 7 days ago
+response = campaigns.metrics campaign_ids, start_time, end_time
+```
+
+#### Campaigns Rrecurring
+
+Endpoint: `GET /campaigns/recurring/{id}/childCampaigns`
+
+```ruby
+campaigns = Iterable::Campaigns.new
+response = campaigns.recurring 'campaign-id'
+```
+
+
+### Channels
+
+#### Channels All
+
+Endpoint: `GET /channels`
+
+```ruby
+channels = Iterable::Channels.new
+response = channels.all
+```
+
+### Commerce
+
+#### Commerce Track Purchase
+
+Endpoint: `POST /commerce/trackPurchase`
+
+```ruby
+# Set up items to track
+items = [{
+  id: 'abcd-1234-hjkl-4321',
+  name: 'Mustard',
+  price: 34.0,
+  quantity: 13
+}]
+# Calculate total of items i.e. 34.0
+total = items.reduce(0) { |total, item| total += item.fetch(:price, 0.0) }
+# Gather user information for purchase
+user = { userId: '42', email: 'user@example.com' }
+
+commerce = Iterable::Commerce.new
+response = commerce.track_purchase total, items, user
+```
+
+#### Commerce Update Cart
+
+Endpoint: `POST /commerce/updateCart`
+
+```ruby
+# Items to update the user's cart with
+items = [{
+  id: 'abcd-1234-hjkl-4321',
+  name: 'Mustard',
+  price: 34.0,
+  quantity: 13
+}]
+# User of the cart you want to update
+user = { userId: '42', email: 'user@example.com' }
+
+commerce = Iterable::Commerce.new
+response = commerce.update_cart items, user
+```
+
+### Device
+
+#### Device Register Token
+
+Endpoint: `POST /users/registerDeviceToken`
+
+```ruby
+data_fields = { some: 'data', fields: 'here' }
+device = Device.new 'token', 'mobile-push-app', Iterable::Device::APNS, data_fields
+device.register 'foo@example.com'
+
+# Can pass in a user ID as well
+device.register 'user@example.com', '42'
+```
+
+### Email
+
+#### Email View
+
+Endpoint: `GET /email/viewInBrowser`
+
+```ruby
+email = Iterable::Email.new
+response = email.view 'user@example.com', 'message-id'
+```
 
 ### Email Templates
 
@@ -443,6 +568,108 @@ users = [
 	{ email: 'user@example.com', userID: 'custom-id' }
 ]
 response = users.bulk_update users
+```
+
+#### Users Update Subscriptions
+
+Endpoint: `POST /users/updateSubscriptions`
+
+```ruby
+users = Iterable::Users.new
+# Additional attributes to send
+attrs = { userID: 'custom-id' }
+response = users.update_subscriptions 'user@example.com', attrs
+```
+
+#### Users Bulk Update Subscriptions
+
+Endpoint: `POST /users/bulkUpdateSubscriptions`
+
+```ruby
+users = Iterable::Users.new
+# Array of users to update by email with additional
+# fields if needed
+users = [
+	{ email: 'user@example.com', userID: 'custom-id' }
+]
+response = users.bulk_update_subscriptions users
+```
+
+#### Users For Email
+
+Endpoint: `GET /users/{email}`
+
+```ruby
+users = Iterable::Users.new
+response = users.for_email 'user@example.com'
+```
+
+#### Users For ID
+
+Endpoint: `GET /users/byUserID/{userID}`
+
+```ruby
+users = Iterable::Users.new
+response = users.for_id '42'
+```
+
+#### Users Get Fields
+
+Endpoint: `GET /users/getFields`
+
+```ruby
+users = Iterable::Users.new
+response = users.fields
+```
+
+#### Users Update Email
+
+Endpoint: `POST /users/updateEmail`
+
+```ruby
+users = Iterable::Users.new
+response = users.update_email 'old-email@me.com', 'new-email@email.me'
+```
+
+#### Users Delete
+
+Endpoint: `DELETE /users/{email}`
+
+```ruby
+users = Iterable::Users.new
+response = users.delete 'user@example.com'
+```
+
+#### Users Delete By ID
+
+Endpoint: `DELETE /users/byUserId/{userID}`
+
+```ruby
+users = Iterable::Users.new
+response = users.delete_by_id '42'
+```
+
+#### Users Register Browser Token
+
+Endpoint: `POST /users/registerBrowserToken`
+
+```ruby
+users = Iterable::Users.new
+# Additional attrs to associate with token
+attrs = { userID: '42' }
+response = users.register_browser_token 'user@example.com', 'the-token', attrs
+```
+
+#### Users Disable Device
+
+Endpoint: `POST /users/registerBrowserToken`
+
+```ruby
+users = Iterable::Users.new
+response = users.disable_device 'the-token', 'user@example.com'
+
+# Optionally can use a user ID over email
+response = users.disable_device 'the-token', nil, '42'
 ```
 
 #### Users Get Sent Messages

@@ -22,7 +22,7 @@
 
 ### Email
 
-- `/mail/viewInBrowser` endpoint added as `Iterable::Email#view`
+- `/email/viewInBrowser` endpoint added as `Iterable::Email#view`
 
 ### EmailTemplates
 
