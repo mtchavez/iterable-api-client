@@ -24,6 +24,12 @@ gem 'iterable-api-client'
 
 Documentation can be found on [rubydoc][docs] or in this README
 
+### API Documentation
+
+The Iterable [API documentation][api-docs] can be a helpful reference for looking
+up all the possible endpoint data interactions. The docs outline all the possible
+parameters to each endpoints as well as custom data fields.
+
 ### Configuration
 
 #### Global Config
@@ -718,5 +724,6 @@ attrs = { listId: 'listId' }
 response = workflows.trigger 'workflow-id', attrs
 ```
 
+[api-docs]: https://api.iterable.com/api/docs
 [docs]: http://www.rubydoc.info/gems/iterable-api-client
 [iterable]: https://iterable.com
