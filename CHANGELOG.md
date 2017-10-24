@@ -40,6 +40,10 @@
 
 - `/experiments/metrics` endpiont added as `Iterable::Experiments#metrics`
 
+### Export
+
+- `/export/data.json` endpoint added as `Iterable::JsonExporter`
+
 ### Lists
 
 - `/lists` endpoint added as `Iterable::Lists#all`

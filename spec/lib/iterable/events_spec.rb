@@ -23,7 +23,7 @@ RSpec.describe Iterable::Events, :vcr do
   end
 
   describe 'track' do
-    let(:name) { "event-#{Time.now}" }
+    let(:name) { 'event-2017-10-02 20:26:23 -0700' }
     let(:email) { 'user@example.com' }
     let(:res) { subject.track name, email }
 

@@ -1,0 +1,241 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&endDateTime=2017-10-24%2009:27:23&onlyFields=campaignId&startDateTime=2017-09-24%2009:27:23
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 429
+      message: Too Many Requests
+    headers:
+      Date:
+      - Tue, 24 Oct 2017 16:27:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '135'
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Request-Time:
+      - '0'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Exceeded rate limit of 4.0 per minute for endpoint: /api/export/data.json,
+        project: 2158 ","code":"RateLimitExceeded","params":{}}'
+    http_version: 
+  recorded_at: Tue, 24 Oct 2017 16:27:23 GMT
+- request:
+    method: get
+    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&endDateTime=2017-10-24%2009:28:15&onlyFields=campaignId&startDateTime=2017-09-24%2009:28:15
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 24 Oct 2017 16:28:16 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Request-Time:
+      - '4'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: |
+        {"email":"foo@barbarbar.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"ali@baba.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"aaa@aaa.aaa","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"haddymaddy@womp.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"hellodude@yosup.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":909091,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":909091,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876297,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876270,"campaignId":164264}
+        {"email":"fjdkjfjsdkfjdlk@yosup.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876270,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+    http_version: 
+  recorded_at: Tue, 24 Oct 2017 16:28:16 GMT
+- request:
+    method: get
+    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&endDateTime=2017-10-24%2009:37:44&onlyFields=campaignId&startDateTime=2017-09-24%2009:37:44
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 24 Oct 2017 16:37:47 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Request-Time:
+      - '8'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: |
+        {"email":"foo@barbarbar.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"ali@baba.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"aaa@aaa.aaa","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"haddymaddy@womp.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"hellodude@yosup.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":909091,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":909091,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876297,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876270,"campaignId":164264}
+        {"email":"fjdkjfjsdkfjdlk@yosup.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876270,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+    http_version: 
+  recorded_at: Tue, 24 Oct 2017 16:37:47 GMT
+- request:
+    method: get
+    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&endDateTime=2017-10-24%2023:30:30&onlyFields=campaignId&startDateTime=2017-09-24%2023:30:30
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 24 Oct 2017 16:40:13 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Request-Time:
+      - '7'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: |
+        {"email":"foo@barbarbar.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"moshe@hagamal.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"aaa@aaa.aaa","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"haddymaddy@womp.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"hellodude@yosup.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":909091,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":909091,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876297,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876270,"campaignId":164264}
+        {"email":"fjdkjfjsdkfjdlk@yosup.com","transactionalData":"{\"data\":[]}""contentId":852858,"campaignId":166453}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":908909,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":876270,"campaignId":164264}
+        {"email":"user@example.com","transactionalData":"{\"data\":[]}""contentId":907915,"campaignId":164261}
+    http_version: 
+  recorded_at: Tue, 24 Oct 2017 16:40:13 GMT
+recorded_with: VCR 3.0.3

@@ -103,6 +103,8 @@ reponse.uri
   * [Track Push Open](#events-track-push-open)
 * [Experiments](#experiments)
   * [Metrics](#experiments-metrics)
+* [Export](#export)
+  * [JSON](#export-json)
 * [Lists](#lists)
   * [All](#lists-all)
   * [Create](#lists-create)
@@ -350,6 +352,24 @@ experiments = Iterable::Experiments.new experiment_ids
 end_time = Time.now
 start_time = end_time - (60 * 60* 24 * 7) # 7 days ago
 response = experiments.metrics campaign_ids, start_time, end_time
+```
+
+### Export
+
+#### Export JSON
+
+Endpoint: `GET /export/data.json`
+
+```ruby
+exporter = Iterable::JsonExporter.new Iterable::Export::EMAIL_SEND_TYPE
+
+# Export with an iterable range
+response = exporter.export_range Iterable::Export::BEFORE_TODAY
+
+# Export with a custom time range
+end_time = Time.now
+start_time = end_time - (60 * 60* 24 * 7) # 7 days ago
+response = exporter.export start_time, end_time
 ```
 
 ### Lists

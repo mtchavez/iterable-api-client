@@ -25,6 +25,8 @@ files = %w[
   email
   device
   commerce
+  export
+  json_exporter
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }

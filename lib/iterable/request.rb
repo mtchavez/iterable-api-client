@@ -22,32 +22,33 @@ module Iterable
       setup_http(@net)
     end
 
-    def get
-      execute :get
+    def get(headers = {})
+      execute :get, {}, headers
     end
 
-    def post(body = {})
-      execute :post, body
+    def post(body = {}, headers = {})
+      execute :post, body, headers
     end
 
-    def put(body = {})
-      execute :put, body
+    def put(body = {}, headers = {})
+      execute :put, body, headers
     end
 
-    def delete
-      execute :delete
+    def delete(headers = {})
+      execute :delete, {}, headers
     end
 
     private
 
-    def execute(verb, body = {})
-      http = connection(verb, body)
+    def execute(verb, body = {}, headers = {})
+      http = connection(verb, body, headers)
       setup_http(http)
       transmit http
     end
 
-    def connection(verb, body = {})
-      req = Net::HTTP.const_get(verb.to_s.capitalize, false).new(@uri, DEFAULT_HEADERS)
+    def connection(verb, body = {}, headers = {})
+      conn_headers = DEFAULT_HEADERS.merge(headers)
+      req = Net::HTTP.const_get(verb.to_s.capitalize, false).new(@uri, conn_headers)
       req.body = JSON.dump(body)
       req
     end
