@@ -27,6 +27,7 @@ files = %w[
   commerce
   export
   json_exporter
+  csv_exporter
 ]
 
 files.each { |path| require_relative "./iterable/#{path}" }

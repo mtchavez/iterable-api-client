@@ -13,35 +13,9 @@ module Iterable
   #   exporter = Iterable::JsonExporter.new(Iterable::Export::EMAIL_SEND_TYPE, nil, nil, nil, config)
   class JsonExporter < Export
     ##
+    # Format to use for exporting
     #
-    # Export data between a start and end time
-    #
-    # @param start_time [Time] The start time of the data to export
-    # @param end_time [Time] The end time of the data to export
-    #
-    # @return [Iterable::Response] A response object
-    def export(start_time, end_time)
-      params = {
-        startDateTime: start_time.strftime(Iterable::Export::DATE_FORMAT),
-        endDateTime: end_time.strftime(Iterable::Export::DATE_FORMAT)
-      }
-      Iterable.request(conf, base_path, request_params(params)).get
-    end
-
-    ##
-    #
-    # Export data given a valid range constant [Iterable::Export::RANGES]
-    #
-    # @param range [Iterable::Export::RANGES] A valid range to export data for
-    #
-    # @return [Iterable::Response] A response object
-    def export_range(range = Iterable::Export::TODAY)
-      params = { range: range }
-      Iterable.request(conf, base_path, request_params(params)).get
-    end
-
-    protected
-
+    # @return [String] Format of export
     def format
       'json'
     end
