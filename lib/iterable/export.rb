@@ -65,8 +65,42 @@ module Iterable
       super conf
     end
 
+    ##
+    # The format of the exporter to be implemented by a subclass
+    #
+    # @example Formats are currently csv or json
+    #
+    # @return [Exception] Raises an exception
     def format
       raise '#format must be implemented in child class'
+    end
+
+    ##
+    #
+    # Export data between a start and end time
+    #
+    # @param start_time [Time] The start time of the data to export
+    # @param end_time [Time] The end time of the data to export
+    #
+    # @return [Iterable::Response] A response object
+    def export(start_time, end_time)
+      params = {
+        startDateTime: start_time.strftime(Iterable::Export::DATE_FORMAT),
+        endDateTime: end_time.strftime(Iterable::Export::DATE_FORMAT)
+      }
+      Iterable.request(conf, base_path, request_params(params)).get
+    end
+
+    ##
+    #
+    # Export data given a valid range constant [Iterable::Export::RANGES]
+    #
+    # @param range [Iterable::Export::RANGES] A valid range to export data for
+    #
+    # @return [Iterable::Response] A response object
+    def export_range(range = Iterable::Export::TODAY)
+      params = { range: range }
+      Iterable.request(conf, base_path, request_params(params)).get
     end
 
     protected

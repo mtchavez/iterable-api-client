@@ -43,6 +43,7 @@
 ### Export
 
 - `/export/data.json` endpoint added as `Iterable::JsonExporter`
+- `/export/data.csv` endpoint added as `Iterable::CsvExporter`
 
 ### Lists
 
