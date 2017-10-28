@@ -6,6 +6,8 @@
 
 Rubygem to interact with the [Iterable][iterable] API.
 
+[Source code][source] on [Gitlab].
+
 ## Installation
 
 ```ruby
@@ -743,4 +745,6 @@ response = workflows.trigger 'workflow-id', attrs
 
 [api-docs]: https://api.iterable.com/api/docs
 [docs]: http://www.rubydoc.info/gems/iterable-api-client
+[gitlab]: https://gitlab.com
 [iterable]: https://iterable.com
+[source]: https://gitlab.com/mtchavez/iterable
