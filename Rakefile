@@ -17,7 +17,7 @@ task :rubocop do
   RuboCop::RakeTask.new
 end
 
-desc 'Gem checksum'
+desc 'Gem checksum - Pass GEM_NAME=gem-0.1.0'
 task :checksum do
   gem_name = ENV.fetch('GEM_NAME', nil)
   break unless gem_name
