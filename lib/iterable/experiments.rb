@@ -5,12 +5,12 @@ module Iterable
   #
   # @example Creating experiments endpoint object
   #   # With default config
-  #   templates = Iterable::Experiments.new
+  #   templates = Iterable::Experiments.new [1, 2, 3]
   #   templates.get
   #
   #   # With custom config
   #   conf = Iterable::Config.new(token: 'new-token')
-  #   templates = Iterable::Experiments.new(config)
+  #   templates = Iterable::Experiments.new([1, 2, 3], config)
   class Experiments < ApiResource
     attr_reader :experiment_ids
     ##

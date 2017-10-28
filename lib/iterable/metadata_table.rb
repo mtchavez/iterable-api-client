@@ -5,12 +5,12 @@ module Iterable
   #
   # @example Creating metadata table endpoint object
   #   # With default config
-  #   templates = Iterable::MetadataTable.new
+  #   templates = Iterable::MetadataTable.new "table-name"
   #   templates.get
   #
   #   # With custom config
   #   conf = Iterable::Config.new(token: 'new-token')
-  #   templates = Iterable::MetadataTable.new(config)
+  #   templates = Iterable::MetadataTable.new("table-name", config)
   class MetadataTable < ApiResource
     attr_reader :name
     ##

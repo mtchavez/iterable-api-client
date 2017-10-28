@@ -5,12 +5,12 @@ module Iterable
   #
   # @example Creating device endpoint object
   #   # With default config
-  #   campaigns = Iterable::Device.new
+  #   campaigns = Iterable::Device.new 'token', 'app-name', Iterable::Device::APNS
   #   campaigns.all
   #
   #   # With custom config
   #   conf = Iterable::Device.new(token: 'new-token')
-  #   campaigns = Iterable::Device.new(config)
+  #   campaigns = Iterable::Device.new('token', 'app-name', Iterable::Device::APNS, config)
   class Device < ApiResource
     PLATFORMS = [
       APNS = 'APNS'.freeze,
