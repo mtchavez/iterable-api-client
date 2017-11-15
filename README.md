@@ -190,7 +190,7 @@ start_time = end_time - (60 * 60* 24 * 7) # 7 days ago
 response = campaigns.metrics campaign_ids, start_time, end_time
 ```
 
-#### Campaigns Rrecurring
+#### Campaigns Recurring
 
 Endpoint: `GET /campaigns/recurring/{id}/childCampaigns`
 
