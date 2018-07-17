@@ -32,4 +32,22 @@ RSpec.describe Iterable::Email, :vcr do
       end
     end
   end
+
+  describe 'target' do 
+    let(:email) { 'user@example.com' }
+    let(:campaign_id) { '344851' }
+    let(:res) { subject.target email, campaign_id }
+
+    context 'when bad campaign_id' do
+      let(:campaign_id) { 42 }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'returns error code' do
+        expect(res.code).to eq('400')
+      end
+    end
+  end
 end
