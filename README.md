@@ -101,6 +101,7 @@ reponse.uri
   * [Register Device Token](#device-register-token)
 * [Email](#email)
   * [View](#email-view)
+  * [Target](#email-target)
 * [Email Templates](#email-templates)
   * [Get](#email-templates-get)
   * [Update](#email-templates-update)
@@ -277,6 +278,19 @@ Endpoint: `GET /email/viewInBrowser`
 ```ruby
 email = Iterable::Email.new
 response = email.view 'user@example.com', 'message-id'
+```
+
+#### Email Target
+
+Endpoint: `GET /email/target`
+
+```ruby
+email = Iterable::Email.new
+# User email and campaign to target
+response = email.target 'user@example.com', 42
+
+# Can pass in more attributes like dataFields
+response = email.target 'user@example.com', 42, { dataFields: { first_name: 'Sally' } }
 ```
 
 ### Email Templates
