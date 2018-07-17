@@ -1,3 +1,7 @@
+## v0.2.1 - 2018-07-17
+
+- `/email/target` endpaoint addes as `Iterable::Email#target
+
 ## v0.2.0 - 2017-10-27
 
 ### Campaigns
