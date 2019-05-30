@@ -34,6 +34,10 @@ module Iterable
       execute :put, body, headers
     end
 
+    def patch(body = {}, headers = {})
+      execute :patch, body, headers
+    end
+
     def delete(body = {}, headers = {})
       execute :delete, body, headers
     end
