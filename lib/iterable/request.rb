@@ -34,8 +34,8 @@ module Iterable
       execute :put, body, headers
     end
 
-    def delete(headers = {})
-      execute :delete, {}, headers
+    def delete(body = {}, headers = {})
+      execute :delete, body, headers
     end
 
     private
