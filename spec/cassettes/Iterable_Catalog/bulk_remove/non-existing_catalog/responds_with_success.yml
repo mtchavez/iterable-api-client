@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://api.iterable.com/api/catalogs/example-catalog/items?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"itemIds":["123"]}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Sat, 01 Jun 2019 03:34:51 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '121'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '3'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Successfully received request to delete 1 items from catalog
+        example-catalog","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Sat, 01 Jun 2019 03:34:51 GMT
+recorded_with: VCR 3.0.3

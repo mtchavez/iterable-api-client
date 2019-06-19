@@ -92,6 +92,18 @@ reponse.uri
   * [Create](#campaigns-create)
   * [Metrics](#campaigns-metrics)
   * [Child Campaigns](#campaigns-child)
+* [Catalogs](#catalogs)
+  * [Field Mappings](#catalog-field-mappings)
+  * [Update Field Mappings](#catalog-update-field-mappings)
+  * [Create](#catalog-create)
+  * [Delete](#catalog-delete)
+  * [Items](#catalog-items)
+  * [Get](#catalog-get)
+  * [Add/Update](#catalog-add-update)
+  * [Add/Replace](#catalog-add-replace)
+  * [Bulk Add/Update](#catalog-bulk-add-update)
+  * [Remove](#catalog-remove)
+  * [Bulk Remove](#catalog-bulk-remove)
 * [Channels](#channels)
   * [All](#channels-all)
 * [Commerce](#commerce)
@@ -210,6 +222,109 @@ Endpoint: `GET /channels`
 ```ruby
 channels = Iterable::Channels.new
 response = channels.all
+```
+
+### Catalogs
+
+_Note: This API is currently only available when using a token for a project that has been added to the Catalogs beta._
+
+#### Catalog Field Mappings
+
+Endpoint: `GET /api/catalogs/catalog-name/fieldMappings`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.field_mappings
+```
+
+#### Catalog Update Field Mappings
+
+Endpoint: `PUT /api/catalogs/catalog-name/fieldMappings`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.update_field_mappings([{fieldName: 'orange', fieldType: 'string'}])
+```
+
+#### Catalog Create
+
+Endpoint: `POST /api/catalogs/catalog-name`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.create
+```
+
+#### Catalog Delete
+
+Endpoint: `DELETE /api/catalogs/catalog-name`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.delete
+```
+
+#### Catalog Items
+
+Endpoint: `GET /api/catalogs/catalog-name/items`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.items
+```
+
+#### Catalog Get
+
+Endpoint: `GET /api/catalogs/catalog-name/items/key`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.get(123)
+```
+
+#### Catalog Add/Update
+
+Endpoint: `PATCH /api/catalogs/catalog-name/items/key`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.update(123, orange: 'slice')
+```
+
+#### Catalog Add/Replace
+
+Endpoint: `PUT /api/catalogs/catalog-name/items/key`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.replace(123, orange: 'slice')
+```
+
+#### Catalog Bulk Add/Update
+
+Endpoint: `POST /api/catalogs/catalog-name/items`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.bulk_create(documents: { 123 => { orange: 'slice' }, 456 => { 'orange' => 'julius' })
+```
+
+#### Catalog Remove
+
+Endpoint: `DELETE /api/catalogs/catalog-name/items/key`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.remove(123)
+```
+
+#### Catalog Bulk Remove
+
+Endpoint: `DELETE /api/catalogs/catalog-name/items`
+
+```ruby
+catalog = Iterable::Catalog.new('catalog-name')
+response = catalog.bulk_remove(123, 456)
 ```
 
 ### Commerce

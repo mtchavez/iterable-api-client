@@ -1,0 +1,128 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 01 Jun 2019 02:14:23 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '145'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '2815'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":{"id":995,"name":"example-catalog","url":"/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>"}}'
+    http_version: 
+  recorded_at: Sat, 01 Jun 2019 02:14:23 GMT
+- request:
+    method: put
+    uri: https://api.iterable.com/api/catalogs/example-catalog/fieldMappings?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"mappingsUpdates":[{"something":"wicked"}]}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sat, 01 Jun 2019 02:14:23 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '146'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '1'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        Json error: {"obj.mappingsUpdates[0].fieldName":[{"msg":["error.path.missing"],"args":[]}],"obj.mappingsUpdates[0].fieldType":[{"msg":["error.path.missing"],"args":[]}]}
+         {"mappingsUpdates":[{"something":"wicked"}]}
+    http_version: 
+  recorded_at: Sat, 01 Jun 2019 02:14:23 GMT
+- request:
+    method: delete
+    uri: https://api.iterable.com/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 01 Jun 2019 02:14:24 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '96'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '872'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Successfully deleted catalog example-catalog","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Sat, 01 Jun 2019 02:14:24 GMT
+recorded_with: VCR 3.0.3

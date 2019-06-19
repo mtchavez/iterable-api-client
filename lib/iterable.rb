@@ -11,6 +11,7 @@ files = %w[
   request
   lists
   campaigns
+  catalog
   channels
   events
   message_types

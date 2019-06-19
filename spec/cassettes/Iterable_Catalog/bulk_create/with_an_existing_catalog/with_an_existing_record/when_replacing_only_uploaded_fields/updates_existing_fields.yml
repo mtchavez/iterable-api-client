@@ -1,0 +1,209 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Wed, 19 Jun 2019 17:12:33 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '146'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '2054'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":{"id":1187,"name":"example-catalog","url":"/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>"}}'
+    http_version: 
+  recorded_at: Wed, 19 Jun 2019 17:12:33 GMT
+- request:
+    method: put
+    uri: https://api.iterable.com/api/catalogs/example-catalog/items/1?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"value":{"lime":"juice","lemon":"slice"}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Wed, 19 Jun 2019 17:12:33 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '155'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '9'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":{"catalogName":"example-catalog","itemId":"1","url":"/api/catalogs/example-catalog/items/1?api_key=<ITERABLE_TOKEN>"}}'
+    http_version: 
+  recorded_at: Wed, 19 Jun 2019 17:12:33 GMT
+- request:
+    method: post
+    uri: https://api.iterable.com/api/catalogs/example-catalog/items?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"documents":{"1":{"orange":"julius","lemon":"wedge"},"2":{"orange":"slice","lemon":"head"}},"replaceUploadedFieldsOnly":true}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Wed, 19 Jun 2019 17:12:53 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '124'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '15'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Request to bulk-upload documents into example-catalog processed
+        successfully","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Wed, 19 Jun 2019 17:12:53 GMT
+- request:
+    method: get
+    uri: https://api.iterable.com/api/catalogs/example-catalog/items/1?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 19 Jun 2019 17:13:14 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '162'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '4'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":{"catalogName":"example-catalog","itemId":"1","size":50,"lastModified":1560964373000,"value":{"lime":"juice","lemon":"wedge","orange":"julius"}}}'
+    http_version: 
+  recorded_at: Wed, 19 Jun 2019 17:13:14 GMT
+- request:
+    method: delete
+    uri: https://api.iterable.com/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 19 Jun 2019 17:13:15 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '96'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '936'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Successfully deleted catalog example-catalog","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Wed, 19 Jun 2019 17:13:15 GMT
+recorded_with: VCR 3.0.3

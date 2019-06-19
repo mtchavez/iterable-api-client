@@ -1,0 +1,167 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sat, 01 Jun 2019 03:03:20 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '146'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '2844'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":{"id":1025,"name":"example-catalog","url":"/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>"}}'
+    http_version: 
+  recorded_at: Sat, 01 Jun 2019 03:03:20 GMT
+- request:
+    method: put
+    uri: https://api.iterable.com/api/catalogs/example-catalog/items/123?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"value":{"lime":"juice","lemon":"slice"}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Sat, 01 Jun 2019 03:03:20 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '156'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '8'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":{"catalogName":"example-catalog","itemId":"123","url":"/api/catalogs/example-catalog/items/123?api_key=<ITERABLE_TOKEN>"}}'
+    http_version: 
+  recorded_at: Sat, 01 Jun 2019 03:03:20 GMT
+- request:
+    method: put
+    uri: https://api.iterable.com/api/catalogs/example-catalog/items/123?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: '{"value":{"orange":"julius","lemon":"wedge"}}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Date:
+      - Sat, 01 Jun 2019 03:04:20 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '156'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '11'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"","code":"Success","params":{"catalogName":"example-catalog","itemId":"123","url":"/api/catalogs/example-catalog/items/123?api_key=<ITERABLE_TOKEN>"}}'
+    http_version: 
+  recorded_at: Sat, 01 Jun 2019 03:04:20 GMT
+- request:
+    method: delete
+    uri: https://api.iterable.com/api/catalogs/example-catalog?api_key=<ITERABLE_TOKEN>
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 01 Jun 2019 03:04:21 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '96'
+      Connection:
+      - keep-alive
+      Server:
+      - openresty/1.13.6.2
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '931'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Successfully deleted catalog example-catalog","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Sat, 01 Jun 2019 03:04:21 GMT
+recorded_with: VCR 3.0.3
