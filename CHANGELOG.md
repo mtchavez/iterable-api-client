@@ -1,3 +1,10 @@
+## v0.3.0 - 2020-04-06
+
+- Add `Iterable::BulkCatalogItems`
+- Add `Iterable::Catalogs`
+- Add `Iterable::CatalogFieldMappings`
+- Add `Iterable::CatalogItems`
+
 ## v0.2.1 - 2018-07-17
 
 - `/email/target` endpaoint addes as `Iterable::Email#target
