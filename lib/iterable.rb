@@ -6,6 +6,7 @@ require 'multi_json'
 
 files = %w[
   api_resource
+  catalogs
   config
   response
   request
