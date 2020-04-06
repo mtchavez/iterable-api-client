@@ -1,7 +1,7 @@
 # Iterable API Gem
 
 [![Gem](https://img.shields.io/gem/v/iterable-api-client.svg)](https://rubygems.org/gems/iterable-api-client)
-[![build status](https://gitlab.com/mtchavez/iterable/badges/master/build.svg)](https://gitlab.com/mtchavez/iterable/commits/master)
+[![pipeline status](https://gitlab.com/mtchavez/iterable/badges/master/pipeline.svg)](https://gitlab.com/mtchavez/iterable/-/commits/master)
 [![coverage report](https://gitlab.com/mtchavez/iterable/badges/master/coverage.svg)](https://gitlab.com/mtchavez/iterable/commits/master)
 
 Rubygem to interact with the [Iterable][iterable] API.
@@ -87,11 +87,27 @@ reponse.uri
 
 ## API Endpoints
 
+* [Bulk Catalog Items](#bulk-catalog-items)
+  * [Create](#bulk-catalog-items-create)
+  * [Delete](#bulk-catalog-items-delete)
 * [Campaigns](#campaigns)
   * [All](#campaigns-all)
   * [Create](#campaigns-create)
   * [Metrics](#campaigns-metrics)
   * [Child Campaigns](#campaigns-child)
+* [Catalog Field Mappings](#catalog-field-mappings)
+  * [Get](#catalog-field-mappings-get)
+  * [Update](#catalog-field-mappings-update)
+* [Catalog Items](#catalog-items)
+  * [All](#catalog-items-all)
+  * [Create](#catalog-items-create)
+  * [Update](#catalog-items-update)
+  * [Get](#catalog-items-get)
+  * [Delete](#catalog-items-delete)
+* [Catalogs](#catalogs)
+  * [Create](#catalogs-create)
+  * [Delete](#catalogs-delete)
+  * [Names](#catalogs-names)
 * [Channels](#channels)
   * [All](#channels-all)
 * [Commerce](#commerce)
@@ -155,6 +171,41 @@ reponse.uri
 * [Workflows](#workflows)
   * [Trigger](#workflows-trigger)
 
+### Bulk Catalog Items
+
+**Beta access only** endpoint
+
+#### Bulk Catalog Items Create
+
+Endpoint: `POST /catalogs/{catalogName}/items`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::BulkCatalogItems.new(catalog)
+# Hash of item id to item values
+create_items = {
+  '122343453' => {
+    name: 'item name',
+    status: 'open'
+  }
+}
+response = catalog_items.create(create_items, replace_uploaded_fields_only: true)
+ # Use replace_uploaded_fields_only as true to update fields
+ # of existing items. Otherwise the default is to replace
+ # existing items
+```
+
+#### Bulk Catalog Items Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}/items`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::BulkCatalogItems.new(catalog)
+item_ids = ['12345', '12346', '12347']
+response = catalog_items.create(item_ids)
+```
+
 ### Campaigns
 
 #### Campaigns All
@@ -200,6 +251,160 @@ campaigns = Iterable::Campaigns.new
 response = campaigns.recurring 'campaign-id'
 ```
 
+### Catalogs
+
+**Beta access only** endpoint
+
+#### Catalogs Create
+
+Endpoint: `POST /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+response = catalog_items.create
+```
+
+#### Catalogs Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+response = catalog_items.delete
+```
+
+#### Catalogs Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+params = { page: 1, pageSize: 20 }
+response = catalog_items.names(params)
+```
+
+### Catalog Field Mappings
+
+**Beta access only** endpoint
+
+#### Catalog Field Mappings Get
+
+Endpoint: `GET /catalogs/{catalogName}/fieldMappings`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::CatalogFieldMappings.new(catalog)
+response = catalog_items.field_mappings
+```
+
+#### Catalog Field Mappings Update
+
+Endpoint: `PUT /catalogs/{catalogName}/fieldMappings`
+
+```ruby
+catalog = 'my-catalog'
+field_mappings = [{fieldName: 'test-field', fieldType: 'string'}]
+catalog = Iterable::CatalogFieldMappings.new(catalog)
+catalog.update_field_mappings(field_mappings)
+```
+
+### Catalog Items
+
+**Beta access only** endpoint
+
+#### Catalog Items All
+
+Endpoint: `GET /catalogs/{catalogName}/items`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::CatalogItems.new(catalog)
+response = catalog_items.all
+```
+
+#### Catalog Items Create
+
+Endpoint: `PUT /catalogs/{catalogName}/items/{itemId}`
+
+```ruby
+catalog = 'my-catalog'
+item_id = '1234-abcd-1234-abcd'
+catalog_items = Iterable::CatalogItems.new(catalog, item_id)
+item_attrs = { name: 'item name', status: 'open' }
+response = catalog_items.create(item_attrs)
+```
+
+#### Catalog Items Update
+
+Endpoint: `PATCH /catalogs/{catalogName}/items/{itemId}`
+
+```ruby
+catalog = 'my-catalog'
+item_id = '1234-abcd-1234-abcd'
+catalog_items = Iterable::CatalogItems.new(catalog, item_id)
+item_attrs = { name: 'item name', status: 'open' }
+response = catalog_items.update(item_attrs)
+```
+
+#### Catalog Items Get
+
+Endpoint: `GET /catalogs/{catalogName}/items/{itemId}`
+
+```ruby
+catalog = 'my-catalog'
+item_id = '1234-abcd-1234-abcd'
+catalog_items = Iterable::CatalogItems.new(catalog, item_id)
+response = catalog_items.get
+```
+
+#### Catalog Items Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}/items/{itemId}`
+
+```ruby
+catalog = 'my-catalog'
+item_id = '1234-abcd-1234-abcd'
+catalog_items = Iterable::CatalogItems.new(catalog, item_id)
+response = catalog_items.delete
+```
+
+### Catalogs
+
+**Beta access only** endpoint
+
+#### Catalogs Create
+
+Endpoint: `POST /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+response = catalog_items.create
+```
+
+#### Catalogs Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+response = catalog_items.delete
+```
+
+#### Catalogs Names
+
+Endpoint: `GET /catalogs/{catalogName}/names`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+params = { page: 1, pageSize: 20 }
+response = catalog_items.names(params)
+```
 
 ### Channels
 

@@ -25,7 +25,7 @@ require 'pry'
 require 'dotenv'
 Dotenv.load
 
-Dir["#{project_root}/spec/support/**/*.rb"].each { |f| require f }
+Dir["#{project_root}/spec/support/**/*.rb"].sort.each { |f| require f }
 
 RSpec.configure do |config|
   config.filter_run :focus
