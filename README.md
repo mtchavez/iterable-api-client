@@ -95,6 +95,12 @@ reponse.uri
   * [Create](#campaigns-create)
   * [Metrics](#campaigns-metrics)
   * [Child Campaigns](#campaigns-child)
+* [Catalog Items](#catalog-items)
+  * [All](#catalog-items-all)
+  * [Create](#catalog-items-create)
+  * [Update](#catalog-items-update)
+  * [Get](#catalog-items-get)
+  * [Delete](#catalog-items-delete)
 * [Channels](#channels)
   * [All](#channels-all)
 * [Commerce](#commerce)
@@ -159,6 +165,8 @@ reponse.uri
   * [Trigger](#workflows-trigger)
 
 ### Bulk Catalog Items
+
+**Beta access only** endpoint
 
 #### Bulk Catalog Items Create
 
@@ -236,6 +244,65 @@ campaigns = Iterable::Campaigns.new
 response = campaigns.recurring 'campaign-id'
 ```
 
+### Catalog Items
+
+**Beta access only** endpoint
+
+#### Catalog Items All
+
+Endpoint: `GET /catalogs/{catalogName}/items`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::CatalogItems.new(catalog)
+response = catalog_items.all
+```
+
+#### Catalog Items Create
+
+Endpoint: `PUT /catalogs/{catalogName}/items/{itemId}`
+
+```ruby
+catalog = 'my-catalog'
+item_id = '1234-abcd-1234-abcd'
+catalog_items = Iterable::CatalogItems.new(catalog, item_id)
+item_attrs = { name: 'item name', status: 'open' }
+response = catalog_items.create(item_attrs)
+```
+
+#### Catalog Items Update
+
+Endpoint: `PATCH /catalogs/{catalogName}/items/{itemId}`
+
+```ruby
+catalog = 'my-catalog'
+item_id = '1234-abcd-1234-abcd'
+catalog_items = Iterable::CatalogItems.new(catalog, item_id)
+item_attrs = { name: 'item name', status: 'open' }
+response = catalog_items.update(item_attrs)
+```
+
+#### Catalog Items Get
+
+Endpoint: `GET /catalogs/{catalogName}/items/{itemId}`
+
+```ruby
+catalog = 'my-catalog'
+item_id = '1234-abcd-1234-abcd'
+catalog_items = Iterable::CatalogItems.new(catalog, item_id)
+response = catalog_items.get
+```
+
+#### Catalog Items Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}/items/{itemId}`
+
+```ruby
+catalog = 'my-catalog'
+item_id = '1234-abcd-1234-abcd'
+catalog_items = Iterable::CatalogItems.new(catalog, item_id)
+response = catalog_items.delete
+```
 
 ### Channels
 
