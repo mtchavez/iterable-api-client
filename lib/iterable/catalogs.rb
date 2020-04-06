@@ -6,12 +6,12 @@ module Iterable
   #
   # @example Creating catalog endpoint object
   #   # With default config
-  #   catalog = Iterable::Catalog.new "catalog-name"
+  #   catalog = Iterable::Catalogs.new "catalog-name"
   #   catalog.items
   #
   #   # With custom config
   #   conf = Iterable::Config.new(token: 'new-token')
-  #   catalog = Iterable::Catalog.new("catalog-name", config)
+  #   catalog = Iterable::Catalogs.new("catalog-name", config)
   class Catalogs < ApiResource
     attr_reader :name
     ##
