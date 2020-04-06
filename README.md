@@ -95,12 +95,19 @@ reponse.uri
   * [Create](#campaigns-create)
   * [Metrics](#campaigns-metrics)
   * [Child Campaigns](#campaigns-child)
+* [Catalog Field Mappings](#catalog-field-mappings)
+  * [Get](#catalog-field-mappings-get)
+  * [Update](#catalog-field-mappings-update)
 * [Catalog Items](#catalog-items)
   * [All](#catalog-items-all)
   * [Create](#catalog-items-create)
   * [Update](#catalog-items-update)
   * [Get](#catalog-items-get)
   * [Delete](#catalog-items-delete)
+* [Catalogs](#catalogs)
+  * [Create](#catalogs-create)
+  * [Delete](#catalogs-delete)
+  * [Names](#catalogs-names)
 * [Channels](#channels)
   * [All](#channels-all)
 * [Commerce](#commerce)
@@ -244,6 +251,66 @@ campaigns = Iterable::Campaigns.new
 response = campaigns.recurring 'campaign-id'
 ```
 
+### Catalogs
+
+**Beta access only** endpoint
+
+#### Catalogs Create
+
+Endpoint: `POST /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+response = catalog_items.create
+```
+
+#### Catalogs Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+response = catalog_items.delete
+```
+
+#### Catalogs Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+params = { page: 1, pageSize: 20 }
+response = catalog_items.names(params)
+```
+
+### Catalog Field Mappings
+
+**Beta access only** endpoint
+
+#### Catalog Field Mappings Get
+
+Endpoint: `GET /catalogs/{catalogName}/fieldMappings`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::CatalogFieldMappings.new(catalog)
+response = catalog_items.field_mappings
+```
+
+#### Catalog Field Mappings Update
+
+Endpoint: `PUT /catalogs/{catalogName}/fieldMappings`
+
+```ruby
+catalog = 'my-catalog'
+field_mappings = [{fieldName: 'test-field', fieldType: 'string'}]
+catalog = Iterable::CatalogFieldMappings.new(catalog)
+catalog.update_field_mappings(field_mappings)
+```
+
 ### Catalog Items
 
 **Beta access only** endpoint
@@ -302,6 +369,41 @@ catalog = 'my-catalog'
 item_id = '1234-abcd-1234-abcd'
 catalog_items = Iterable::CatalogItems.new(catalog, item_id)
 response = catalog_items.delete
+```
+
+### Catalogs
+
+**Beta access only** endpoint
+
+#### Catalogs Create
+
+Endpoint: `POST /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+response = catalog_items.create
+```
+
+#### Catalogs Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+response = catalog_items.delete
+```
+
+#### Catalogs Names
+
+Endpoint: `GET /catalogs/{catalogName}/names`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::Catalogs.new(catalog)
+params = { page: 1, pageSize: 20 }
+response = catalog_items.names(params)
 ```
 
 ### Channels

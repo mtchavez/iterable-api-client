@@ -54,33 +54,6 @@ module Iterable
       Iterable.request(conf, '/catalogs', params).get
     end
 
-    ##
-    #
-    # Get field mappings for a catalog
-    #
-    # @return [Iterable::Response] A response object
-    def field_mappings
-      Iterable.request(conf, "#{base_path}/fieldMappings").get
-    end
-
-    ##
-    #
-    # Set a catalog's field mappings (data types)
-    #
-    # @param [Array] Array of field mapping hashes e.g [{"fieldName":"exampleString","fieldType":"string"}]}
-    #
-    # @return [Iterable::Response] A response object
-    #
-    # @example Supplying field mappings
-    #   # Fields to update with field types
-    #   field_mappings = [{fieldName: 'test-field', fieldType: 'string'}]
-    #   catalog = Iterable::Catalog.new "catalog-name"
-    #   catalog.update_field_mappings(field_mappings)
-    def update_field_mappings(mappings_updates = [])
-      body = { mappingsUpdates: mappings_updates }
-      Iterable.request(conf, "#{base_path}/fieldMappings").put(body)
-    end
-
     private
 
     def base_path
