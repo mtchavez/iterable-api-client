@@ -87,6 +87,9 @@ reponse.uri
 
 ## API Endpoints
 
+* [Bulk Catalog Items](#bulk-catalog-items)
+  * [Create](#bulk-catalog-items-create)
+  * [Delete](#bulk-catalog-items-delete)
 * [Campaigns](#campaigns)
   * [All](#campaigns-all)
   * [Create](#campaigns-create)
@@ -154,6 +157,39 @@ reponse.uri
   * [Get Sent Messages](#users-get-messages)
 * [Workflows](#workflows)
   * [Trigger](#workflows-trigger)
+
+### Bulk Catalog Items
+
+#### Bulk Catalog Items Create
+
+Endpoint: `POST /catalogs/{catalogName}/items`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::BulkCatalogItems.new(catalog)
+# Hash of item id to item values
+create_items = {
+  '122343453' => {
+    name: 'item name',
+    status: 'open'
+  }
+}
+response = catalog_items.create(create_items, replace_uploaded_fields_only: true)
+ # Use replace_uploaded_fields_only as true to update fields
+ # of existing items. Otherwise the default is to replace
+ # existing items
+```
+
+#### Bulk Catalog Items Delete
+
+Endpoint: `DELETE /catalogs/{catalogName}/items`
+
+```ruby
+catalog = 'my-catalog'
+catalog_items = Iterable::BulkCatalogItems.new(catalog)
+item_ids = ['12345', '12346', '12347']
+response = catalog_items.create(item_ids)
+```
 
 ### Campaigns
 
