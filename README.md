@@ -296,8 +296,8 @@ Endpoint: `GET /catalogs/{catalogName}/fieldMappings`
 
 ```ruby
 catalog = 'my-catalog'
-catalog_items = Iterable::CatalogFieldMappings.new(catalog)
-response = catalog_items.field_mappings
+catalog_field_mappings = Iterable::CatalogFieldMappings.new(catalog)
+response = catalog_field_mappings.field_mappings
 ```
 
 #### Catalog Field Mappings Update
@@ -307,8 +307,8 @@ Endpoint: `PUT /catalogs/{catalogName}/fieldMappings`
 ```ruby
 catalog = 'my-catalog'
 field_mappings = [{fieldName: 'test-field', fieldType: 'string'}]
-catalog = Iterable::CatalogFieldMappings.new(catalog)
-catalog.update_field_mappings(field_mappings)
+catalog_field_mappings = Iterable::CatalogFieldMappings.new(catalog)
+catalog_field_mappings.update_field_mappings(field_mappings)
 ```
 
 ### Catalog Items
