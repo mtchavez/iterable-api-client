@@ -261,8 +261,8 @@ Endpoint: `POST /catalogs/{catalogName}`
 
 ```ruby
 catalog = 'my-catalog'
-catalog_items = Iterable::Catalogs.new(catalog)
-response = catalog_items.create
+catalogs = Iterable::Catalogs.new(catalog)
+response = catalogs.create
 ```
 
 #### Catalogs Delete
@@ -271,19 +271,19 @@ Endpoint: `DELETE /catalogs/{catalogName}`
 
 ```ruby
 catalog = 'my-catalog'
-catalog_items = Iterable::Catalogs.new(catalog)
-response = catalog_items.delete
+catalogs = Iterable::Catalogs.new(catalog)
+response = catalogs.delete
 ```
 
-#### Catalogs Delete
+#### Catalogs Names
 
-Endpoint: `DELETE /catalogs/{catalogName}`
+Endpoint: `GET /catalogs/{catalogName}`
 
 ```ruby
 catalog = 'my-catalog'
-catalog_items = Iterable::Catalogs.new(catalog)
+catalogs = Iterable::Catalogs.new(catalog)
 params = { page: 1, pageSize: 20 }
-response = catalog_items.names(params)
+response = catalogs.names(params)
 ```
 
 ### Catalog Field Mappings
