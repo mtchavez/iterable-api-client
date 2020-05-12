@@ -308,7 +308,7 @@ Endpoint: `PUT /catalogs/{catalogName}/fieldMappings`
 catalog = 'my-catalog'
 field_mappings = [{fieldName: 'test-field', fieldType: 'string'}]
 catalog_field_mappings = Iterable::CatalogFieldMappings.new(catalog)
-catalog_field_mappings.update_field_mappings(field_mappings)
+catalog_field_mappings.update(field_mappings)
 ```
 
 ### Catalog Items
