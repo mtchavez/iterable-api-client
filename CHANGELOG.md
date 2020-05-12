@@ -1,3 +1,7 @@
+## v0.3.1 - 2020-05-11
+
+- Fix `Catalog#create` update params
+
 ## v0.3.0 - 2020-04-06
 
 - Add `Iterable::BulkCatalogItems`
