@@ -45,11 +45,11 @@ module Iterable
     #
     # Create a catalog item
     #
-    # @param item_attrs [Hash] Item attributes to save or update with
+    # @param item_attrs [Hash] Item attributes to save or replace with
     #
     # @return [Iterable::Response] A response object
     def create(item_attrs = {})
-      body = { update: item_attrs }
+      body = { value: item_attrs }
       Iterable.request(conf, base_path).put(body)
     end
     alias replace create

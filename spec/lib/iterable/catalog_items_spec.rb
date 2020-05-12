@@ -40,14 +40,14 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
     it 'calls correct endpoint', :aggregate_errors do
       create
       expect(Iterable).to have_received(:request).with(config, api_url)
-      expect(test_request).to have_received(:put).with(update: item_attributes)
+      expect(test_request).to have_received(:put).with(value: item_attributes)
     end
 
     context 'with replace alias' do
       it 'calls correct endpoint', :aggregate_errors do
         catalog_items.replace(item_attributes)
         expect(Iterable).to have_received(:request).with(config, api_url)
-        expect(test_request).to have_received(:put).with(update: item_attributes)
+        expect(test_request).to have_received(:put).with(value: item_attributes)
       end
     end
   end
