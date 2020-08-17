@@ -456,7 +456,7 @@ items = [{
 user = { userId: '42', email: 'user@example.com' }
 
 commerce = Iterable::Commerce.new
-response = commerce.update_cart items, user
+response = commerce.update_cart user, items
 ```
 
 ### Device
