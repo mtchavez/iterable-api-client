@@ -14,26 +14,29 @@ Metrics/BlockLength:
   CountComments: false
   Max: 25
   Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
-    - 'spec/**/*.rb'
-    - '*.gemspec'
+    - "Rakefile"
+    - "**/*.rake"
+    - "spec/**/*.rb"
+    - "*.gemspec"
 
 Metrics/LineLength:
   Max: 120
 
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
-    '%': '[]'
-    '%Q': '[]'
-    '%W': '[]'
-    '%i': '[]'
-    '%q': '[]'
-    '%r': '{}'
-    '%s': '[]'
-    '%w': '[]'
-    '%x': '[]'
+    "%": "[]"
+    "%Q": "[]"
+    "%W": "[]"
+    "%i": "[]"
+    "%q": "[]"
+    "%r": "{}"
+    "%s": "[]"
+    "%w": "[]"
+    "%x": "[]"
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/AccessModifierDeclarations:
+  EnforcedStyle: inline
+  AllowModifiersOnSymbols: true

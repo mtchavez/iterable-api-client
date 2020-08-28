@@ -15,7 +15,7 @@ module Iterable
     #
     # @return [Iterable::ApiResource]
     def initialize(conf = nil)
-      @conf = conf ? conf : default_config
+      @conf = conf || default_config
     end
 
     ##

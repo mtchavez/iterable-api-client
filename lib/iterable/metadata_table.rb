@@ -82,9 +82,7 @@ module Iterable
       Iterable.request(conf, base_path(key)).delete
     end
 
-    private
-
-    def base_path(key = nil)
+    private def base_path(key = nil)
       path = "/metadata/#{@name}"
       path += "/#{key}" if key
       path

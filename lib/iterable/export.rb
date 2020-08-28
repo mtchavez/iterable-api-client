@@ -103,20 +103,26 @@ module Iterable
       Iterable.request(conf, base_path, request_params(params)).get
     end
 
-    protected
-
-    def base_path
+    protected def base_path
       "/export/data.#{format}"
     end
 
-    def request_params(params = {})
+    protected def request_params(params = {})
       default_params.merge params
     end
 
-    def default_params
+    protected def only_fields?
+      @only_fields&.length.to_i.positive?
+    end
+
+    protected def omit_fields?
+      @omit_fields&.length.to_i.positive?
+    end
+
+    protected def default_params
       params = { dataTypeName: @data_type }
-      params[:onlyFields] = @only_fields if @only_fields && @only_fields.length.positive?
-      params[:omitFields] = @omit_fields.join(',') if @omit_fields && @omit_fields.length.positive?
+      params[:onlyFields] = @only_fields if only_fields?
+      params[:omitFields] = @omit_fields.join(',') if omit_fields?
       params[:campaignId] = @campaign_id if @campaign_id
       params
     end

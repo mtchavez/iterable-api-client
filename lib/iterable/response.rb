@@ -12,7 +12,7 @@ module Iterable
     attr_reader :body
 
     # @!visibility private
-    def initialize(resp) # @private
+    def initialize(resp)
       @resp = resp
       @body = parsed_body
     end
@@ -29,14 +29,12 @@ module Iterable
       end
     end
 
-    private
-
     ##
     # Attempts to parse the response as JSON. Will rescue and return original
     # if unable to parse.
     #
     # @return [Hash,Array,String] A parsed JSON object or the original response body
-    def parsed_body
+    private def parsed_body
       response_body = @resp.body
       MultiJson.load response_body
     rescue MultiJson::ParseError

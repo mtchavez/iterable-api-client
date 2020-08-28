@@ -54,9 +54,7 @@ module Iterable
       Iterable.request(conf, base_path).put(body)
     end
 
-    private
-
-    def base_path
+    private def base_path
       "/catalogs/#{@catalog}/fieldMappings"
     end
   end
