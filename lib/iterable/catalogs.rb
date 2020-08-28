@@ -54,9 +54,7 @@ module Iterable
       Iterable.request(conf, '/catalogs', params).get
     end
 
-    private
-
-    def base_path
+    private def base_path
       "/catalogs/#{@name}"
     end
   end

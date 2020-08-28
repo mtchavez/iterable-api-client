@@ -84,9 +84,7 @@ module Iterable
       Iterable.request(conf, base_path).delete
     end
 
-    private
-
-    def base_path
+    private def base_path
       path = "/catalogs/#{@catalog}/items"
       path += "/#{@item_id}" if @item_id
       path

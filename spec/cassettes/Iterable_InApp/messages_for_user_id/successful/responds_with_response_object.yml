@@ -1,0 +1,85 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://api.iterable.com/api/inApp/getMessages?api_key=<ITERABLE_TOKEN>&count=1&userId=42&platform=iOS
+      body:
+        encoding: UTF-8
+        string: "{}"
+      headers:
+        Accept:
+          - application/json
+        Content-Type:
+          - application/json
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        User-Agent:
+          - Ruby
+        Host:
+          - api.iterable.com
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Wed, 19 Aug 2020 20:51:22 GMT
+        Content-Type:
+          - application/json
+        Content-Length:
+          - "46"
+        Connection:
+          - close
+        Vary:
+          - Origin,Accept-Encoding
+        Request-Time:
+          - "6"
+        Server:
+          - iterable-ingress 8e97
+      body:
+        encoding: ASCII-8BIT
+        string: '{"inAppMessages":[{"messageId":"string","campaignId":0,"createdAt":"2020-08-28T15:57:42.800Z","expiresAt":"2020-08-28T15:57:42.800Z","content":{"html":"string","inAppDisplaySettings":{"top":{},"right":{},"bottom":{},"left":{}}},"customPayload":{},"trigger":{"type":{}},"saveToInbox":true,"inboxMetadata":{"title":"string","subtitle":"string","icon":"string"}}]}'
+      http_version:
+    recorded_at: Wed, 19 Aug 2020 20:51:22 GMT
+  - request:
+      method: get
+      uri: https://api.iterable.com/api/inApp/getMessages?api_key=<ITERABLE_TOKEN>&count=1&platform=iOS&userId=42
+      body:
+        encoding: UTF-8
+        string: "{}"
+      headers:
+        Accept:
+          - application/json
+        Content-Type:
+          - application/json
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        User-Agent:
+          - Ruby
+        Host:
+          - api.iterable.com
+    response:
+      status:
+        code: 401
+        message: Unauthorized
+      headers:
+        Date:
+          - Fri, 28 Aug 2020 17:41:27 GMT
+        Content-Type:
+          - application/json
+        Content-Length:
+          - "126"
+        Connection:
+          - close
+        Vary:
+          - Origin,Accept-Encoding
+        Request-Time:
+          - "1"
+        Server:
+          - iterable-ingress 8e97
+      body:
+        encoding: ASCII-8BIT
+        string: '{"msg":"Invalid API key","code":"BadApiKey","params":{"ip":"72.80.147.79","endpoint":"/api/inApp/getMessages"}}'
+      http_version:
+    recorded_at: Fri, 28 Aug 2020 17:41:27 GMT
+recorded_with: VCR 3.0.3

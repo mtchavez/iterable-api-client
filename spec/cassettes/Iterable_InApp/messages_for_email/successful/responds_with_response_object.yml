@@ -1,0 +1,43 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: https://api.iterable.com/api/inApp/getMessages?api_key=<ITERABLE_TOKEN>&count=1&email=user@example.com
+      body:
+        encoding: UTF-8
+        string: "{}"
+      headers:
+        Accept:
+          - application/json
+        Content-Type:
+          - application/json
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        User-Agent:
+          - Ruby
+        Host:
+          - api.iterable.com
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Wed, 19 Aug 2020 20:51:22 GMT
+        Content-Type:
+          - application/json
+        Content-Length:
+          - "46"
+        Connection:
+          - close
+        Vary:
+          - Origin,Accept-Encoding
+        Request-Time:
+          - "6"
+        Server:
+          - iterable-ingress 8e97
+      body:
+        encoding: ASCII-8BIT
+        string: '{"inAppMessages":[{"messageId":"string","campaignId":0,"createdAt":"2020-08-28T15:57:42.800Z","expiresAt":"2020-08-28T15:57:42.800Z","content":{"html":"string","inAppDisplaySettings":{"top":{},"right":{},"bottom":{},"left":{}}},"customPayload":{},"trigger":{"type":{}},"saveToInbox":true,"inboxMetadata":{"title":"string","subtitle":"string","icon":"string"}}]}'
+    recorded_at: Wed, 19 Aug 2020 20:51:22 GMT
+recorded_with: VCR 3.0.3

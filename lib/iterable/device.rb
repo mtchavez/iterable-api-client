@@ -56,13 +56,11 @@ module Iterable
       Iterable.request(conf, base_path).post(attrs)
     end
 
-    private
-
-    def base_path
+    private def base_path
       '/users/registerDeviceToken'
     end
 
-    def device_data
+    private def device_data
       {
         token: @token,
         applicationName: @app,

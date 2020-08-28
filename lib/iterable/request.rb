@@ -42,29 +42,27 @@ module Iterable
       execute :delete, body, headers
     end
 
-    private
-
-    def execute(verb, body = {}, headers = {})
+    private def execute(verb, body = {}, headers = {})
       http = connection(verb, body, headers)
       setup_http(http)
       transmit http
     end
 
-    def connection(verb, body = {}, headers = {})
+    private def connection(verb, body = {}, headers = {})
       conn_headers = DEFAULT_HEADERS.merge(headers)
       req = Net::HTTP.const_get(verb.to_s.capitalize, false).new(@uri, conn_headers)
       req.body = JSON.dump(body)
       req
     end
 
-    def setup_http(http)
+    private def setup_http(http)
       DEFAULT_OPTIONS.dup.each do |option, value|
         setter = "#{option.to_sym}="
         http.send(setter, value) if http.respond_to?(setter)
       end
     end
 
-    def build_uri(path, params = {})
+    private def build_uri(path, params = {})
       uri = @config.uri
       uri.path += path
       params['api_key'] = @config.token
@@ -72,11 +70,11 @@ module Iterable
       uri
     end
 
-    def net_http
+    private def net_http
       Net::HTTP.new(@uri.hostname, @uri.port, nil, nil, nil, nil)
     end
 
-    def transmit(req)
+    private def transmit(req)
       response = nil
       @net.start do |http|
         response = http.request(req, nil, &:read_body)
@@ -84,7 +82,7 @@ module Iterable
       handle_response response
     end
 
-    def handle_response(response)
+    private def handle_response(response)
       redirected = response.is_a?(Net::HTTPRedirection) || response.code == '303'
       if redirected && response['location']
         Response.new Net::HTTP.get_response(uri_for_redirect(response))
@@ -93,7 +91,7 @@ module Iterable
       end
     end
 
-    def uri_for_redirect(response)
+    private def uri_for_redirect(response)
       uri = @config.uri
       redirect_uri = URI(response['location'])
       uri.path = redirect_uri.path
