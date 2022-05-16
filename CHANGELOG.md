@@ -1,3 +1,7 @@
+## v0.3.2 - 2022-05-16
+
+- Add `Iterable::Users#forget`
+
 ## v0.3.1 - 2020-05-11
 
 - Fix `Catalog#create` update params

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name                  = 'iterable-api-client'
-  s.version               = '0.3.1'
-  s.date                  = '2020-05-11'
+  s.version               = '0.3.2'
+  s.date                  = '2022-05-16'
   s.summary               = 'Iterable REST API Client'
   s.description           = 'Ruby gem for the Iterable REST API'
   s.licenses              = %w[MIT]
