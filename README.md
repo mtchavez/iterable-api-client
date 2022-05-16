@@ -170,6 +170,7 @@ reponse.uri
   - [Register Browser Token](#users-register-browser-token)
   - [Disable Device](#users-disable-device)
   - [Get Sent Messages](#users-get-messages)
+  - [Forget](#users-forget)
 - [Workflows](#workflows)
   - [Trigger](#workflows-trigger)
 
@@ -972,6 +973,17 @@ params = { campaignId: 'custom-id', limit: 30 }
 end_time = Time.now
 start_time = end_time - (60 * 60* 24 * 7) # 7 days ago
 response = users.sent_messages 'user@example.com', start_time, end_time, params
+```
+
+#### Users Forget
+
+Endpoint: `POST /users/forget`
+
+```ruby
+users = Iterable::Users.new
+# Additional params to filter and query by
+email = 'user@example.com'
+response = users.forget email
 ```
 
 ### Workflows
