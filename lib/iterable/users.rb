@@ -186,5 +186,18 @@ module Iterable
       params[:endTime] = end_time.to_s if end_time
       Iterable.request(conf, '/users/getSentMessages', params).get
     end
+
+    ##
+    #
+    # Delete the specified user's data from the Iterable project and
+    # prevent future data collection about them.
+    #
+    # @param email [String] User email to forget
+    #
+    # @return [Iterable::Response] A response object
+    def forget(email)
+      attrs = { email: email }
+      Iterable.request(conf, '/users/forget').post(attrs)
+    end
   end
 end

@@ -438,4 +438,36 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
   end
+
+  describe 'forget' do
+    let(:email) { 'sample-1507173084@example.com' }
+    let(:res) { subject.forget email }
+
+    describe 'successful' do
+      it 'responds with success' do
+        expect(res).to be_success
+      end
+
+      it 'responds with response object' do
+        expect(res).to be_a(Iterable::Response)
+      end
+
+      it 'returns success code' do
+        expect(res.body['code']).to match(/success/i)
+      end
+    end
+
+    describe 'with invalid email' do
+      let(:email) { 'foo@' }
+
+      it 'is not successful' do
+        expect(res).not_to be_success
+      end
+
+      it 'responds with an error code' do
+        expect(res.code).to eq('400')
+        expect(res.body['code']).to match(/InvalidEmailAddressError/i)
+      end
+    end
+  end
 end
