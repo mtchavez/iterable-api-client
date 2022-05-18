@@ -22,7 +22,7 @@ GEM
       rexml
     diff-lcs (1.5.0)
     docile (1.1.5)
-    dotenv (2.2.2)
+    dotenv (2.7.6)
     ethon (0.15.0)
       ffi (>= 1.15.0)
     ffi (1.15.5)
@@ -104,7 +104,7 @@ PLATFORMS
 
 DEPENDENCIES
   coveralls (~> 0.8.21)
-  dotenv (~> 2.2.0)
+  dotenv (~> 2.7.1)
   gemcutter (~> 0.7.1)
   iterable-api-client!
   multi_json (~> 1.12.1)

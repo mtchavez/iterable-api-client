@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   # Dev Dependencies
   s.add_development_dependency 'coveralls',  '~> 0.8.21'
-  s.add_development_dependency 'dotenv',     '~> 2.2.0'
+  s.add_development_dependency 'dotenv',     '~> 2.7.1'
   s.add_development_dependency 'gemcutter',  '~> 0.7.1'
   s.add_development_dependency 'multi_json', '~> 1.12.1'
   s.add_development_dependency 'pry',        '~> 0.10.4'
