@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry-byebug', '~> 3.8.0'
   s.add_development_dependency 'pry-doc',    '~> 1.3.0'
   s.add_development_dependency 'rake',       '~> 13.0.0'
-  s.add_development_dependency 'redcarpet',  '~> 3.4.0'
+  s.add_development_dependency 'redcarpet',  '~> 3.5.0'
   s.add_development_dependency 'rspec',      '~> 3.6.0'
   s.add_development_dependency 'rubocop',    '~> 0.89.1'
   s.add_development_dependency 'simplecov',  '~> 0.14.1'
