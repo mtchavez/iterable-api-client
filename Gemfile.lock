@@ -117,7 +117,7 @@ DEPENDENCIES
   typhoeus (~> 1.4.0)
   vcr (~> 3.0.3)
   webmock (~> 3.8.3)
-  yard (~> 0.9.5)
+  yard (~> 0.9.11)
 
 BUNDLED WITH
    1.17.2
