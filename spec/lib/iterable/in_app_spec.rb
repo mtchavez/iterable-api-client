@@ -8,7 +8,7 @@ RSpec.describe Iterable::InApp, :vcr do
     let(:res) { subject.messages_for_email(email) }
     let(:messages) { resp_body['inAppMessages'] }
 
-    context 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -29,7 +29,7 @@ RSpec.describe Iterable::InApp, :vcr do
     let(:res) { subject.messages_for_user_id(user_id, platform: 'iOS') }
     let(:messages) { resp_body['inAppMessages'] }
 
-    context 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

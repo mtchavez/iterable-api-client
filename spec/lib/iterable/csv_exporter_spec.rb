@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 RSpec.describe Iterable::CsvExporter, :vcr do
+  subject { described_class.new data_type, only_fields }
+
   let(:data_type) { Iterable::Export::EMAIL_SEND_TYPE }
   let(:only_fields) { %w[createdAt campaignId] }
-
-  subject { described_class.new data_type, only_fields }
 
   describe 'export_range' do
     let(:range) { Iterable::Export::ALL }
     let(:res) { subject.export_range range }
     let(:data) { res.body.split("\n") }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -22,7 +22,7 @@ RSpec.describe Iterable::CsvExporter, :vcr do
 
       it 'returns exported data' do
         expect(data.first.split(',')).to match_array(only_fields)
-        expect(data[1..-1].length).to eq(139)
+        expect(data[1..].length).to eq(139)
       end
     end
   end
@@ -33,7 +33,7 @@ RSpec.describe Iterable::CsvExporter, :vcr do
     let(:res) { subject.export start_time, end_time }
     let(:data) { res.body.split("\n") }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -44,7 +44,7 @@ RSpec.describe Iterable::CsvExporter, :vcr do
 
       it 'returns exported data' do
         expect(data.first.split(',')).to match_array(only_fields)
-        expect(data[1..-1].length).to eq(23)
+        expect(data[1..].length).to eq(23)
       end
     end
   end

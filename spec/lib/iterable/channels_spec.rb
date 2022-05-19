@@ -5,7 +5,7 @@ RSpec.describe Iterable::Channels, :vcr do
     let(:res) { subject.all }
     let(:channels) { res.body['channels'] }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

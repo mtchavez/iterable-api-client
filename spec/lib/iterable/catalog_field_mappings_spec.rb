@@ -7,9 +7,9 @@ RSpec.describe Iterable::CatalogFieldMappings, vcr: :none do
   let(:test_request) { instance_double(Iterable::Request) }
 
   describe 'get' do
-    let(:api_url) { "/catalogs/#{catalog_name}/fieldMappings" }
-
     subject(:get) { field_mappings.get }
+
+    let(:api_url) { "/catalogs/#{catalog_name}/fieldMappings" }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
@@ -33,9 +33,9 @@ RSpec.describe Iterable::CatalogFieldMappings, vcr: :none do
     end
 
     context 'without updates' do
-      let(:updates) { [] }
-
       subject(:update) { field_mappings.update }
+
+      let(:updates) { [] }
 
       before { update }
 
@@ -46,9 +46,9 @@ RSpec.describe Iterable::CatalogFieldMappings, vcr: :none do
     end
 
     context 'with updates' do
-      let(:updates) { [{ fieldName: 'test-field', fieldType: 'string' }] }
-
       subject(:update) { field_mappings.update(updates) }
+
+      let(:updates) { [{ fieldName: 'test-field', fieldType: 'string' }] }
 
       before { update }
 

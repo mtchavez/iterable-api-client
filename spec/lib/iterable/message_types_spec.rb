@@ -5,7 +5,7 @@ RSpec.describe Iterable::MessageTypes, :vcr do
     let(:res) { subject.all }
     let(:message_types) { res.body['messageTypes'] }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

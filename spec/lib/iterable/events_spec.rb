@@ -6,7 +6,7 @@ RSpec.describe Iterable::Events, :vcr do
     let(:res) { subject.for_email email }
     let(:events) { res.body['events'] }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -27,7 +27,7 @@ RSpec.describe Iterable::Events, :vcr do
     let(:email) { 'user@example.com' }
     let(:res) { subject.track name, email }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -60,7 +60,7 @@ RSpec.describe Iterable::Events, :vcr do
     let(:email) { 'user@example.com' }
     let(:res) { subject.track_push_open campaign_id, message_id, email }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

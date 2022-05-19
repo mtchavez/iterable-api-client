@@ -5,7 +5,7 @@ RSpec.describe Iterable::Templates, :vcr do
     let(:res) { subject.all }
     let(:templates) { res.body['templates'] }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -46,7 +46,7 @@ RSpec.describe Iterable::Templates, :vcr do
     let(:res) { subject.for_client_template_id client_template_id }
     let(:templates) { res.body['templates'] }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -61,7 +61,7 @@ RSpec.describe Iterable::Templates, :vcr do
       end
     end
 
-    context 'non existing client id' do
+    context 'with non existing client id' do
       let(:client_template_id) { 42 }
 
       it 'responds with success' do

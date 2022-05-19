@@ -57,7 +57,7 @@ module Iterable
     # @param conf [Iterable::Config] A config to optionally pass for requests
     #
     # @return [Iterable::Export]
-    def initialize(data_type, only_fields = [], omit_fields = [], campaign_id = nil, conf = nil)
+    def initialize(data_type, only_fields = [], omit_fields = [], campaign_id = nil, conf = nil) # rubocop:disable Metrics/ParameterLists
       @data_type = data_type
       @only_fields = only_fields
       @omit_fields = omit_fields

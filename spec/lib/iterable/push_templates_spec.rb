@@ -5,7 +5,7 @@ RSpec.describe Iterable::PushTemplates, :vcr do
     let(:template_id) { 256_072 }
     let(:res) { subject.get template_id }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -20,7 +20,7 @@ RSpec.describe Iterable::PushTemplates, :vcr do
       end
     end
 
-    context 'non existing client id' do
+    context 'with non existing client id' do
       let(:template_id) { 42 }
 
       it 'responds as unsuccessful' do
@@ -48,7 +48,7 @@ RSpec.describe Iterable::PushTemplates, :vcr do
     end
     let(:res) { subject.update template_id, update_attrs }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -62,7 +62,7 @@ RSpec.describe Iterable::PushTemplates, :vcr do
       end
     end
 
-    context 'non existing client id' do
+    context 'with non existing client id' do
       let(:template_id) { 42 }
 
       it 'responds as unsuccessful' do
@@ -89,7 +89,7 @@ RSpec.describe Iterable::PushTemplates, :vcr do
     end
     let(:res) { subject.upsert client_template_id, upsert_attrs }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

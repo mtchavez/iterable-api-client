@@ -2,8 +2,9 @@ require 'csv'
 require 'spec_helper'
 
 RSpec.describe Iterable::Experiments, :vcr do
-  let(:experiment_ids) { [12_041] }
   subject { described_class.new experiment_ids }
+
+  let(:experiment_ids) { [12_041] }
 
   describe 'metrics' do
     let(:campaign_ids) { [176_828] }
@@ -11,7 +12,7 @@ RSpec.describe Iterable::Experiments, :vcr do
     let(:end_time) { nil }
     let(:res) { subject.metrics campaign_ids, start_time, end_time }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

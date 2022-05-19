@@ -14,6 +14,7 @@ module Iterable
   #   catalog = Iterable::Catalogs.new("catalog-name", config)
   class Catalogs < ApiResource
     attr_reader :name
+
     ##
     #
     # Initialize Catalogs with a catalog name **currently in Beta only**

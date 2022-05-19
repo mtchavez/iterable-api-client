@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 RSpec.describe Iterable::Device, :vcr do
-  let(:token) { (1..10).to_a.join('') }
+  subject { described_class.new token, app, platform }
+
+  let(:token) { (1..10).to_a.join }
   let(:app) { 'devAPNS' }
   let(:platform) { Iterable::Device::APNS_SANDBOX }
-
-  subject { described_class.new token, app, platform }
 
   describe 'register' do
     let(:email) { 'user@example.com' }
     let(:res) { subject.register email }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

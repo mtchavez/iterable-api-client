@@ -5,7 +5,7 @@ RSpec.describe Iterable::Users, :vcr do
     let(:email) { "sample-#{Time.now.to_i}@example.com" }
     let(:res) { subject.update email }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -19,7 +19,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'without email' do
+    context 'without email' do
       let(:email) { '' }
 
       it 'is not successful' do
@@ -41,7 +41,7 @@ RSpec.describe Iterable::Users, :vcr do
     end
     let(:res) { subject.bulk_update users }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -57,7 +57,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'without users' do
+    context 'without users' do
       let(:users) { [] }
 
       it 'is not successful' do
@@ -75,7 +75,7 @@ RSpec.describe Iterable::Users, :vcr do
     let(:email) { 'sample-1507173084@example.com' }
     let(:res) { subject.update_subscriptions email }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -89,7 +89,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'with invalid email' do
+    context 'with invalid email' do
       let(:email) { 'foo@' }
 
       it 'is not successful' do
@@ -112,7 +112,7 @@ RSpec.describe Iterable::Users, :vcr do
     end
     let(:res) { subject.bulk_update_subscriptions subscriptions }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -128,7 +128,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'with invalid email' do
+    context 'with invalid email' do
       let(:email) { 'foo@' }
 
       it 'responds with success' do
@@ -148,7 +148,7 @@ RSpec.describe Iterable::Users, :vcr do
     let(:res) { subject.for_email email }
     let(:user) { res.body['user'] }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -163,7 +163,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'not found' do
+    context 'when not found' do
       let(:email) { 'foo@' }
 
       it 'is not successful' do
@@ -182,7 +182,7 @@ RSpec.describe Iterable::Users, :vcr do
     let(:new_email) { 'sample-1507173084@example.org' }
     let(:res) { subject.update_email email, new_email }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -196,7 +196,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'not found' do
+    context 'when not found' do
       let(:email) { 'foo@' }
 
       it 'is not successful' do
@@ -214,7 +214,7 @@ RSpec.describe Iterable::Users, :vcr do
     let(:email) { 'sample-1507173084@example.com' }
     let(:res) { subject.delete email }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -228,7 +228,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'not found' do
+    context 'when not found' do
       let(:email) { 'foo@' }
 
       it 'is not successful' do
@@ -246,7 +246,7 @@ RSpec.describe Iterable::Users, :vcr do
     let(:user_id) { '1' }
     let(:res) { subject.delete_by_id user_id }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -260,7 +260,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'not found' do
+    context 'when not found' do
       let(:user_id) { '42' }
 
       it 'is not successful' do
@@ -280,7 +280,7 @@ RSpec.describe Iterable::Users, :vcr do
     let(:res) { subject.for_id user_id }
     let(:user) { res.body['user'] }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -296,7 +296,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'not found' do
+    context 'when not found' do
       let(:user_id) { '42' }
 
       it 'is not successful' do
@@ -312,7 +312,7 @@ RSpec.describe Iterable::Users, :vcr do
   describe 'fields' do
     let(:res) { subject.fields }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -329,10 +329,10 @@ RSpec.describe Iterable::Users, :vcr do
 
   describe 'register_browser_token' do
     let(:email) { 'sample-1507173084@example.com' }
-    let(:token) { (1..10).to_a.join('') }
+    let(:token) { (1..10).to_a.join }
     let(:res) { subject.register_browser_token email, token }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -346,7 +346,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'without email or userId' do
+    context 'without email or userId' do
       let(:email) { '' }
 
       it 'is not successful' do
@@ -360,10 +360,10 @@ RSpec.describe Iterable::Users, :vcr do
   end
 
   describe 'disable_device' do
-    let(:token) { (1..10).to_a.join('') }
+    let(:token) { (1..10).to_a.join }
     let(:res) { subject.disable_device token }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -377,7 +377,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'without token' do
+    context 'without token' do
       let(:token) { nil }
 
       it 'is not successful' do
@@ -390,29 +390,11 @@ RSpec.describe Iterable::Users, :vcr do
     end
   end
 
-  describe 'fields' do
-    let(:res) { subject.fields }
-
-    describe 'successful' do
-      it 'responds with success' do
-        expect(res).to be_success
-      end
-
-      it 'responds with response object' do
-        expect(res).to be_a(Iterable::Response)
-      end
-
-      it 'returns user fields' do
-        expect(res.body['fields']).to be_a(Hash)
-      end
-    end
-  end
-
   describe 'sent_messages' do
     let(:email) { 'user@example.com' }
     let(:res) { subject.sent_messages email }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -426,7 +408,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'without messages for email' do
+    context 'without messages for email' do
       let(:email) { 'sample@example.com' }
 
       it 'responds with success' do
@@ -443,7 +425,7 @@ RSpec.describe Iterable::Users, :vcr do
     let(:email) { 'sample-1507173084@example.com' }
     let(:res) { subject.forget email }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -457,7 +439,7 @@ RSpec.describe Iterable::Users, :vcr do
       end
     end
 
-    describe 'with invalid email' do
+    context 'with invalid email' do
       let(:email) { 'foo@' }
 
       it 'is not successful' do
