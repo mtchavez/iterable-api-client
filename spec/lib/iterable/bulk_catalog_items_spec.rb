@@ -8,10 +8,10 @@ RSpec.describe Iterable::BulkCatalogItems, vcr: :none do
   let(:test_request) { instance_double(Iterable::Request) }
 
   describe 'create' do
+    subject(:create) { bulk_catalog_items.create(items) }
+
     let(:api_url) { "/catalogs/#{catalog_name}/items" }
     let(:items) { { '1234567' => { foo: 'bar', angle: 90 } } }
-
-    subject(:create) { bulk_catalog_items.create(items) }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
@@ -26,10 +26,10 @@ RSpec.describe Iterable::BulkCatalogItems, vcr: :none do
   end
 
   describe 'delete' do
+    subject(:delete) { bulk_catalog_items.delete }
+
     let(:api_url) { "/catalogs/#{catalog_name}/items" }
     let(:item_ids) { [SecureRandom.uuid, SecureRandom.uuid] }
-
-    subject(:delete) { bulk_catalog_items.delete }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)

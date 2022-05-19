@@ -1,11 +1,41 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
 AllCops:
   Exclude:
-    - db/schema.rb
-    - vendor/**/*
-    - tmp/*
+    - 'Gemfile'
+    - '**/Gemfile'
+    - 'Capfile'
+    - '**/Capfile'
+    - 'vendor/**/*'
+    - 'env/vendor/**/*'
+    - 'cookbooks/**/**'
+    - 'tmp/*'
+  TargetRubyVersion: 2.6
+  NewCops: enable
 
-Documentation:
+Style/Documentation:
   Enabled: false
+
+RSpec/FilePath:
+  Exclude:
+    - 'spec/**/**'
+
+RSpec/FactoryBot/CreateList:
+  Include:
+    - spec/factories.rb
+    - spec/factories/**/*.rb
+    - features/support/factories/**/*.rb
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleExpectations:
+  Max: 10
 
 Metrics/MethodLength:
   Max: 15
@@ -14,12 +44,12 @@ Metrics/BlockLength:
   CountComments: false
   Max: 25
   Exclude:
-    - "Rakefile"
-    - "**/*.rake"
-    - "spec/**/*.rb"
-    - "*.gemspec"
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - '*.gemspec'
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Style/PercentLiteralDelimiters:

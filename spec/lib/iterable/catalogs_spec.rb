@@ -7,9 +7,9 @@ RSpec.describe Iterable::Catalogs, vcr: :none do
   let(:test_request) { instance_double(Iterable::Request) }
 
   describe 'create' do
-    let(:api_url) { "/catalogs/#{catalog_name}" }
-
     subject(:create) { catalog.create }
+
+    let(:api_url) { "/catalogs/#{catalog_name}" }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
@@ -24,9 +24,9 @@ RSpec.describe Iterable::Catalogs, vcr: :none do
   end
 
   describe 'delete' do
-    let(:api_url) { "/catalogs/#{catalog_name}" }
-
     subject(:delete) { catalog.delete }
+
+    let(:api_url) { "/catalogs/#{catalog_name}" }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
@@ -41,9 +41,9 @@ RSpec.describe Iterable::Catalogs, vcr: :none do
   end
 
   describe 'names' do
-    let(:api_url) { '/catalogs' }
-
     subject(:names) { catalog.names(params) }
+
+    let(:api_url) { '/catalogs' }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)

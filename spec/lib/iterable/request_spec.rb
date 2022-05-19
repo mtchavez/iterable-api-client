@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe Iterable::Request do
+  subject(:request) { described_class.new(config, path) }
+
   let(:test_token) { 'asdf-1234-qwer-5678' }
   let(:config) { Iterable::Config.new(token: test_token) }
   let(:test_net_http) { instance_double(Net::HTTP) }
@@ -8,8 +10,6 @@ RSpec.describe Iterable::Request do
   let(:test_response) { instance_double(Iterable::Response) }
   let(:path) { '/test-path' }
   let(:test_uri) { URI("https://api.iterable.com/api#{path}?api_key=#{test_token}") }
-
-  subject(:request) { described_class.new(config, path) }
 
   before do
     allow(Net::HTTP).to receive(:new).and_return(test_net_http)

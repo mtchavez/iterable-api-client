@@ -14,6 +14,7 @@ module Iterable
   #   catalog = Iterable::CatalogFieldMappings.new("catalog-name", config)
   class CatalogFieldMappings < ApiResource
     attr_reader :catalog
+
     ##
     #
     # Initialize CatalogFieldMappings with a catalog name **currently in Beta only**

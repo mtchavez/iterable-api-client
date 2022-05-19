@@ -13,6 +13,7 @@ module Iterable
   #   templates = Iterable::Experiments.new([1, 2, 3], config)
   class Experiments < ApiResource
     attr_reader :experiment_ids
+
     ##
     #
     # Initialize Experiments with an array of experiment ids

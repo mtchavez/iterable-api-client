@@ -8,11 +8,11 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
   let(:test_request) { instance_double(Iterable::Request) }
 
   describe 'all' do
+    subject(:create) { catalog_items.all(params) }
+
     let(:api_url) { "/catalogs/#{catalog_name}/items" }
     let(:catalog_items) { described_class.new(catalog_name) }
     let(:params) { { page: 1, pageSize: 20 } }
-
-    subject(:create) { catalog_items.all(params) }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
@@ -27,10 +27,10 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
   end
 
   describe 'create' do
+    subject(:create) { catalog_items.create(item_attributes) }
+
     let(:api_url) { "/catalogs/#{catalog_name}/items/#{item_id}" }
     let(:item_attributes) { { foo: 'bar', angle: 90 } }
-
-    subject(:create) { catalog_items.create(item_attributes) }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
@@ -53,10 +53,10 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
   end
 
   describe 'update' do
+    subject(:update) { catalog_items.update(item_attributes) }
+
     let(:api_url) { "/catalogs/#{catalog_name}/items/#{item_id}" }
     let(:item_attributes) { { foo: 'bar', angle: 90 } }
-
-    subject(:update) { catalog_items.update(item_attributes) }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
@@ -71,9 +71,9 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
   end
 
   describe 'get' do
-    let(:api_url) { "/catalogs/#{catalog_name}/items/#{item_id}" }
-
     subject(:get) { catalog_items.get }
+
+    let(:api_url) { "/catalogs/#{catalog_name}/items/#{item_id}" }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
@@ -88,9 +88,9 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
   end
 
   describe 'delete' do
-    let(:api_url) { "/catalogs/#{catalog_name}/items/#{item_id}" }
-
     subject(:delete) { catalog_items.delete }
+
+    let(:api_url) { "/catalogs/#{catalog_name}/items/#{item_id}" }
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)

@@ -8,7 +8,7 @@ RSpec.describe Iterable::Campaigns, :vcr do
     let(:res) { subject.all }
     let(:campaigns) { resp_body['campaigns'] }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -30,7 +30,7 @@ RSpec.describe Iterable::Campaigns, :vcr do
     let(:list_ids) { [58_508] }
     let(:res) { subject.create name, template_id, list_ids }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -64,7 +64,7 @@ RSpec.describe Iterable::Campaigns, :vcr do
     let(:res) { subject.recurring campaign_id }
     let(:campaigns) { resp_body['campaigns'] }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -79,7 +79,7 @@ RSpec.describe Iterable::Campaigns, :vcr do
       end
     end
 
-    context 'non-recurring campaign id' do
+    context 'with non-recurring campaign id' do
       let(:campaign_id) { 181_030 }
 
       it 'is not successful' do
@@ -98,7 +98,7 @@ RSpec.describe Iterable::Campaigns, :vcr do
     let(:end_time) { nil }
     let(:res) { subject.metrics campaign_ids, start_time, end_time }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

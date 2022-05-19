@@ -6,7 +6,7 @@ RSpec.describe Iterable::Email, :vcr do
     let(:message_id) { '975dc1f8917643bda9312b0d22a8f152' }
     let(:res) { subject.view email, message_id }
 
-    context 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -20,7 +20,7 @@ RSpec.describe Iterable::Email, :vcr do
       end
     end
 
-    context 'wrong email' do
+    context 'with wrong email' do
       let(:email) { 'marge@example.com' }
 
       it 'is not successful' do

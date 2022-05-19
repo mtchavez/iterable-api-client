@@ -21,7 +21,7 @@ RSpec.describe Iterable::Commerce, :vcr do
     end
     let(:res) { subject.track_purchase total, items, user }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -67,7 +67,7 @@ RSpec.describe Iterable::Commerce, :vcr do
     end
     let(:res) { subject.update_cart user, items }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end

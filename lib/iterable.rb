@@ -52,10 +52,8 @@ module Iterable
   #   Iterable.configure do |conf|
   #     conf.token = 'secret-token'
   #   end
-  module_function def configure
-    config.tap do |conf|
-      yield conf
-    end
+  module_function def configure(&block)
+    config.tap(&block)
   end
 
   ##

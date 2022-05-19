@@ -14,7 +14,7 @@ SimpleCov.start do
   add_filter 'vendor'
 end
 
-project_root = File.expand_path(File.dirname(__FILE__) + '/..')
+project_root = File.expand_path("#{File.dirname(__FILE__)}/..")
 $LOAD_PATH << "#{project_root}/lib"
 
 require 'rubygems'
@@ -36,7 +36,7 @@ RSpec.configure do |config|
 
   config.before do
     Iterable.configure do |conf|
-      conf.token = ENV['ITERABLE_TOKEN']
+      conf.token = ENV.fetch('ITERABLE_TOKEN', nil)
     end
   end
 
@@ -51,6 +51,6 @@ VCR.configure do |config|
   config.ignore_localhost         = true
   config.default_cassette_options = { record: :new_episodes }
 
-  config.filter_sensitive_data('<ITERABLE_TOKEN>') { ENV['ITERABLE_TOKEN'] }
+  config.filter_sensitive_data('<ITERABLE_TOKEN>') { ENV.fetch('ITERABLE_TOKEN', nil) }
   config.configure_rspec_metadata!
 end

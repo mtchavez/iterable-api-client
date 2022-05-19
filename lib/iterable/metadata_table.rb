@@ -13,6 +13,7 @@ module Iterable
   #   templates = Iterable::MetadataTable.new("table-name", config)
   class MetadataTable < ApiResource
     attr_reader :name
+
     ##
     #
     # Initialize a MetadataTable with a table name

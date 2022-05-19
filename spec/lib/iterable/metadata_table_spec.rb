@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 RSpec.describe Iterable::MetadataTable, :vcr do
-  let(:name) { 'exampletable' }
   subject { described_class.new name }
+
+  let(:name) { 'exampletable' }
 
   describe 'list_keys' do
     let(:res) { subject.list_keys }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -23,7 +24,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
       end
     end
 
-    context 'non-existing table' do
+    context 'with non-existing table' do
       let(:name) { 'elbatelpmaxe' }
 
       it 'responds with success' do
@@ -39,7 +40,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
   describe 'delete' do
     let(:res) { subject.delete }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -53,7 +54,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
       end
     end
 
-    context 'table not found' do
+    context 'when table not found' do
       let(:name) { 'dnuofton' }
 
       it 'responds with success' do
@@ -71,7 +72,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
     let(:value) { { bar: 'bling' } }
     let(:res) { subject.add key, value }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -102,7 +103,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
     let(:key) { 'foo' }
     let(:res) { subject.get key }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -117,7 +118,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
       end
     end
 
-    context 'key not found' do
+    context 'when key not found' do
       let(:key) { 'dnuofton' }
 
       it 'is not successful' do
@@ -134,7 +135,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
     let(:key) { 'foo' }
     let(:res) { subject.remove key }
 
-    describe 'successful' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -148,7 +149,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
       end
     end
 
-    context 'key not found' do
+    context 'when key not found' do
       let(:key) { 'dnuofton' }
 
       it 'responds with success' do

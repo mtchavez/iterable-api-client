@@ -7,7 +7,7 @@ RSpec.describe Iterable::Lists, :vcr do
     let(:res) { subject.all }
     let(:lists) { resp_body['lists'] }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -28,7 +28,7 @@ RSpec.describe Iterable::Lists, :vcr do
     let(:res) { subject.create name }
     let(:list) { resp_body }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -61,7 +61,7 @@ RSpec.describe Iterable::Lists, :vcr do
     let(:res) { subject.delete list_id }
     let(:list) { resp_body }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -93,7 +93,7 @@ RSpec.describe Iterable::Lists, :vcr do
     let(:res) { subject.users list_id }
     let(:users) { resp_body }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -130,7 +130,7 @@ RSpec.describe Iterable::Lists, :vcr do
     end
     let(:res) { subject.subscribe list_id, subscribers }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
@@ -196,7 +196,7 @@ RSpec.describe Iterable::Lists, :vcr do
     end
     let(:res) { subject.unsubscribe list_id, subscribers }
 
-    context 'successfully' do
+    context 'when successful' do
       it 'responds with success' do
         expect(res).to be_success
       end
