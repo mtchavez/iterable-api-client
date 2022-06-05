@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.iterable.com/api/lists/unsubscribe?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/lists/unsubscribe
     body:
       encoding: UTF-8
       string: '{"listId":58508,"subscribers":[{"email":"user@"}]}'
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 200

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.iterable.com/api/commerce/trackPurchase?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/commerce/trackPurchase
     body:
       encoding: UTF-8
       string: '{"total":"","items":[],"user":{"userId":"1","email":"sample@example.com"}}'
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 400

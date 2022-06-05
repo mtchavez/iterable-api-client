@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.iterable.com/api/events/user@example.com?api_key=<ITERABLE_TOKEN>&limit=30
+    uri: https://api.iterable.com/api/events/user@example.com?limit=30
     body:
       encoding: UTF-8
       string: "{}"
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 200

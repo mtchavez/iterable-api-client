@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.iterable.com/api/users/updateEmail?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/users/updateEmail
     body:
       encoding: UTF-8
       string: '{"currentEmail":"foo@","newEmail":"sample-1507173084@example.org"}'
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 400

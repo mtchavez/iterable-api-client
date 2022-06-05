@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.iterable.com/api/email/viewInBrowser?api_key=<ITERABLE_TOKEN>&email=user@example.com&messageId=975dc1f8917643bda9312b0d22a8f152
+    uri: https://api.iterable.com/api/email/viewInBrowser?email=user@example.com&messageId=975dc1f8917643bda9312b0d22a8f152
     body:
       encoding: UTF-8
       string: "{}"
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 303
@@ -58,6 +60,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 200

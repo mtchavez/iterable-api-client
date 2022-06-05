@@ -49,7 +49,7 @@ module Iterable
     end
 
     private def connection(verb, body = {}, headers = {})
-      conn_headers = DEFAULT_HEADERS.merge(headers)
+      conn_headers = DEFAULT_HEADERS.merge(headers).merge('Api-Key' => @config.token)
       req = Net::HTTP.const_get(verb.to_s.capitalize, false).new(@uri, conn_headers)
       req.body = JSON.dump(body)
       req
@@ -65,8 +65,7 @@ module Iterable
     private def build_uri(path, params = {})
       uri = @config.uri
       uri.path += path
-      params['api_key'] = @config.token
-      uri.query = URI.encode_www_form(params)
+      uri.query = URI.encode_www_form(params) unless params.empty?
       uri
     end
 

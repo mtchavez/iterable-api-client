@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.iterable.com/api/lists/?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/lists/
     body:
       encoding: UTF-8
       string: "{}"
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 404
@@ -46,7 +48,7 @@ http_interactions:
   recorded_at: Sun, 01 Oct 2017 23:55:27 GMT
 - request:
     method: delete
-    uri: https://api.iterable.com/api/lists/42?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/lists/42
     body:
       encoding: UTF-8
       string: "{}"
@@ -61,6 +63,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 400

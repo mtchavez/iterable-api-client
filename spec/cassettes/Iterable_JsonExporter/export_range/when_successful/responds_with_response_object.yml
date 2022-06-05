@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&onlyFields=campaignId&range=All
+    uri: https://api.iterable.com/api/export/data.json?dataTypeName=emailSend&onlyFields=campaignId&range=All
     body:
       encoding: UTF-8
       string: "{}"
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 200

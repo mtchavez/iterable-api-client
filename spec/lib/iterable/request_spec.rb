@@ -9,7 +9,8 @@ RSpec.describe Iterable::Request do
   let(:test_request) { instance_double(Net::HTTP::Get) }
   let(:test_response) { instance_double(Iterable::Response) }
   let(:path) { '/test-path' }
-  let(:test_uri) { URI("https://api.iterable.com/api#{path}?api_key=#{test_token}") }
+  let(:test_uri) { URI("https://api.iterable.com/api#{path}") }
+  let(:request_headers) { described_class::DEFAULT_HEADERS.merge('Api-Key' => test_token) }
 
   before do
     allow(Net::HTTP).to receive(:new).and_return(test_net_http)
@@ -29,7 +30,7 @@ RSpec.describe Iterable::Request do
 
     it 'calls http request correctly', :aggregate_failures do
       expect(Net::HTTP).to have_received(:new).with(config.uri.hostname, config.uri.port, nil, nil, nil, nil)
-      expect(net_http_class).to have_received(:new).with(test_uri, described_class::DEFAULT_HEADERS)
+      expect(net_http_class).to have_received(:new).with(test_uri, request_headers)
       expect(test_net_http).to have_received(:request).with(test_request, nil, &:read_body)
     end
   end
@@ -42,7 +43,7 @@ RSpec.describe Iterable::Request do
 
     it 'calls http request correctly', :aggregate_failures do
       expect(Net::HTTP).to have_received(:new).with(config.uri.hostname, config.uri.port, nil, nil, nil, nil)
-      expect(net_http_class).to have_received(:new).with(test_uri, described_class::DEFAULT_HEADERS)
+      expect(net_http_class).to have_received(:new).with(test_uri, request_headers)
       expect(test_net_http).to have_received(:request).with(test_request, nil, &:read_body)
     end
   end
@@ -55,7 +56,7 @@ RSpec.describe Iterable::Request do
 
     it 'calls http request correctly', :aggregate_failures do
       expect(Net::HTTP).to have_received(:new).with(config.uri.hostname, config.uri.port, nil, nil, nil, nil)
-      expect(net_http_class).to have_received(:new).with(test_uri, described_class::DEFAULT_HEADERS)
+      expect(net_http_class).to have_received(:new).with(test_uri, request_headers)
       expect(test_net_http).to have_received(:request).with(test_request, nil, &:read_body)
     end
   end
@@ -68,7 +69,7 @@ RSpec.describe Iterable::Request do
 
     it 'calls http request correctly', :aggregate_failures do
       expect(Net::HTTP).to have_received(:new).with(config.uri.hostname, config.uri.port, nil, nil, nil, nil)
-      expect(net_http_class).to have_received(:new).with(test_uri, described_class::DEFAULT_HEADERS)
+      expect(net_http_class).to have_received(:new).with(test_uri, request_headers)
       expect(test_net_http).to have_received(:request).with(test_request, nil, &:read_body)
     end
   end
@@ -81,7 +82,7 @@ RSpec.describe Iterable::Request do
 
     it 'calls http request correctly', :aggregate_failures do
       expect(Net::HTTP).to have_received(:new).with(config.uri.hostname, config.uri.port, nil, nil, nil, nil)
-      expect(net_http_class).to have_received(:new).with(test_uri, described_class::DEFAULT_HEADERS)
+      expect(net_http_class).to have_received(:new).with(test_uri, request_headers)
       expect(test_net_http).to have_received(:request).with(test_request, nil, &:read_body)
     end
   end

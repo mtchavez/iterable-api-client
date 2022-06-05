@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api.iterable.com/api/metadata/example-table/foo?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/metadata/example-table/foo
     body:
       encoding: UTF-8
       string: '{"value":null}'
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 400
@@ -47,7 +49,7 @@ http_interactions:
   recorded_at: Fri, 06 Oct 2017 16:32:32 GMT
 - request:
     method: put
-    uri: https://api.iterable.com/api/metadata/exampletable/foo?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/metadata/exampletable/foo
     body:
       encoding: UTF-8
       string: '{"value":null}'
@@ -62,6 +64,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 400
