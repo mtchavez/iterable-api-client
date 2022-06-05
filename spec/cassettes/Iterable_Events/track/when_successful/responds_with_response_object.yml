@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.iterable.com/api/events/track?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/events/track
     body:
       encoding: UTF-8
       string: '{"eventName":"event-2017-10-02 20:26:18 -0700","email":"user@example.com"}'
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 200

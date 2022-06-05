@@ -2,7 +2,7 @@
 http_interactions:
   - request:
       method: get
-      uri: https://api.iterable.com/api/inApp/getMessages?api_key=<ITERABLE_TOKEN>&count=1&platform=iOS&userId=42
+      uri: https://api.iterable.com/api/inApp/getMessages?count=1&platform=iOS&userId=42
       body:
         encoding: UTF-8
         string: "{}"

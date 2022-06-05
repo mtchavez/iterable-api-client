@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.iterable.com/api/experiments/metrics?api_key=<ITERABLE_TOKEN>&campaignId=176828&endTime=2017-09-30&experimentId=12041&startTime=2017-09-01
+    uri: https://api.iterable.com/api/experiments/metrics?campaignId=176828&endTime=2017-09-30&experimentId=12041&startTime=2017-09-01
     body:
       encoding: UTF-8
       string: "{}"
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 200

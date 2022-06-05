@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.iterable.com/api/templates/email/upsert?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/templates/email/upsert
     body:
       encoding: UTF-8
       string: '{"ccEmails":["sample@example.com"],"html":"{{unsubscribeUrl}}, {{unsubscribeMessageTypeUrl}}","clientTemplateId":"2"}'
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 200

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://api.iterable.com/api/metadata/exampletable/foo?api_key=<ITERABLE_TOKEN>
+    uri: https://api.iterable.com/api/metadata/exampletable/foo
     body:
       encoding: UTF-8
       string: "{}"
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>  
   response:
     status:
       code: 200

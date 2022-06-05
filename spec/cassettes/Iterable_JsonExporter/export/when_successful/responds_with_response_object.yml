@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&endDateTime=2017-10-24%2009:27:23&onlyFields=campaignId&startDateTime=2017-09-24%2009:27:23
+    uri: https://api.iterable.com/api/export/data.json?dataTypeName=emailSend&endDateTime=2017-10-24%2009:27:23&onlyFields=campaignId&startDateTime=2017-09-24%2009:27:23
     body:
       encoding: UTF-8
       string: "{}"
@@ -17,6 +17,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 429
@@ -46,7 +48,7 @@ http_interactions:
   recorded_at: Tue, 24 Oct 2017 16:27:23 GMT
 - request:
     method: get
-    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&endDateTime=2017-10-24%2009:28:15&onlyFields=campaignId&startDateTime=2017-09-24%2009:28:15
+    uri: https://api.iterable.com/api/export/data.json?dataTypeName=emailSend&endDateTime=2017-10-24%2009:28:15&onlyFields=campaignId&startDateTime=2017-09-24%2009:28:15
     body:
       encoding: UTF-8
       string: "{}"
@@ -61,6 +63,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 200
@@ -111,7 +115,7 @@ http_interactions:
   recorded_at: Tue, 24 Oct 2017 16:28:16 GMT
 - request:
     method: get
-    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&endDateTime=2017-10-24%2009:37:44&onlyFields=campaignId&startDateTime=2017-09-24%2009:37:44
+    uri: https://api.iterable.com/api/export/data.json?dataTypeName=emailSend&endDateTime=2017-10-24%2009:37:44&onlyFields=campaignId&startDateTime=2017-09-24%2009:37:44
     body:
       encoding: UTF-8
       string: "{}"
@@ -126,6 +130,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 200
@@ -176,7 +182,7 @@ http_interactions:
   recorded_at: Tue, 24 Oct 2017 16:37:47 GMT
 - request:
     method: get
-    uri: https://api.iterable.com/api/export/data.json?api_key=<ITERABLE_TOKEN>&dataTypeName=emailSend&endDateTime=2017-10-24%2023:30:30&onlyFields=campaignId&startDateTime=2017-09-24%2023:30:30
+    uri: https://api.iterable.com/api/export/data.json?dataTypeName=emailSend&endDateTime=2017-10-24%2023:30:30&onlyFields=campaignId&startDateTime=2017-09-24%2023:30:30
     body:
       encoding: UTF-8
       string: "{}"
@@ -191,6 +197,8 @@ http_interactions:
       - Ruby
       Host:
       - api.iterable.com
+      Api-Key:
+      - <ITERABLE_TOKEN>
   response:
     status:
       code: 200

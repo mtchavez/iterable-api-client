@@ -2,7 +2,7 @@
 http_interactions:
   - request:
       method: get
-      uri: https://api.iterable.com/api/inApp/getMessages?api_key=<ITERABLE_TOKEN>&count=1&userId=42&platform=iOS
+      uri: https://api.iterable.com/api/inApp/getMessages?count=1&userId=42&platform=iOS
       body:
         encoding: UTF-8
         string: "{}"
@@ -43,7 +43,7 @@ http_interactions:
     recorded_at: Wed, 19 Aug 2020 20:51:22 GMT
   - request:
       method: get
-      uri: https://api.iterable.com/api/inApp/getMessages?api_key=<ITERABLE_TOKEN>&count=1&platform=iOS&userId=42
+      uri: https://api.iterable.com/api/inApp/getMessages?count=1&platform=iOS&userId=42
       body:
         encoding: UTF-8
         string: "{}"
