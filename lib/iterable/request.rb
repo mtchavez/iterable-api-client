@@ -49,7 +49,8 @@ module Iterable
     end
 
     private def connection(verb, body = {}, headers = {})
-      conn_headers = DEFAULT_HEADERS.merge(headers).merge('Api-Key' => @config.token)
+      conn_headers = DEFAULT_HEADERS.dup.merge(headers)
+      conn_headers['Api-Key'] = @config.token if @config.token
       req = Net::HTTP.const_get(verb.to_s.capitalize, false).new(@uri, conn_headers)
       req.body = JSON.dump(body)
       req
