@@ -1,9 +1,11 @@
 require 'simplecov'
+require 'simplecov-cobertura'
 
 if ENV['COVERALLS_REPO_TOKEN']
   require 'coveralls'
   SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 end
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 
 SimpleCov.at_exit do
   SimpleCov.result.format!

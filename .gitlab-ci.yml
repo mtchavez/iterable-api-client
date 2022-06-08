@@ -3,18 +3,24 @@ stages:
   - test
 
 .ruby_template: &ruby_job
-  image: ruby:2.6
+  image: ruby:2.7
   before_script:
+    - gem install bundler -v 2.3.15
     - bundle
 
 test:
   <<: *ruby_job
   stage: test
+  coverage: /\(\d+.\d+\%\) covered/
   script:
     - bundle exec rspec
   artifacts:
     paths:
       - coverage/
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/coverage.xml
 
 rubocop:
   <<: *ruby_job

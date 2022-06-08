@@ -76,6 +76,9 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
+    simplecov-cobertura (2.1.0)
+      rexml
+      simplecov (~> 0.19)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     typhoeus (1.4.0)
@@ -107,10 +110,11 @@ DEPENDENCIES
   rubocop-performance (~> 1.13.3)
   rubocop-rspec (~> 2.11.0)
   simplecov (~> 0.21.2)
+  simplecov-cobertura (~> 2.1.0)
   typhoeus (~> 1.4.0)
   vcr (~> 3.0.3)
   webmock (~> 3.14.0)
   yard (~> 0.9.11)
 
 BUNDLED WITH
-   1.17.2
+   2.3.15
