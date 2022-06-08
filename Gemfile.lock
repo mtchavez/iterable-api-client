@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    iterable-api-client (0.3.2)
+    iterable-api-client (0.4.0)
       multi_json (>= 1.12.0)
 
 GEM

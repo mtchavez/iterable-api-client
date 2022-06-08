@@ -1,3 +1,7 @@
+## v0.4.0 - 2022-06-07
+
+- Update request headers to include Iterable API token in accordance with API spec
+
 ## v0.3.2 - 2022-05-16
 
 - Add `Iterable::Users#forget`

@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name                  = 'iterable-api-client'
-  s.version               = '0.3.2'
+  s.version               = '0.4.0'
   s.summary               = 'Iterable REST API Client'
   s.description           = 'Ruby gem for the Iterable REST API'
   s.licenses              = %w[MIT]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email                 = 'contact@el-chavez.me'
   s.files                 = Dir.glob('{bin,lib}/**/*') + %w[README.md]
   s.require_paths         = %w[lib]
-  s.homepage              = 'http://gitlab.com/mtchavez/iterable'
+  s.homepage              = 'https://gitlab.com/mtchavez/iterable'
   s.rdoc_options          = %w[--charset=UTF-8 --main=README.md]
   s.extra_rdoc_files      = %w[README.md]
   s.required_ruby_version = '>= 2.6.0'
