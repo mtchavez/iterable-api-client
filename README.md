@@ -300,7 +300,8 @@ Endpoint: `GET /catalogs/{catalogName}/fieldMappings`
 ```ruby
 catalog = 'my-catalog'
 catalog_field_mappings = Iterable::CatalogFieldMappings.new(catalog)
-response = catalog_field_mappings.field_mappings
+response = catalog_field_mappings.get
+response.body['params']['definedMappings']
 ```
 
 #### Catalog Field Mappings Update
