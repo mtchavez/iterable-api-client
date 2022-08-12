@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/inApp/target
+    body:
+      encoding: UTF-8
+      string: '{"recipientEmail":"home@gmail.com","campaignId":4444}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 03 Aug 2022 08:04:45 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '3'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - 5571212e-744f-4a6f-83e7-0fb44cfd57fc
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - frame-ancestors 'self'; report-uri https://sentry.io/api/22065/security/?sentry_key=d6d9333ad25747ba8107e7681de79ec4
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress aaa7
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Invalid Campaign Id","code":"BadParams","params":{"campaignId":"4444"}}'
+    http_version: 
+  recorded_at: Wed, 03 Aug 2022 08:04:45 GMT
+recorded_with: VCR 3.0.3

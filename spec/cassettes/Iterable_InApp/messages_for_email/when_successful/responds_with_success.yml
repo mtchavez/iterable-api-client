@@ -1,43 +1,140 @@
 ---
 http_interactions:
-  - request:
-      method: get
-      uri: https://api.iterable.com/api/inApp/getMessages?count=1&email=user@example.com
-      body:
-        encoding: UTF-8
-        string: "{}"
-      headers:
-        Accept:
-          - application/json
-        Content-Type:
-          - application/json
-        Accept-Encoding:
-          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-        User-Agent:
-          - Ruby
-        Host:
-          - api.iterable.com
-    response:
-      status:
-        code: 200
-        message: OK
-      headers:
-        Date:
-          - Wed, 19 Aug 2020 20:51:22 GMT
-        Content-Type:
-          - application/json
-        Content-Length:
-          - "46"
-        Connection:
-          - close
-        Vary:
-          - Origin,Accept-Encoding
-        Request-Time:
-          - "6"
-        Server:
-          - iterable-ingress 8e97
-      body:
-        encoding: ASCII-8BIT
-        string: '{"inAppMessages":[{"messageId":"string","campaignId":0,"createdAt":"2020-08-28T15:57:42.800Z","expiresAt":"2020-08-28T15:57:42.800Z","content":{"html":"string","inAppDisplaySettings":{"top":{},"right":{},"bottom":{},"left":{}}},"customPayload":{},"trigger":{"type":{}},"saveToInbox":true,"inboxMetadata":{"title":"string","subtitle":"string","icon":"string"}}]}'
-    recorded_at: Wed, 19 Aug 2020 20:51:22 GMT
+- request:
+    method: get
+    uri: https://api.iterable.com/api/inApp/getMessages?count=1&email=user@example.com
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 19 Aug 2020 20:51:22 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '46'
+      Connection:
+      - close
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '6'
+      Server:
+      - iterable-ingress 8e97
+    body:
+      encoding: ASCII-8BIT
+      string: '{"inAppMessages":[{"messageId":"string","campaignId":0,"createdAt":"2020-08-28T15:57:42.800Z","expiresAt":"2020-08-28T15:57:42.800Z","content":{"html":"string","inAppDisplaySettings":{"top":{},"right":{},"bottom":{},"left":{}}},"customPayload":{},"trigger":{"type":{}},"saveToInbox":true,"inboxMetadata":{"title":"string","subtitle":"string","icon":"string"}}]}'
+    http_version: 
+  recorded_at: Wed, 19 Aug 2020 20:51:22 GMT
+- request:
+    method: get
+    uri: https://api.iterable.com/api/inApp/getMessages?count=1&email=danny@appleuniversity.com
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Aug 2022 08:04:40 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1585'
+      Connection:
+      - close
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '144'
+      Cache-Control:
+      - must-revalidate,no-cache,no-store
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - da0a126d-348a-4d50-8238-9cb7424e015a
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - frame-ancestors 'self'; report-uri https://sentry.io/api/22065/security/?sentry_key=d6d9333ad25747ba8107e7681de79ec4
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress b886
+    body:
+      encoding: ASCII-8BIT
+      string: '{"inAppMessages":[{"messageId":"nXA26QbgKhp69XvI4o0DDi0HDu1wrNr5s5wsDqZoqMx4","campaignId":4572825,"createdAt":1659512868206,"expiresAt":1667288868206,"content":{"html":"<!DOCTYPE
+        html><html  lang=\"en\"><head><title></title><meta http-equiv=\"Content-Type\"
+        content=\"text/html; charset=utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><style>\n*{box-sizing:border-box}body{margin:0;padding:0}a[x-apple-data-detectors]{color:inherit!important;text-decoration:inherit!important}#MessageViewBody
+        a{color:inherit;text-decoration:none}p{line-height:inherit}.desktop_hide,.desktop_hide
+        table{mso-hide:all;display:none;max-height:0;overflow:hidden}@media (max-width:520px){.row-content{width:100%!important}.mobile_hide{display:none}.stack
+        .column{width:100%;display:block}.mobile_hide{min-height:0;max-height:0;max-width:0;overflow:hidden;font-size:0}.desktop_hide,.desktop_hide
+        table{display:table!important;max-height:none!important}}\n</style></head><body
+        style=\"background-color:#fff;margin:0;padding:0;-webkit-text-size-adjust:none;text-size-adjust:none\"><table
+        class=\"nl-container\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"
+        role=\"presentation\" style=\"mso-table-lspace:0;mso-table-rspace:0;background-color:#fff\"><tbody><tr><td><table
+        class=\"row row-1\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\"
+        cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace:0;mso-table-rspace:0\"><tbody><tr><td><table
+        \nclass=\"row-content\" align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"
+        role=\"presentation\" style=\"mso-table-lspace:0;mso-table-rspace:0;color:#000;width:500px\"
+        width=\"500\"><tbody><tr><td class=\"column column-1\" width=\"100%\" style=\"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;vertical-align:top;border-bottom:0
+        dotted transparent;border-left:0 dotted transparent;border-right:0 dotted
+        transparent;border-top:0 dotted transparent;padding-top:0;padding-bottom:0\"><table
+        \nclass=\"button_block\" width=\"100%\" border=\"0\" cellpadding=\"10\" cellspacing=\"0\"
+        role=\"presentation\" style=\"mso-table-lspace:0;mso-table-rspace:0\"><tr><td><div
+        align=\"right\">\n\n<a href=\"action://\" target=\"_blank\" style=\"text-decoration:none;display:inline-block;color:#ffffff;background-color:#3AAEE0;border-radius:20px;width:auto;border-top:1px
+        solid #3AAEE0;font-weight:400;border-right:1px solid #3AAEE0;border-bottom:1px
+        solid #3AAEE0;border-left:1px solid #3AAEE0;padding-top:0px;padding-bottom:0px;font-family:Arial,
+        Helvetica Neue, Helvetica, sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;\"><span
+        style=\"padding-left:10px;padding-right:10px;font-size:12px;display:inline-block;letter-spacing:normal;\"><span
+        style=\"font-size: 12px; line-height: 2; word-break: break-word; mso-line-height-alt:
+        24px;\">x</span></span></a>\n</div></td></tr></table><table class=\"heading_block\"
+        width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\"
+        style=\"mso-table-lspace:0;mso-table-rspace:0\"><tr><td style=\"width:100%;text-align:center\"><h1
+        style=\"margin:0;color:#555;font-size:23px;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;line-height:120%;text-align:center;direction:ltr;font-weight:700;letter-spacing:normal;margin-top:0;margin-bottom:0\">\n<span
+        class=\"tinyMce-placeholder\">I''m a new title block</span></h1></td></tr></table></td></tr></tbody></table></td></tr></tbody></table><table
+        class=\"row row-2\" align=\"center\" width=\"100%\" border=\"0\" cellpadding=\"0\"
+        cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace:0;mso-table-rspace:0\"><tbody><tr><td><table
+        class=\"row-content stack\" align=\"center\" border=\"0\" cellpadding=\"0\"
+        cellspacing=\"0\" role=\"presentation\" style=\"mso-table-lspace:0;mso-table-rspace:0;color:#000;width:500px\"
+        \nwidth=\"500\"><tbody><tr><td class=\"column column-1\" width=\"100%\" style=\"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;vertical-align:top;padding-top:5px;padding-bottom:5px;border-top:0;border-right:0;border-bottom:0;border-left:0\"><table
+        class=\"text_block\" width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"
+        role=\"presentation\" style=\"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word\"><tr><td><div
+        style=\"font-family:sans-serif\"><div class=\"txtTinyMce-wrapper\" \nstyle=\"font-size:14px;mso-line-height-alt:16.8px;color:#555;line-height:1.2;font-family:Arial,Helvetica
+        Neue,Helvetica,sans-serif\"><p style=\"margin:0;font-size:14px;text-align:center\">I''m
+        a new Text block ready for your content.</p></div></div></td></tr></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></body></html>","payload":{},"inAppDisplaySettings":{"top":{"displayOption":"AutoExpand"},"right":{"percentage":0},"bottom":{"displayOption":"AutoExpand"},"left":{"percentage":0}},"webInAppDisplaySettings":{"position":"Center"}},"customPayload":{},"trigger":{"type":"immediate"},"saveToInbox":false,"priorityLevel":400.5,"read":false,"jsonOnly":false,"typeOfContent":"Static","messageType":"Other"}]}'
+    http_version: 
+  recorded_at: Wed, 03 Aug 2022 08:04:40 GMT
 recorded_with: VCR 3.0.3

@@ -41,6 +41,42 @@ module Iterable
       messages(attrs)
     end
 
+    ##
+    #
+    # Send an In-App notification to a specific user. User Email or ID along
+    # with campaign ID must be provided
+    #
+    # @param email [String] (optional) User email used to identify user
+    # @param campaign_id [Integer] Campaign ID
+    # @param attrs [Hash] Additional data to update or add
+    #
+    # @return [Iterable::Response] A response object
+    #
+    def target(campaign_id:, attrs: {}, email: nil)
+      attrs['recipientEmail'] = email if email
+      attrs['campaignId'] = campaign_id
+      Iterable.request(conf, '/inApp/target').post(attrs)
+    end
+
+    ##
+    #
+    # Cancel an In App notification sent to a specific user
+    # Must include either an email address AND campaignId, or
+    # just a scheduledMessageId provided in the attrs
+    #
+    # @param email [String] User email to cancel push
+    # @param campaignId [Integer] campaignID used to cancel push
+    # @param attrs [Hash] Additional data to update or add
+    #
+    # @return [Iterable::Response] A response object
+    #
+    # @note An email or UserId is required
+    def cancel(campaign_id: nil, attrs: {}, email: nil)
+      attrs['email'] = email if email
+      attrs['campaignId'] = campaign_id if campaign_id
+      Iterable.request(conf, '/push/cancel').post(attrs)
+    end
+
     private def messages(**attrs)
       Iterable.request(conf, '/inApp/getMessages', attrs).get
     end

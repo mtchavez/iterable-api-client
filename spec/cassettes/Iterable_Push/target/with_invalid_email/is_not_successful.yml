@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/push/target
+    body:
+      encoding: UTF-8
+      string: '{"recipientEmail":"foo@","campaignId":4498067}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 03 Aug 2022 08:05:51 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '92'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '1'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - dfd0fa66-8236-4f02-89ab-6c7a5fe9c33f
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - frame-ancestors 'self'; report-uri https://sentry.io/api/22065/security/?sentry_key=d6d9333ad25747ba8107e7681de79ec4
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress b48a
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Invalid email: foo@","code":"InvalidEmailAddressError","params":null}'
+    http_version: 
+  recorded_at: Wed, 03 Aug 2022 08:05:51 GMT
+recorded_with: VCR 3.0.3

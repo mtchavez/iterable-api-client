@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/push/target
+    body:
+      encoding: UTF-8
+      string: '{"recipientEmail":"home@gmail.com","campaignId":""}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Wed, 03 Aug 2022 08:05:52 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '460'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '1'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - b0e3693a-eed4-4298-acc7-554edd91d68a
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - frame-ancestors 'self'; report-uri https://sentry.io/api/22065/security/?sentry_key=d6d9333ad25747ba8107e7681de79ec4
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress 6d38
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"[/api/push/target] body: {\"recipientEmail\":\"home@gmail.com\",\"campaignId\":\"\"},
+        hdrs: List((Connection,keep-alive), (Host,api.iterable.com), (X-Request-Timeout,1659514012.469),
+        (X-Forwarded-For,35.238.96.218), (X-Forwarded-Proto,https), (X-Forwarded-Port,443),
+        (X-Amzn-Trace-Id,Root=1-62ea2c60-6a1ea45a2e902318417314d6), (Accept,application/json),
+        (Content-Type,application/json), (Api-Key,<ITERABLE_TOKEN>), (Accept-Encoding,gzip;q=1.0,deflate;q=0.6,identity;q=0.3),
+        (User-Agent,Ruby), (content-length,51))","code":"BadJsonBody","params":{"obj.campaignId":[{"msg":["error.expected.jsnumber"],"args":[]}]}}'
+    http_version: 
+  recorded_at: Wed, 03 Aug 2022 08:05:52 GMT
+recorded_with: VCR 3.0.3
