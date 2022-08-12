@@ -1,0 +1,171 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/inApp/target
+    body:
+      encoding: UTF-8
+      string: '{"sendAt":"2022-08-04 08:04:37 +0000","dataFields":{"firstName":"Chester","lastName":"Tester"},"recipientEmail":"danny@appleuniversity.com","campaignId":4572825}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Aug 2022 08:04:37 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '174'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '23'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - 163b2afe-8d3f-4cf4-978e-4b2911a883bd
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - frame-ancestors 'self'; report-uri https://sentry.io/api/22065/security/?sentry_key=d6d9333ad25747ba8107e7681de79ec4
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress aaa7
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Campaign 4572825 - Scheduled triggered message for: 2022-08-04T08:04:37.000Z
+        to: danny@appleuniversity.com","code":"Success","params":{"scheduledMessageId":891074037}}'
+    http_version: 
+  recorded_at: Wed, 03 Aug 2022 08:04:37 GMT
+- request:
+    method: post
+    uri: https://api.iterable.com/api/inApp/target
+    body:
+      encoding: UTF-8
+      string: '{"sendAt":"2022-08-04 08:04:37 +0000","dataFields":{"firstName":"Chester","lastName":"Tester"},"recipientEmail":"danny@appleuniversity.com","campaignId":4572825}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Aug 2022 08:04:38 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '173'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '23'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - '02592542-1ea2-4248-a48a-2d0e6dfaa125'
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - frame-ancestors 'self'; report-uri https://sentry.io/api/22065/security/?sentry_key=d6d9333ad25747ba8107e7681de79ec4
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress b886
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Campaign 4572825 - Scheduled triggered message for: 2022-08-04T08:04:37.000Z
+        to: danny@appleuniversity.com","code":"Success","params":{"scheduledMessageId":891074040}}'
+    http_version: 
+  recorded_at: Wed, 03 Aug 2022 08:04:38 GMT
+- request:
+    method: post
+    uri: https://api.iterable.com/api/push/cancel
+    body:
+      encoding: UTF-8
+      string: '{"scheduledMessageId":891074040}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Aug 2022 08:04:38 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '135'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '4'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - bc488b12-c574-4ca8-9682-db74ccc53a1e
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - frame-ancestors 'self'; report-uri https://sentry.io/api/22065/security/?sentry_key=d6d9333ad25747ba8107e7681de79ec4
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress b48a
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"Successfully cancelled scheduled messages with scheduledMessageId:
+        891074040 from project: 8374","code":"Success","params":null}'
+    http_version: 
+  recorded_at: Wed, 03 Aug 2022 08:04:38 GMT
+recorded_with: VCR 3.0.3

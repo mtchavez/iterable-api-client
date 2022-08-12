@@ -1,53 +1,9 @@
 require 'spec_helper'
 
-RSpec.describe Iterable::InApp, :vcr do
-  let(:resp_body) { res.body }
-
-  describe 'messages_for_email' do
-    let(:email) { 'danny@appleuniversity.com' }
-    let(:res) { subject.messages_for_email(email) }
-    let(:messages) { resp_body['inAppMessages'] }
-
-    context 'when successful' do
-      it 'responds with success' do
-        expect(res).to be_success
-      end
-
-      it 'responds with response object' do
-        expect(res).to be_a(Iterable::Response)
-      end
-
-      it 'returns messages' do
-        expect(messages).to be_a(Array)
-        expect(messages.size).to eq(1)
-      end
-    end
-  end
-
-  describe 'messages_for_user_id' do
-    let(:user_id) { 84_097 }
-    let(:res) { subject.messages_for_user_id(user_id) }
-    let(:messages) { resp_body['inAppMessages'] }
-
-    context 'when successful' do
-      it 'responds with success' do
-        expect(res).to be_success
-      end
-
-      it 'responds with response object' do
-        expect(res).to be_a(Iterable::Response)
-      end
-
-      it 'returns messages' do
-        expect(messages).to be_a(Array)
-        expect(messages.size).to eq(1)
-      end
-    end
-  end
-
+RSpec.describe Iterable::Push, :vcr do
   describe 'target' do
     let(:email) { 'home@gmail.com' }
-    let(:campaign_id) { 4_572_825 }
+    let(:campaign_id) { 4_498_067 }
     let(:res) { subject.target email: email, campaign_id: campaign_id }
 
     context 'when successful' do
@@ -98,7 +54,7 @@ RSpec.describe Iterable::InApp, :vcr do
     end
 
     context 'with invalid campaign Id' do
-      let(:campaign_id) { 4_444 }
+      let(:campaign_id) { 4444 }
       let(:email) { 'home@gmail.com' }
 
       it 'is not successful' do
@@ -112,7 +68,7 @@ RSpec.describe Iterable::InApp, :vcr do
     end
 
     context 'with campaign ID and user email' do
-      let(:campaign_id) { 4_572_825 }
+      let(:campaign_id) { 4_445_736 }
       let(:email) { 'home@gmail.com' }
 
       it 'successful' do
@@ -125,10 +81,9 @@ RSpec.describe Iterable::InApp, :vcr do
     end
 
     context 'with User Email, campaign ID, and more data' do
-      let(:campaign_id) { 4_572_825 }
+      let(:campaign_id) { 4_445_736 }
       let(:params) do
-        { sendAt: Time.now.localtime + 864_000, data_fields: { first_name: 'Chester',
-                                                               last_name: 'Tester' } }
+        { sendAt: Time.now + 86_400, dataFields: { firstName: 'Chester', lastName: 'Tester' } }
       end
       let(:email) { 'home@gmail.com' }
       let(:res) { subject.target email: email, campaign_id: campaign_id, attrs: params }
@@ -146,24 +101,10 @@ RSpec.describe Iterable::InApp, :vcr do
       end
     end
 
-    context 'with campaign ID and User ID' do
-      let(:campaign_id) { 4_572_825 }
-      let(:params) { { recipientUserId: '84097' } }
-      let(:res) { subject.target campaign_id: campaign_id, attrs: params }
-
-      it 'successful' do
-        expect(res.body['code']).to match(/success/i)
-      end
-
-      it 'responds with response object' do
-        expect(res).to be_a(Iterable::Response)
-      end
-    end
-
     context 'with campaign ID, User ID, and more data' do
-      let(:campaign_id) { 4_572_825 }
+      let(:campaign_id) { 4_445_736 }
       let(:params) do
-        { recipientUserId: '84097', sendAt: Time.now.localtime + 86_400,
+        { recipientUserId: '84097', sendAt: Time.now + 86_400,
           dataFields: { firstName: 'Chester', lastName: 'Tester' } }
       end
       let(:res) { subject.target campaign_id: campaign_id, attrs: params }
@@ -183,15 +124,14 @@ RSpec.describe Iterable::InApp, :vcr do
   end
 
   describe 'cancel' do
-    let(:email) { 'danny@appleuniversity.com' }
-    let(:campaign_id) { 4_572_825 }
+    let(:email) { 'home@gmail.com' }
+    let(:campaign_id) { 4_445_736 }
     let(:res) { subject.cancel email: email, campaign_id: campaign_id }
 
     before do
-      in_app = described_class.new
-      in_app.target(email: 'danny@appleuniversity.com', campaign_id: 4_572_825,
-                    attrs: { sendAt: Time.now.localtime + 86_400,
-                             dataFields: { firstName: 'Chester', lastName: 'Tester' } })
+      push = described_class.new
+      push.target(email: 'home@gmail.com', campaign_id: 4_445_736,
+                  attrs: { sendAt: Time.now + 86_400, dataFields: { firstName: 'Chester', lastName: 'Tester' } })
     end
 
     context 'with User Email and campaign ID' do
@@ -216,8 +156,8 @@ RSpec.describe Iterable::InApp, :vcr do
       end
     end
 
-    describe 'with campaign ID and User ID' do
-      let(:params) { { userId: '84097' } }
+    context 'with campaign ID and User ID' do
+      let(:params) { { userId: '77116' } }
       let(:res) { subject.cancel campaign_id: campaign_id, attrs: params }
 
       it 'successful' do
@@ -229,10 +169,10 @@ RSpec.describe Iterable::InApp, :vcr do
       end
     end
 
-    context 'with Scheduled message Id' do
+    context 'with scheduled message Id' do
       let(:message_id) do
-        described_class.new.target(email: 'danny@appleuniversity.com', campaign_id: 4_572_825,
-                                   attrs: { sendAt: Time.now.localtime + 86_400,
+        described_class.new.target(email: 'home@gmail.com', campaign_id: 4_445_736,
+                                   attrs: { sendAt: Time.now + 86_400,
                                             dataFields: { firstName: 'Chester',
                                                           lastName: 'Tester' } }).body['params']['scheduledMessageId']
       end

@@ -22,6 +22,7 @@ files = %w[
   templates
   email_templates
   push_templates
+  push
   users
   workflows
   metadata
