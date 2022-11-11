@@ -124,6 +124,7 @@ reponse.uri
   - [Upsert](#email-templates-upsert)
 - [Events](#events)
   - [For Email](#events-for-email)
+  - [Bulk Track](#events-track-bulk)
   - [Track](#events-track)
   - [Track Push Open](#events-track-push-open)
 - [Experiments](#experiments)
@@ -558,6 +559,19 @@ attrs = { campaignId: 42, dataFields: {} }
 response = events.track 'event-name', 'user@example.com', attrs
 ```
 
+#### Events Track Bulk
+
+Endpoint: `POST /events/trackBulk`
+
+```ruby
+events = Iterable::Events.new
+# Array of events to track
+events_attrs = [
+  { email: 'user@example.com', eventName: 'event-name', campaignId: 42, dataFields: {} }
+]
+response = iterable_events.track_bulk events_attrs
+```
+
 #### Events Track Push Open
 
 Endpoint: `GET /events/{email}`
@@ -855,10 +869,10 @@ Endpoint: `POST /users/bulkUpdate`
 users = Iterable::Users.new
 # Array of users to update by email with additional
 # fields if needed
-users = [
+users_attrs = [
 	{ email: 'user@example.com', userID: 'custom-id' }
 ]
-response = users.bulk_update users
+response = users.bulk_update users_attrs
 ```
 
 #### Users Update Subscriptions

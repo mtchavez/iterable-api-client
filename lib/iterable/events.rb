@@ -41,6 +41,19 @@ module Iterable
 
     ##
     #
+    # Bulk Track events
+    #
+    # @param events [Array[Hash]] Array of hashes of event details
+    #
+    # @return [Iterable::Response] A response object
+    #
+    # @note Event fields can be eventName [String], email [String], dataFields [Hash], or userId [String]
+    def track_bulk(events = [])
+      Iterable.request(conf, '/events/trackBulk').post(events: events)
+    end
+
+    ##
+    #
     # Track an event
     #
     # @param campaign_id [String] Campaign ID of the push event to track

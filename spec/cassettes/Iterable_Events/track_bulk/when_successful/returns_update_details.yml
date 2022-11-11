@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.iterable.com/api/events/trackBulk
+    body:
+      encoding: UTF-8
+      string: '{"events":[{"email":"user@example.com","eventName":"event-2017-10-02
+        20:26:23 -0700"},{"email":"bad@","eventName":"event-2017-10-02 20:26:23 -0700"}]}'
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 11 Nov 2022 19:16:28 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '106'
+      Connection:
+      - keep-alive
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '11'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - 27b8918e-e66d-4ac4-a04d-443ac89b0718
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - 'base-uri ''none''; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub46dd5cf52153d917fc1d5e91ff3a600d&dd-evp-origin=content-security-policy&ddsource=csp-report;
+        frame-ancestors ''self'' https://links.iterable.com; object-src ''none'';
+        worker-src ''self'' blob:; script-src ''report-sample'' ''unsafe-eval'' ''unsafe-inline''
+        ''strict-dynamic'' https: ''nonce-UPzjIwFsbz8qgJSheZ7E4w=='''
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress aaf8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"successCount":1,"failCount":1,"invalidEmails":["bad@"],"invalidUserIds":[],"disallowedEventNames":[]}'
+    http_version: 
+  recorded_at: Fri, 11 Nov 2022 19:16:28 GMT
+recorded_with: VCR 3.0.3
