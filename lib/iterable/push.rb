@@ -3,10 +3,10 @@ module Iterable
   #
   # Interact with /push API endpoints
   #
-  # @example Creating push templates endpoint object
+  # @example Creating push endpoint object
   #   # With default config
-  #   templates = Iterable::PushTemplates.new
-  #   templates.get
+  #   templates = Iterable::Push.new
+  #   templates.target campaign_id: '12345'
   #
   class Push < ApiResource
     ##

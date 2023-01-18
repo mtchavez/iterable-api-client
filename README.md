@@ -134,6 +134,8 @@ reponse.uri
   - [CSV](#export-csv)
 - [In App](#in-app)
   - [Messages](#in-app-messages)
+  - [Target](#in-app-target)
+  - [Cancel](#in-app-cancel)
 - [Lists](#lists)
   - [All](#lists-all)
   - [Create](#lists-create)
@@ -150,6 +152,9 @@ reponse.uri
   - [Get Key](#metadata-get-key)
   - [Remove Key](#metadata-remove-key)
   - [Add Key](#metadata-add-key)
+- [Push](#push)
+  - [Target](#push-target)
+  - [Cancel](#push-cancel)
 - [Push Templates](#push-templates)
   - [Get](#push-templates-get)
   - [Update](#push-templates-update)
@@ -654,7 +659,34 @@ response = in_app.messages_for_user_id 42, count: 2
 # Pass in query parameters
 email = 'user@example.com'
 attrs = { 'platform' => 'iOS' }
-response = in_app.messages_for_email: email, attrs
+response = in_app.messages_for_email email, attrs
+```
+
+#### In App Target
+
+Endpoint: `POST /inApp/target`
+
+```ruby
+in_app = Iterable::InApp.new
+
+# Needs campaign ID and an optional email
+email = 'user@example.com'
+attrs = { 'campaignId' => '123456asdf' }
+response = in_app.target attrs: attrs, email: email
+```
+
+#### In App Cancel
+
+Endpoint: `POST /push/cancel`
+
+```ruby
+in_app = Iterable::InApp.new
+
+# Needs campaign ID and an optional email and optional attrs for request
+email = 'user@example.com'
+campaign_id = '12345asdf'
+attrs = {}
+response = in_app.target campaign_id: campaign_id, attrs: attrs, email: email
 ```
 
 ### Lists
@@ -789,6 +821,32 @@ Endpoint: `PUT /metadata/{table}/{key}`
 metadata_table = Iterable::MetadataTable.new 'table-name'
 value = { foo: 'bar', data: 'stuffs' }
 response = metadata_table.add 'metadata-key', value
+```
+
+### Push
+
+#### Push Target
+
+Endpoint: `POST /push/target`
+
+```ruby
+push = Iterable::Push.new
+campaign_id = '1234asdf'
+email = 'user@example.com' # optional
+attrs = {} # optional extra params for the request
+response = push.target campaign_id: campaign_id, email: email, attrs: attrs
+```
+
+#### Push Cancel
+
+Endpoint: `POST /push/cancel`
+
+```ruby
+push = Iterable::Push.new
+campaign_id = '1234asdf'
+email = 'user@example.com' # optional
+attrs = {} # optional extra params for the request
+response = push.cancel email: email, campaign_id: campaign_id, attrs: attrs
 ```
 
 ### Push Templates
