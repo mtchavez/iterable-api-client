@@ -1,3 +1,11 @@
+## v0.5.0 - 2023-01-18
+
+- Add `Iterable::Events#track_bulk`
+- Add `Iterable::InApp#target`
+- Add `Iterable::InApp#cancel`
+- Add `Iterable::Push#target`
+- Add `Iterable::Push#cancel`
+
 ## v0.4.0 - 2022-06-07
 
 - Update request headers to include Iterable API token in accordance with API spec
