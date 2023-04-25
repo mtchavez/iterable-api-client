@@ -212,7 +212,7 @@ Endpoint: `DELETE /catalogs/{catalogName}/items`
 catalog = 'my-catalog'
 catalog_items = Iterable::BulkCatalogItems.new(catalog)
 item_ids = ['12345', '12346', '12347']
-response = catalog_items.create(item_ids)
+response = catalog_items.delete(item_ids)
 ```
 
 ### Campaigns
