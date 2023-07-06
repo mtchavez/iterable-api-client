@@ -4,31 +4,69 @@ RSpec.describe Iterable::Email, :vcr do
   describe 'view' do
     let(:email) { 'user@example.com' }
     let(:message_id) { '975dc1f8917643bda9312b0d22a8f152' }
-    let(:res) { subject.view email, message_id }
+    let(:attrs) { {} }
+    let(:res) { subject.view email, message_id, attrs }
 
-    context 'when successful' do
-      it 'responds with success' do
-        expect(res).to be_success
+    context 'with email' do
+      context 'when successful' do
+        it 'responds with success' do
+          expect(res).to be_success
+        end
+
+        it 'responds with response object' do
+          expect(res).to be_a(Iterable::Response)
+        end
+
+        it 'returns html for email' do
+          expect(res.body).to start_with('<html><head><title>')
+        end
       end
 
-      it 'responds with response object' do
-        expect(res).to be_a(Iterable::Response)
-      end
+      context 'with wrong email' do
+        let(:email) { 'marge@example.com' }
 
-      it 'returns html for email' do
-        expect(res.body).to start_with('<html><head><title>')
+        it 'is not successful' do
+          expect(res).not_to be_success
+        end
+
+        it 'returns error code' do
+          expect(res.code).to eq('400')
+        end
       end
     end
 
-    context 'with wrong email' do
-      let(:email) { 'marge@example.com' }
-
-      it 'is not successful' do
-        expect(res).not_to be_success
+    context 'with userId' do
+      let(:email) { nil }
+      let(:attrs) do
+        { userId: '84097' }
       end
 
-      it 'returns error code' do
-        expect(res.code).to eq('400')
+      context 'when successful' do
+        it 'responds with success' do
+          expect(res).to be_success
+        end
+
+        it 'responds with response object' do
+          expect(res).to be_a(Iterable::Response)
+        end
+
+        it 'returns html for email' do
+          expect(res.body).to start_with('<html><head><title>')
+        end
+      end
+
+      context 'with wrong userId' do
+        let(:attrs) do
+          { userId: '12345' }
+        end
+
+        it 'is not successful' do
+          expect(res).not_to be_success
+        end
+
+        it 'returns error code' do
+          expect(res.code).to eq('400')
+        end
       end
     end
   end

@@ -18,11 +18,15 @@ module Iterable
     #
     # @param email [String] Email of user who received the message to view
     # @param message_id [String|Integer] Message id for message sent
+    # @param attrs [Hash] Hash of attributes to pass like dataFields with the requst
     #
     # @return [Iterable::Response] A response object
-    def view(email, message_id)
-      params = { email: email, messageId: message_id }
-      Iterable.request(conf, '/email/viewInBrowser', params).get
+    def view(email, message_id, attrs = {})
+      attrs['email'] = email
+      attrs['messageId'] = message_id
+      attrs.compact!
+
+      Iterable.request(conf, '/email/viewInBrowser', attrs).get
     end
 
     ##
