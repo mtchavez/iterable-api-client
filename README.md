@@ -81,6 +81,10 @@ response.body
 # HTTP message
 response.message
 
+# Headers of response
+response['Content-Type']
+# => 'application/json; charset=utf-8'
+
 # The URI used to make the request for the response
 reponse.uri
 ```

@@ -1,3 +1,9 @@
+## v0.5.1 - 2023-11-03
+
+- Allow `Iterable::Email#view` to use `userId` via attributes hash
+  which makes `email` not required to make the view call
+- Expose access to response headers e.g. `response['Content-Type']`
+
 ## v0.5.0 - 2023-01-18
 
 - Add `Iterable::Events#track_bulk`
