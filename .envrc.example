@@ -1,0 +1,4 @@
+# Use direnv or source this to run tests with your token
+# The token will be filtered out from the VCR cassettes
+# so you don't have to worry about leaking credentials
+export ITERABLE_TOKEN=YOUR_TOKEN_HERE
