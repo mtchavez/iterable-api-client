@@ -17,6 +17,10 @@ RSpec.describe Iterable::Users, :vcr do
       it 'returns success code' do
         expect(res.body['code']).to match(/success/i)
       end
+
+      it 'allows to access reponse headers' do
+        expect(res['Content-Type']).to eq('application/json')
+      end
     end
 
     context 'without email' do

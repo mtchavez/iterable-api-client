@@ -7,7 +7,7 @@ module Iterable
   class Response
     extend Forwardable
 
-    def_delegators :@resp, :code, :message, :uri
+    def_delegators :@resp, :code, :message, :uri, :[]
 
     attr_reader :body
 
