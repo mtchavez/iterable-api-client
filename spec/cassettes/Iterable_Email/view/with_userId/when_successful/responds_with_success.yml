@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/email/viewInBrowser?messageId=975dc1f8917643bda9312b0d22a8f152&userId=84097
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 06 Jul 2023 19:21:53 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '282'
+      Connection:
+      - close
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '13'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - c729a600-550b-4771-acd6-48df6d113fa4
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - 'base-uri ''none''; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub46dd5cf52153d917fc1d5e91ff3a600d&dd-evp-origin=content-security-policy&ddsource=csp-report;
+        frame-ancestors ''self'' https://links.iterable.com; object-src ''none'';
+        worker-src ''self'' blob:; script-src ''report-sample'' ''unsafe-eval'' ''unsafe-inline''
+        ''strict-dynamic'' https: ''nonce-lOa7y2+cMcJzrEn/ubE1cA=='''
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress 56a1
+    body:
+      encoding: ASCII-8BIT
+      string: This is the updated template. http://links.neighborhoodalerts.com/e/encryptedUnsubscribe?_r=644ec2662c0e4dd98216d8fa3db0b02a&amp;_s=975dc1f8917643bda9312b0d22a8f152&amp;_t=N9nqhL-0IU0S8dSvF5v8YPZfvam6J43ABtrRx0mtnzIducvc1pTCwcwPk0AJsxpZiqbyqp8GacdX0VGOT2122YX8NlqZj4IuzTJzBaZEjBGJjfgpzJIxqhgMhNd0JEV4
+    http_version: 
+  recorded_at: Thu, 06 Jul 2023 19:21:53 GMT
+recorded_with: VCR 3.0.3

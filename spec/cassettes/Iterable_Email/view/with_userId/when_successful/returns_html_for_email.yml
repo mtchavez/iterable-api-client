@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/email/viewInBrowser?messageId=975dc1f8917643bda9312b0d22a8f152&userId=84097
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 06 Jul 2023 19:21:52 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '282'
+      Connection:
+      - close
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '39'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - 0a24c045-8d4c-4170-8602-29d7c1d2b3b1
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - 'base-uri ''none''; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub46dd5cf52153d917fc1d5e91ff3a600d&dd-evp-origin=content-security-policy&ddsource=csp-report;
+        frame-ancestors ''self'' https://links.iterable.com; object-src ''none'';
+        worker-src ''self'' blob:; script-src ''report-sample'' ''unsafe-eval'' ''unsafe-inline''
+        ''strict-dynamic'' https: ''nonce-MJCiRrqOSFUxq0i1IH3xgA=='''
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress 49de
+    body:
+      encoding: ASCII-8BIT
+      string: "<html><head><title></title></head><body>Email</body></html>"
+    http_version: 
+  recorded_at: Thu, 06 Jul 2023 19:21:52 GMT
+recorded_with: VCR 3.0.3

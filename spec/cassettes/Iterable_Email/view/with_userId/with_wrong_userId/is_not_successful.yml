@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.iterable.com/api/email/viewInBrowser?messageId=975dc1f8917643bda9312b0d22a8f152&userId=12345
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      Api-Key:
+      - "<ITERABLE_TOKEN>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+      Host:
+      - api.iterable.com
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 06 Jul 2023 19:21:52 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '102'
+      Connection:
+      - close
+      Vary:
+      - Origin,Accept-Encoding
+      Request-Time:
+      - '13'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      X-Xss-Protection:
+      - 1; mode=block
+      Iterable-Request-Id:
+      - f5d4fa65-f1e8-4ac6-8f46-87701c56ffc2
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - 'base-uri ''none''; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub46dd5cf52153d917fc1d5e91ff3a600d&dd-evp-origin=content-security-policy&ddsource=csp-report;
+        frame-ancestors ''self'' https://links.iterable.com; object-src ''none'';
+        worker-src ''self'' blob:; script-src ''report-sample'' ''unsafe-eval'' ''unsafe-inline''
+        ''strict-dynamic'' https: ''nonce-h68Ab1hNXK04SNLtIFb/XQ=='''
+      X-Permitted-Cross-Domain-Policies:
+      - master-only
+      Server:
+      - iterable-ingress aaf8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"No user exists with userId 12345","code":"UnknownUserIdError","params":null}'
+    http_version: 
+  recorded_at: Thu, 06 Jul 2023 19:21:52 GMT
+recorded_with: VCR 3.0.3
