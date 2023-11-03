@@ -18,8 +18,8 @@ RSpec.describe Iterable::Users, :vcr do
         expect(res.body['code']).to match(/success/i)
       end
 
-      it 'allows to access reponse headers' do
-        expect(res['Content-Type']).to eq('application/json')
+      it 'returns headers' do
+        expect(res['Content-Type']).to eq('application/json; charset=utf-8')
       end
     end
 
