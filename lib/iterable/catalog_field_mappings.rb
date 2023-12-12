@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -13,6 +15,8 @@ module Iterable
   #   conf = Iterable::Config.new(token: 'new-token')
   #   catalog = Iterable::CatalogFieldMappings.new("catalog-name", config)
   class CatalogFieldMappings < ApiResource
+    extend T::Sig
+
     attr_reader :catalog
 
     ##
@@ -23,6 +27,7 @@ module Iterable
     # @param conf [Iterable::Config] A config to optionally pass for requests
     #
     # @return [Iterable::Catalog]
+    sig { params(catalog: String, conf: T.any(Iterable::Config, NilClass)).void }
     def initialize(catalog, conf = nil)
       @catalog = catalog
       super conf
@@ -33,6 +38,7 @@ module Iterable
     # Get field mappings for a catalog
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def get
       Iterable.request(conf, base_path).get
     end
@@ -41,7 +47,8 @@ module Iterable
     #
     # Set a catalog's field mappings (data types)
     #
-    # @param [Array] Array of field mapping hashes e.g [{"fieldName":"exampleString","fieldType":"string"}]}
+    # @param mappings_updates [Array] Array of field mapping hashes
+    #  e.g [{"fieldName":"exampleString","fieldType":"string"}]}
     #
     # @return [Iterable::Response] A response object
     #
@@ -50,11 +57,13 @@ module Iterable
     #   field_mappings = [{fieldName: 'test-field', fieldType: 'string'}]
     #   catalog = Iterable::CatalogFieldMappings.new "catalog-name"
     #   catalog.update_field_mappings(field_mappings)
+    sig { params(mappings_updates: Array).returns(Iterable::Response) }
     def update(mappings_updates = [])
       body = { mappingsUpdates: mappings_updates }
       Iterable.request(conf, base_path).put(body)
     end
 
+    sig { returns(String) }
     private def base_path
       "/catalogs/#{@catalog}/fieldMappings"
     end

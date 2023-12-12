@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -23,6 +25,14 @@ module Iterable
     # @param attrs [Hash] Track purchase request additional fields
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        total: T.any(String, Float),
+        items: T::Array[Hash],
+        user: Hash,
+        attrs: Hash
+      ).returns(Iterable::Response)
+    end
     def track_purchase(total, items = [], user = {}, attrs = {})
       data = {
         total: total,
@@ -42,6 +52,12 @@ module Iterable
     # @param items [Array[Hash]] Array of hashes of commerce items
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        user: Hash,
+        items: T::Array[Hash]
+      ).returns(Iterable::Response)
+    end
     def update_cart(user = {}, items = [])
       data = {
         items: items,

@@ -1,3 +1,5 @@
+# typed: false
+
 require 'spec_helper'
 
 RSpec.describe Iterable::CatalogItems, vcr: :none do
@@ -6,6 +8,7 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
   let(:item_id) { 'asdf-1234-qwer-5678' }
   let(:catalog_items) { described_class.new(catalog_name, item_id) }
   let(:test_request) { instance_double(Iterable::Request) }
+  let(:test_response) { instance_double(Iterable::Response) }
 
   describe 'all' do
     subject(:create) { catalog_items.all(params) }
@@ -16,7 +19,7 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:get)
+      allow(test_request).to receive(:get).and_return(test_response)
       create
     end
 
@@ -34,7 +37,7 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:put)
+      allow(test_request).to receive(:put).and_return(test_response)
     end
 
     it 'calls correct endpoint', :aggregate_errors do
@@ -60,7 +63,7 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:patch)
+      allow(test_request).to receive(:patch).and_return(test_response)
       update
     end
 
@@ -77,7 +80,7 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:get)
+      allow(test_request).to receive(:get).and_return(test_response)
       get
     end
 
@@ -94,7 +97,7 @@ RSpec.describe Iterable::CatalogItems, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:delete)
+      allow(test_request).to receive(:delete).and_return(test_response)
       delete
     end
 

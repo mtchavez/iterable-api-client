@@ -1,3 +1,5 @@
+# typed: false
+
 require 'spec_helper'
 
 RSpec.describe Iterable::Catalogs, vcr: :none do
@@ -5,6 +7,7 @@ RSpec.describe Iterable::Catalogs, vcr: :none do
   let(:catalog_name) { 'test-catalog' }
   let(:catalog) { described_class.new(catalog_name) }
   let(:test_request) { instance_double(Iterable::Request) }
+  let(:test_response) { instance_double(Iterable::Response) }
 
   describe 'create' do
     subject(:create) { catalog.create }
@@ -13,7 +16,7 @@ RSpec.describe Iterable::Catalogs, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:post)
+      allow(test_request).to receive(:post).and_return(test_response)
       create
     end
 
@@ -30,7 +33,7 @@ RSpec.describe Iterable::Catalogs, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:delete)
+      allow(test_request).to receive(:delete).and_return(test_response)
       delete
     end
 
@@ -47,7 +50,7 @@ RSpec.describe Iterable::Catalogs, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:get)
+      allow(test_request).to receive(:get).and_return(test_response)
       names
     end
 

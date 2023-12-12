@@ -1,3 +1,5 @@
+# typed: false
+
 require 'csv'
 require 'spec_helper'
 

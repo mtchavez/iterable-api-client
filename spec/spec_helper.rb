@@ -1,10 +1,8 @@
+# typed: false
+
 require 'simplecov'
 require 'simplecov-cobertura'
 
-if ENV['COVERALLS_REPO_TOKEN']
-  require 'coveralls'
-  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-end
 SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 
 SimpleCov.at_exit do
@@ -23,11 +21,12 @@ require 'rubygems'
 require 'iterable-api-client'
 require 'vcr'
 require 'pry'
+require 'rspec/sorbet'
 
 require 'dotenv'
 Dotenv.load
 
-Dir["#{project_root}/spec/support/**/*.rb"].sort.each { |f| require f }
+Dir["#{project_root}/spec/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   config.filter_run :focus
@@ -46,6 +45,8 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 end
+
+RSpec::Sorbet.allow_doubles!
 
 VCR.configure do |config|
   config.hook_into :webmock, :typhoeus

@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   # Config provides a class to configre the API calls when interacting with
@@ -6,6 +8,8 @@ module Iterable
   # @example Creating a config object
   #   Iterable::Config.new token: 'secret-token'
   class Config
+    extend T::Sig
+
     DEFAULT_VERSION = '1.8'.freeze
     DEFAULT_HOST = 'https://api.iterable.com'.freeze
     DEFAULT_URI = "#{DEFAULT_HOST}/api".freeze
@@ -20,6 +24,7 @@ module Iterable
     #
     # @param token [String] Iterable API token
     # @return [Iterable::Config]
+    sig { params(token: T.nilable(String)).void }
     def initialize(token: nil)
       @host = DEFAULT_HOST
       @port = DEFAULT_PORT
@@ -32,6 +37,7 @@ module Iterable
     # Creates a [URI] for the API host
     #
     # @return [URI] API URI object
+    sig { returns(URI) }
     def uri
       URI.parse("#{@host || DEFAULT_HOST}:#{@port || DEFAULT_PORT}/api")
     end

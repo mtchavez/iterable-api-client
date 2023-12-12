@@ -1,1 +1,3 @@
-require_relative './iterable'
+# typed: strict
+
+require_relative 'iterable'

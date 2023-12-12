@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -17,6 +19,7 @@ module Iterable
     # Get all channels
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def all
       Iterable.request(conf, '/channels').get
     end

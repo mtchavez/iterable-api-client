@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -30,7 +32,7 @@ module Iterable
     #
     # Get in-app messages for a user by user_id
     #
-    # @param email [String] *required* Email of user who received the message to view. Required if no user_id present.
+    # @param user_id [String] *required* ID of user who received the message to view.
     # @param count [Integer] Number of messages to return, defaults to 1
     # @param attrs [Hash] Hash of query attributes like platform, SDKVersion, etc.
     #
@@ -65,7 +67,7 @@ module Iterable
     # just a scheduledMessageId provided in the attrs
     #
     # @param email [String] User email to cancel push
-    # @param campaignId [Integer] campaignID used to cancel push
+    # @param campaign_id [Integer] campaignID used to cancel push
     # @param attrs [Hash] Additional data to update or add
     #
     # @return [Iterable::Response] A response object
@@ -77,7 +79,7 @@ module Iterable
       Iterable.request(conf, '/push/cancel').post(attrs)
     end
 
-    private def messages(**attrs)
+    private def messages(attrs = {})
       Iterable.request(conf, '/inApp/getMessages', attrs).get
     end
   end

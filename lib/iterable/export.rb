@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -54,9 +56,19 @@ module Iterable
     # @param only_fields [Array[String]] Array of fields to only export
     # @param omit_fields [Array[String]] Array of fields to omit
     # @param data_fields [Hash] Additional device data fields
+    # @param campaign_id [String] The ID of the campaign
     # @param conf [Iterable::Config] A config to optionally pass for requests
     #
     # @return [Iterable::Export]
+    sig do
+      params(
+        data_type: String,
+        only_fields: T::Array[String],
+        omit_fields: T::Array[String],
+        campaign_id: T.nilable(String),
+        conf: T.nilable(Iterable::Config)
+      ).void
+    end
     def initialize(data_type, only_fields = [], omit_fields = [], campaign_id = nil, conf = nil) # rubocop:disable Metrics/ParameterLists
       @data_type = data_type
       @only_fields = only_fields
@@ -71,6 +83,7 @@ module Iterable
     # @example Formats are currently csv or json
     #
     # @return [Exception] Raises an exception
+    sig { overridable.returns(String) }
     def format
       raise '#format must be implemented in child class'
     end
@@ -83,6 +96,12 @@ module Iterable
     # @param end_time [Time] The end time of the data to export
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        start_time: Time,
+        end_time: Time
+      ).returns(Iterable::Response)
+    end
     def export(start_time, end_time)
       params = {
         startDateTime: start_time.strftime(Iterable::Export::DATE_FORMAT),
@@ -98,32 +117,42 @@ module Iterable
     # @param range [Iterable::Export::RANGES] A valid range to export data for
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        range: String
+      ).returns(Iterable::Response)
+    end
     def export_range(range = Iterable::Export::TODAY)
       params = { range: range }
       Iterable.request(conf, base_path, request_params(params)).get
     end
 
+    sig { returns(String) }
     protected def base_path
       "/export/data.#{format}"
     end
 
+    sig { params(params: Hash).returns(Hash) }
     protected def request_params(params = {})
       default_params.merge params
     end
 
+    sig { returns(T::Boolean) }
     protected def only_fields?
-      @only_fields&.length.to_i.positive?
+      only_fields.length.to_i.positive?
     end
 
+    sig { returns(T::Boolean) }
     protected def omit_fields?
-      @omit_fields&.length.to_i.positive?
+      omit_fields.length.to_i.positive?
     end
 
+    sig { returns(Hash) }
     protected def default_params
-      params = { dataTypeName: @data_type }
-      params[:onlyFields] = @only_fields if only_fields?
-      params[:omitFields] = @omit_fields.join(',') if omit_fields?
-      params[:campaignId] = @campaign_id if @campaign_id
+      params = { dataTypeName: data_type }
+      params[:onlyFields] = only_fields if only_fields?
+      params[:omitFields] = omit_fields.join(',') if omit_fields?
+      params[:campaignId] = campaign_id if campaign_id
       params
     end
   end

@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -24,6 +26,13 @@ module Iterable
     # @param conf [Iterable::Config] A config to optionally pass for requests
     #
     # @return [Iterable::Catalog]
+    sig do
+      params(
+        catalog: String,
+        item_id: T.nilable(String),
+        conf: T.nilable(Iterable::Config)
+      ).void
+    end
     def initialize(catalog, item_id = nil, conf = nil)
       @catalog = catalog
       @item_id = item_id
@@ -37,6 +46,7 @@ module Iterable
     # @param params[Hash] Attribute hash for item query (page, pageSize, orderBy, sortAscending)
     #
     # @return [Iterable::Response] A response object
+    sig { params(params: Hash).returns(Iterable::Response) }
     def all(params = {})
       Iterable.request(conf, base_path, params).get
     end
@@ -48,6 +58,7 @@ module Iterable
     # @param item_attrs [Hash] Item attributes to save or replace with
     #
     # @return [Iterable::Response] A response object
+    sig { params(item_attrs: Hash).returns(Iterable::Response) }
     def create(item_attrs = {})
       body = { value: item_attrs }
       Iterable.request(conf, base_path).put(body)
@@ -61,6 +72,7 @@ module Iterable
     # @param item_attrs [Hash] Item attributes to save or update with
     #
     # @return [Iterable::Response] A response object
+    sig { params(item_attrs: Hash).returns(Iterable::Response) }
     def update(item_attrs = {})
       body = { update: item_attrs }
       Iterable.request(conf, base_path).patch(body)
@@ -71,6 +83,7 @@ module Iterable
     # Get a specific catalog item
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def get
       Iterable.request(conf, base_path).get
     end
@@ -80,10 +93,12 @@ module Iterable
     # Delete a catalog item
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def delete
       Iterable.request(conf, base_path).delete
     end
 
+    sig { returns(String) }
     private def base_path
       path = "/catalogs/#{@catalog}/items"
       path += "/#{@item_id}" if @item_id

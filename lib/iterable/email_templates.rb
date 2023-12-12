@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -20,6 +22,12 @@ module Iterable
     # @param params [Hash] Additional params to use such as locale
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        template_id: T.any(String, Integer),
+        params: Hash
+      ).returns(Iterable::Response)
+    end
     def get(template_id, params = {})
       params['templateId'] = template_id
       Iterable.request(conf, '/templates/email/get', params).get
@@ -33,6 +41,12 @@ module Iterable
     # @param attrs [Hash] Update attributes
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        template_id: T.any(String, Integer),
+        attrs: Hash
+      ).returns(Iterable::Response)
+    end
     def update(template_id, attrs = {})
       attrs['templateId'] = template_id
       Iterable.request(conf, '/templates/email/update').post(attrs)
@@ -46,6 +60,12 @@ module Iterable
     # @param attrs [Hash] Update attributes
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        client_template_id: String,
+        attrs: Hash
+      ).returns(Iterable::Response)
+    end
     def upsert(client_template_id, attrs = {})
       attrs['clientTemplateId'] = client_template_id
       Iterable.request(conf, '/templates/email/upsert').post(attrs)

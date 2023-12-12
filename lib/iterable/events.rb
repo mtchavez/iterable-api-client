@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -20,6 +22,12 @@ module Iterable
     # @param limit [Integer] Limit of events to return, max 200 default 30
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        email: String,
+        limit: Integer
+      ).returns(Iterable::Response)
+    end
     def for_email(email, limit = 30)
       Iterable.request(conf, "/events/#{email}", limit: limit).get
     end
@@ -33,6 +41,13 @@ module Iterable
     # @param attrs [Hash] Event values and fields to include
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        name: T.nilable(String),
+        email: T.nilable(String),
+        attrs: Hash
+      ).returns(Iterable::Response)
+    end
     def track(name, email = nil, attrs = {})
       attrs[:eventName] = name
       attrs[:email] = email
@@ -48,6 +63,7 @@ module Iterable
     # @return [Iterable::Response] A response object
     #
     # @note Event fields can be eventName [String], email [String], dataFields [Hash], or userId [String]
+    sig { params(events: T::Array[Hash]).returns(Iterable::Response) }
     def track_bulk(events = [])
       Iterable.request(conf, '/events/trackBulk').post(events: events)
     end
@@ -62,6 +78,14 @@ module Iterable
     # @param attrs [Hash] Event values and fields to include
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        campaign_id: T.any(String, Integer),
+        message_id: T.any(String, Integer),
+        email: T.nilable(String),
+        attrs: Hash
+      ).returns(Iterable::Response)
+    end
     def track_push_open(campaign_id, message_id, email, attrs = {})
       attrs[:campaignId] = campaign_id
       attrs[:messageId] = message_id
