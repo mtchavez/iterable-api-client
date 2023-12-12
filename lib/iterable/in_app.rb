@@ -23,7 +23,7 @@ module Iterable
     def messages_for_email(email, count: 1, **attrs)
       attrs[:email] = email
       attrs[:count] = count
-      messages(attrs)
+      messages(**attrs)
     end
 
     ##
@@ -38,7 +38,7 @@ module Iterable
     def messages_for_user_id(user_id, count: 1, **attrs)
       attrs[:userId] = user_id
       attrs[:count] = count
-      messages(attrs)
+      messages(**attrs)
     end
 
     ##
