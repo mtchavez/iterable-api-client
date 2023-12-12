@@ -30,7 +30,7 @@ RSpec.describe Iterable::JsonExporter, :vcr do
   end
 
   describe 'export' do
-    let(:end_time) { Time.parse('2017-10-24 23:30:30') }
+    let(:end_time) { Time.parse('2017-10-24 23:30:30 UTC') }
     let(:start_time) { end_time - (60 * 60 * 24 * 30) }
     let(:res) { subject.export start_time, end_time }
     let(:data) { res.body.split("\n") }

@@ -3,9 +3,9 @@ stages:
   - test
 
 .ruby_template: &ruby_job
-  image: ruby:2.7
+  image: ruby:3.2
   before_script:
-    - gem install bundler -v 2.3.15
+    - gem install bundler -v 2.4.13
     - bundle
 
 test:
