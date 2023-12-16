@@ -1,3 +1,12 @@
+## v0.6.0 - 2023-12-16
+
+⚠️ **Breaking Changes**
+
+- Dropping support for ruby 2.x. Required ruby version now `>= 3.0.0`
+- Updates to code and dependencies to support ruby 3.x
+- Added Sorbet signatures to codebase
+- Added `sorbet-runtime` as dependency to gem
+
 ## v0.5.1 - 2023-11-03
 
 - Allow `Iterable::Email#view` to use `userId` via attributes hash
