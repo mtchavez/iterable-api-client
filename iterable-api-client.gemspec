@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name                  = 'iterable-api-client'
-  s.version               = '0.6.1'
+  s.version               = '0.6.2'
   s.summary               = 'Iterable REST API Client'
   s.description           = 'Ruby gem for the Iterable REST API'
   s.licenses              = %w[MIT]
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.signing_key           = File.join(Gem.user_home, '.ssh', 'gem-private_key.pem') if $PROGRAM_NAME.end_with?('gem')
 
   # Runtime dependencies
-  s.add_dependency 'multi_json', '~> 1.12.0'
+  s.add_dependency 'multi_json', '~> 1.15.0'
   s.add_dependency 'sorbet-runtime'
 
   s.metadata['rubygems_mfa_required'] = 'true'

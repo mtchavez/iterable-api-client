@@ -50,7 +50,7 @@ module Iterable
     end
     private def parsed_body
       response_body = @resp.body
-      MultiJson.load response_body
+      MultiJson.load(response_body)
     rescue MultiJson::ParseError
       response_body
     end
