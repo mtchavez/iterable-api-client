@@ -384,7 +384,7 @@ RSpec.describe Iterable::Users, :vcr do
     end
 
     context 'without token' do
-      let(:token) { nil }
+      let(:token) { '' }
 
       it 'is not successful' do
         expect(res).not_to be_success

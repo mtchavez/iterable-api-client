@@ -23,6 +23,15 @@ module Iterable
     # @param attrs [Hash] Additional data to update or add
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        email: String,
+        attrs: T::Hash[
+          T.any(Symbol, String),
+          T.any(T::Boolean, String, Integer, Float)
+        ]
+      ).returns(Iterable::Response)
+    end
     def update(email, attrs = {})
       attrs['email'] = email
       Iterable.request(conf, '/users/update').post(attrs)
@@ -38,6 +47,16 @@ module Iterable
     # @return [Iterable::Response] A response object
     #
     # @note User fields can be email [String], dataFields [Hash], or userId [String]
+    sig do
+      params(
+        users: T::Array[
+          T::Hash[
+            T.any(Symbol, String),
+            T.any(T::Boolean, String, Integer, Float, Hash)
+          ]
+        ]
+      ).returns(Iterable::Response)
+    end
     def bulk_update(users = [])
       Iterable.request(conf, '/users/bulkUpdate').post(users: users)
     end
@@ -51,6 +70,15 @@ module Iterable
     # @param attrs [Hash] Additional data to update
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        email: String,
+        attrs: T::Hash[
+          T.any(Symbol, String),
+          T.any(T::Boolean, String, Integer, Float)
+        ]
+      ).returns(Iterable::Response)
+    end
     def update_subscriptions(email, attrs = {})
       attrs['email'] = email
       Iterable.request(conf, '/users/updateSubscriptions').post(attrs)
@@ -67,6 +95,16 @@ module Iterable
     #
     # @note Refer to [Iterable::Users#update_subscriptions] for what subscription
     # information is needed such as email
+    sig do
+      params(
+        subscriptions: T::Array[
+          T::Hash[
+            T.any(Symbol, String),
+            T.any(T::Boolean, String, Integer, Float, Hash)
+          ]
+        ]
+      ).returns(Iterable::Response)
+    end
     def bulk_update_subscriptions(subscriptions = [])
       attrs = { updateSubscriptionsRequests: subscriptions }
       Iterable.request(conf, '/users/bulkUpdateSubscriptions').post(attrs)
@@ -79,6 +117,7 @@ module Iterable
     # @param email [String] The email of the user to get
     #
     # @return [Iterable::Response] A response object
+    sig { params(email: String).returns(Iterable::Response) }
     def for_email(email)
       Iterable.request(conf, "/users/#{email}").get
     end
@@ -90,6 +129,12 @@ module Iterable
     # @param email [String] The email of the user to get
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        email: String,
+        new_email: String
+      ).returns(Iterable::Response)
+    end
     def update_email(email, new_email)
       attrs = { currentEmail: email, newEmail: new_email }
       Iterable.request(conf, '/users/updateEmail').post(attrs)
@@ -102,6 +147,7 @@ module Iterable
     # @param email [String] The email of the user to delete
     #
     # @return [Iterable::Response] A response object
+    sig { params(email: String).returns(Iterable::Response) }
     def delete(email)
       Iterable.request(conf, "/users/#{email}").delete
     end
@@ -113,6 +159,7 @@ module Iterable
     # @param user_id [String] The userId of the user to delete
     #
     # @return [Iterable::Response] A response object
+    sig { params(user_id: T.any(String, Integer)).returns(Iterable::Response) }
     def delete_by_id(user_id)
       Iterable.request(conf, "/users/byUserId/#{user_id}").delete
     end
@@ -124,6 +171,7 @@ module Iterable
     # @param user_id [String] The user ID of the user to get
     #
     # @return [Iterable::Response] A response object
+    sig { params(user_id: T.any(String, Integer)).returns(Iterable::Response) }
     def for_id(user_id)
       Iterable.request(conf, "/users/byUserId/#{user_id}").get
     end
@@ -133,6 +181,7 @@ module Iterable
     # Get the user fields with mappings from field to type
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def fields
       Iterable.request(conf, '/users/getFields').get
     end
@@ -148,6 +197,16 @@ module Iterable
     # @return [Iterable::Response] A response object
     #
     # @note An email or userId is required
+    sig do
+      params(
+        email: String,
+        token: String,
+        attrs: T::Hash[
+          T.any(Symbol, String),
+          T.any(T::Boolean, String, Integer, Float, Hash)
+        ]
+      ).returns(Iterable::Response)
+    end
     def register_browser_token(email, token, attrs = {})
       attrs[:email] = email
       attrs[:browserToken] = token
@@ -165,6 +224,13 @@ module Iterable
     # @return [Iterable::Response] A response object
     #
     # @note An email or userId is required
+    sig do
+      params(
+        token: String,
+        email: T.nilable(String),
+        user_id: T.nilable(T.any(String, Integer))
+      ).returns(Iterable::Response)
+    end
     def disable_device(token, email = nil, user_id = nil)
       attrs = { token: token }
       attrs[:email] = email if email
@@ -182,6 +248,17 @@ module Iterable
     # @param params [Hash] Additional params to use to filter messages further
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        email: String,
+        start_time: T.nilable(T.any(Time, Date)),
+        end_time: T.nilable(T.any(Time, Date)),
+        params: T::Hash[
+          T.any(Symbol, String),
+          T.any(T::Boolean, String, Integer, Float, Hash)
+        ]
+      ).returns(Iterable::Response)
+    end
     def sent_messages(email, start_time = nil, end_time = nil, params = {})
       params[:email] = email
       params[:startTime] = start_time.to_s if start_time
@@ -197,6 +274,7 @@ module Iterable
     # @param email [String] User email to forget
     #
     # @return [Iterable::Response] A response object
+    sig { params(email: String).returns(Iterable::Response) }
     def forget(email)
       attrs = { email: email }
       Iterable.request(conf, '/users/forget').post(attrs)

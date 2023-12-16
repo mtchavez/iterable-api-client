@@ -24,6 +24,12 @@ module Iterable
     # @param conf [Iterable::Config] A config to optionally pass for requests
     #
     # @return [Iterable::MetadataTable]
+    sig do
+      params(
+        name: String,
+        conf: T.nilable(Iterable::Config)
+      ).void
+    end
     def initialize(name, conf = nil)
       @name = name
       super conf
@@ -33,9 +39,10 @@ module Iterable
     #
     # Get metadata table keys
     #
-    # @params next_marker [String] next result set id if more hits exist
+    # @param next_marker [String] next result set id if more hits exist
     #
     # @return [Iterable::Response] A response object
+    sig { params(next_marker: T.nilable(String)).returns(Iterable::Response) }
     def list_keys(next_marker = nil)
       params = {}
       params['nextMarker'] = next_marker if next_marker
@@ -47,6 +54,7 @@ module Iterable
     # Delete metadata table
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def delete
       Iterable.request(conf, base_path).delete
     end
@@ -59,6 +67,15 @@ module Iterable
     # @param value [Hash] Value of metadata key as a hash of key/value data
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        key: String,
+        value: T::Hash[
+          T.any(Symbol, String),
+          T.any(T::Boolean, String, Float, Integer)
+        ]
+      ).returns(Iterable::Response)
+    end
     def add(key, value = {})
       Iterable.request(conf, base_path(key)).put(value: value)
     end
@@ -70,6 +87,7 @@ module Iterable
     # @param key [String] Key of metadata to get
     #
     # @return [Iterable::Response] A response object
+    sig { params(key: String).returns(Iterable::Response) }
     def get(key)
       Iterable.request(conf, base_path(key)).get
     end
@@ -81,6 +99,7 @@ module Iterable
     # @param key [String] Key of metadata to delete
     #
     # @return [Iterable::Response] A response object
+    sig { params(key: String).returns(Iterable::Response) }
     def remove(key)
       Iterable.request(conf, base_path(key)).delete
     end

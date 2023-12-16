@@ -3,6 +3,7 @@ PATH
   specs:
     iterable-api-client (0.5.1)
       multi_json (>= 1.12.0)
+      sorbet-runtime
 
 GEM
   remote: https://rubygems.org/
@@ -160,7 +161,6 @@ DEPENDENCIES
   simplecov (~> 0.21.2)
   simplecov-cobertura (~> 2.1.0)
   sorbet (= 0.5.11116)
-  sorbet-runtime (~> 0.5.11116)
   tapioca (~> 0.11.10)
   typhoeus (~> 1.4.0)
   vcr (~> 6.2.0)

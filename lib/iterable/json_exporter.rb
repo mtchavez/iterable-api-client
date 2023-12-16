@@ -18,6 +18,7 @@ module Iterable
     # Format to use for exporting
     #
     # @return [String] Format of export
+    sig { override.returns(String) }
     def format
       'json'
     end

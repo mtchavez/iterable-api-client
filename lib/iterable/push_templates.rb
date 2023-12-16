@@ -22,6 +22,15 @@ module Iterable
     # @param params [Hash] Additional params to use such as locale
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        template_id: T.any(String, Integer),
+        params: T::Hash[
+          T.any(Symbol, String),
+          T.any(T::Boolean, String, Integer, Float)
+        ]
+      ).returns(Iterable::Response)
+    end
     def get(template_id, params = {})
       params['templateId'] = template_id
       Iterable.request(conf, '/templates/push/get', params).get
@@ -48,6 +57,15 @@ module Iterable
     # @param attrs [Hash] Update attributes
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        client_template_id: T.any(String, Integer),
+        attrs: T::Hash[
+          T.any(Symbol, String),
+          T.any(T::Boolean, String, Integer, Float)
+        ]
+      ).returns(Iterable::Response)
+    end
     def upsert(client_template_id, attrs = {})
       attrs['clientTemplateId'] = client_template_id
       Iterable.request(conf, '/templates/push/upsert').post(attrs)

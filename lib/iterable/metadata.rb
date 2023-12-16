@@ -19,6 +19,7 @@ module Iterable
     # Get metadata
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def get
       Iterable.request(conf, '/metadata').get
     end
