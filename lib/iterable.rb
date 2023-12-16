@@ -1,6 +1,9 @@
+# typed: true
+
 require 'json'
 require 'net/http'
 require 'uri'
+require 'sorbet-runtime'
 
 require 'multi_json'
 
@@ -42,6 +45,8 @@ files.each { |path| require_relative "./iterable/#{path}" }
 #
 # Iterable module for API interactions
 module Iterable
+  extend T::Sig
+
   DATE_FORMAT = '%Y-%m-%d'.freeze
 
   ##
@@ -53,6 +58,7 @@ module Iterable
   #   Iterable.configure do |conf|
   #     conf.token = 'secret-token'
   #   end
+  sig { params(block: T.proc.params(arg0: T.untyped).void).returns(Iterable::Config) }
   module_function def configure(&block)
     config.tap(&block)
   end
@@ -60,12 +66,20 @@ module Iterable
   ##
   #
   # @return [Iterable::Config] The default config for API endpoints
+  sig { returns(Iterable::Config) }
   module_function def config
     @config ||= Config.new
   end
 
   # @!visibility private
+  sig do
+    params(
+      conf: Iterable::Config,
+      path: String,
+      params: Hash
+    ).returns(Iterable::Request)
+  end
   module_function def request(conf, path, params = {})
-    Request.new conf, path, params
+    T.let(Request.new(conf, path, params), Iterable::Request)
   end
 end

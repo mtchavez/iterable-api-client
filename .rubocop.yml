@@ -12,7 +12,8 @@ AllCops:
     - 'env/vendor/**/*'
     - 'cookbooks/**/**'
     - 'tmp/*'
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.0
+  SuggestExtensions: false
   NewCops: enable
 
 Style/Documentation:
@@ -22,7 +23,7 @@ RSpec/FilePath:
   Exclude:
     - 'spec/**/**'
 
-RSpec/FactoryBot/CreateList:
+FactoryBot/CreateList:
   Include:
     - spec/factories.rb
     - spec/factories/**/*.rb
@@ -48,6 +49,11 @@ Metrics/BlockLength:
     - '**/*.rake'
     - 'spec/**/*.rb'
     - '*.gemspec'
+Metrics/ClassLength:
+  CountAsOne:
+    - array
+    - heredoc
+    - method_call
 
 Layout/LineLength:
   Max: 120

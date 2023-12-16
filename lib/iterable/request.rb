@@ -1,9 +1,13 @@
+# typed: false
+
 require 'openssl'
 require 'uri'
 
 module Iterable
   # @!visibility private
   class Request
+    extend T::Sig
+
     DEFAULT_OPTIONS = {
       use_ssl: true,
       verify_ssl: true,
@@ -15,6 +19,13 @@ module Iterable
       'content-type' => 'application/json'
     }.freeze
 
+    sig do
+      params(
+        config: Iterable::Config,
+        path: String,
+        params: Hash
+      ).void
+    end
     def initialize(config, path, params = {})
       @config = config
       @uri = build_uri(path, params)
@@ -22,22 +33,27 @@ module Iterable
       setup_http(@net)
     end
 
+    sig { params(headers: Hash).returns(Iterable::Response) }
     def get(headers = {})
       execute :get, {}, headers
     end
 
+    sig { params(body: Hash, headers: Hash).returns(Iterable::Response) }
     def post(body = {}, headers = {})
       execute :post, body, headers
     end
 
+    sig { params(body: Hash, headers: Hash).returns(Iterable::Response) }
     def put(body = {}, headers = {})
       execute :put, body, headers
     end
 
+    sig { params(body: Hash, headers: Hash).returns(Iterable::Response) }
     def patch(body = {}, headers = {})
       execute :patch, body, headers
     end
 
+    sig { params(body: Hash, headers: Hash).returns(Iterable::Response) }
     def delete(body = {}, headers = {})
       execute :delete, body, headers
     end
@@ -48,6 +64,13 @@ module Iterable
       transmit http
     end
 
+    sig do
+      params(
+        verb: Symbol,
+        body: Hash,
+        headers: Hash
+      ).returns(Net::HTTPRequest)
+    end
     private def connection(verb, body = {}, headers = {})
       conn_headers = DEFAULT_HEADERS.dup.merge(headers)
       conn_headers['Api-Key'] = @config.token if @config.token
@@ -56,6 +79,11 @@ module Iterable
       req
     end
 
+    sig do
+      params(
+        http: T.any(Net::HTTP, Net::HTTP::Post, Net::HTTP::Get, Net::HTTP::Put, Net::HTTP::Patch, Net::HTTP::Delete)
+      ).void
+    end
     private def setup_http(http)
       DEFAULT_OPTIONS.dup.each do |option, value|
         setter = "#{option.to_sym}="
@@ -74,6 +102,7 @@ module Iterable
       Net::HTTP.new(@uri.hostname, @uri.port, nil, nil, nil, nil)
     end
 
+    sig { params(req: Net::HTTPRequest).returns(Iterable::Response) }
     private def transmit(req)
       response = nil
       @net.start do |http|
@@ -82,6 +111,7 @@ module Iterable
       handle_response response
     end
 
+    sig { params(response: Net::HTTPResponse).returns(Iterable::Response) }
     private def handle_response(response)
       redirected = response.is_a?(Net::HTTPRedirection) || response.code == '303'
       if redirected && response['location']
@@ -91,6 +121,7 @@ module Iterable
       end
     end
 
+    sig { params(response: Net::HTTPResponse).returns(URI) }
     private def uri_for_redirect(response)
       uri = @config.uri
       redirect_uri = URI(response['location'])

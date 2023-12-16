@@ -1,3 +1,5 @@
+# typed: false
+
 require 'spec_helper'
 require 'securerandom'
 
@@ -6,6 +8,7 @@ RSpec.describe Iterable::BulkCatalogItems, vcr: :none do
   let(:catalog_name) { 'test-catalog' }
   let(:bulk_catalog_items) { described_class.new(catalog_name) }
   let(:test_request) { instance_double(Iterable::Request) }
+  let(:test_response) { instance_double(Iterable::Response) }
 
   describe 'create' do
     subject(:create) { bulk_catalog_items.create(items) }
@@ -15,7 +18,7 @@ RSpec.describe Iterable::BulkCatalogItems, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:post)
+      allow(test_request).to receive(:post).and_return(test_response)
       create
     end
 
@@ -33,7 +36,7 @@ RSpec.describe Iterable::BulkCatalogItems, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:delete)
+      allow(test_request).to receive(:delete).and_return(test_response)
       delete
     end
 

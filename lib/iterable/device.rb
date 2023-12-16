@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -31,6 +33,15 @@ module Iterable
     # @param conf [Iterable::Config] A config to optionally pass for requests
     #
     # @return [Iterable::Device]
+    sig do
+      params(
+        token: String,
+        app: String,
+        platform: String,
+        data_fields: Hash,
+        conf: T.nilable(Iterable::Config)
+      ).void
+    end
     def initialize(token, app, platform, data_fields = {}, conf = nil)
       @token = token
       @app = app
@@ -47,6 +58,7 @@ module Iterable
     # @param user_id [String] User ID to associate device with instead of email
     #
     # @return [Iterable::Response] A response object
+    sig { params(email: String, user_id: T.nilable(String)).returns(Iterable::Response) }
     def register(email, user_id = nil)
       attrs = {
         device: device_data
@@ -56,10 +68,12 @@ module Iterable
       Iterable.request(conf, base_path).post(attrs)
     end
 
+    sig { returns(String) }
     private def base_path
       '/users/registerDeviceToken'
     end
 
+    sig { returns(Hash) }
     private def device_data
       {
         token: @token,

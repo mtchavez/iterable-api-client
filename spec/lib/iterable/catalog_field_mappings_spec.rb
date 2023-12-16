@@ -1,3 +1,5 @@
+# typed: false
+
 require 'spec_helper'
 
 RSpec.describe Iterable::CatalogFieldMappings, vcr: :none do
@@ -5,6 +7,7 @@ RSpec.describe Iterable::CatalogFieldMappings, vcr: :none do
   let(:catalog_name) { 'test-catalog' }
   let(:field_mappings) { described_class.new(catalog_name) }
   let(:test_request) { instance_double(Iterable::Request) }
+  let(:test_response) { instance_double(Iterable::Response) }
 
   describe 'get' do
     subject(:get) { field_mappings.get }
@@ -13,7 +16,7 @@ RSpec.describe Iterable::CatalogFieldMappings, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:get)
+      allow(test_request).to receive(:get).and_return(test_response)
       get
     end
 
@@ -29,7 +32,7 @@ RSpec.describe Iterable::CatalogFieldMappings, vcr: :none do
 
     before do
       allow(Iterable).to receive(:request).and_return(test_request)
-      allow(test_request).to receive(:put)
+      allow(test_request).to receive(:put).and_return(test_response)
     end
 
     context 'without updates' do

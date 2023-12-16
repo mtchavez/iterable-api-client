@@ -1,15 +1,17 @@
+# typed: false
+
 require 'spec_helper'
 
 RSpec.describe Iterable::Request do
-  subject(:request) { described_class.new(config, path) }
+  subject(:request) { described_class.new(config, '/test-path') }
 
   let(:test_token) { 'asdf-1234-qwer-5678' }
   let(:config) { Iterable::Config.new(token: test_token) }
   let(:test_net_http) { instance_double(Net::HTTP) }
   let(:test_request) { instance_double(Net::HTTP::Get) }
+  let(:test_net_resp) { instance_double(Net::HTTPResponse) }
   let(:test_response) { instance_double(Iterable::Response) }
-  let(:path) { '/test-path' }
-  let(:test_uri) { URI("https://api.iterable.com/api#{path}") }
+  let(:test_uri) { URI('https://api.iterable.com/api/test-path') }
   let(:request_headers) { described_class::DEFAULT_HEADERS.merge('Api-Key' => test_token) }
 
   before do
@@ -17,9 +19,9 @@ RSpec.describe Iterable::Request do
     allow(net_http_class).to receive(:new).and_return(test_request)
     allow(test_net_http).to receive(:start).and_yield(test_net_http)
     allow(test_request).to receive(:body=)
-    allow(test_net_http).to receive(:request).and_return(test_response)
-    allow(test_response).to receive(:code)
-    allow(test_response).to receive(:body)
+    allow(test_net_http).to receive(:request).and_return(test_net_resp)
+    allow(test_net_resp).to receive(:code)
+    allow(test_net_resp).to receive(:body)
   end
 
   describe 'get' do

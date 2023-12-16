@@ -1,3 +1,5 @@
+# typed: true
+
 module Iterable
   ##
   #
@@ -18,9 +20,16 @@ module Iterable
     #
     # @param email [String] Email of user who received the message to view
     # @param message_id [String|Integer] Message id for message sent
-    # @param attrs [Hash] Hash of attributes to pass like dataFields with the requst
+    # @param attrs [Hash] Hash of attributes to pass like dataFields with the request
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        email: T.nilable(String),
+        message_id: T.any(String, Integer),
+        attrs: Hash
+      ).returns(Iterable::Response)
+    end
     def view(email, message_id, attrs = {})
       attrs['email'] = email
       attrs['messageId'] = message_id
@@ -38,6 +47,13 @@ module Iterable
     # @param attrs [Hash] Hash of attributes to pass like dataFields with the request
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        email: String,
+        campaign_id: Integer,
+        attrs: Hash
+      ).returns(Iterable::Response)
+    end
     def target(email, campaign_id, attrs = {})
       attrs[:recipientEmail] = email
       attrs[:campaignId] = campaign_id
