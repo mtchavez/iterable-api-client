@@ -19,6 +19,7 @@ module Iterable
     # Get all lists
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def all
       Iterable.request(conf, '/lists').get
     end
@@ -30,6 +31,7 @@ module Iterable
     # @param name [String] The name of the list to create
     #
     # @return [Iterable::Response] A response object
+    sig { params(name: String).returns(Iterable::Response) }
     def create(name)
       Iterable.request(conf, '/lists').post(name: name)
     end
@@ -38,9 +40,10 @@ module Iterable
     #
     # Delete an existing list given a list id
     #
-    # @param name [String|Integer] The id of the list to delete
+    # @param list_id [String|Integer] The id of the list to delete
     #
     # @return [Iterable::Response] A response object
+    sig { params(list_id: T.any(String, Integer)).returns(Iterable::Response) }
     def delete(list_id)
       Iterable.request(conf, "/lists/#{list_id}").delete
     end
@@ -52,6 +55,7 @@ module Iterable
     # @param list_id [String|Integer] The id of the list
     #
     # @return [Iterable::Response] A response object
+    sig { params(list_id: T.any(String, Integer)).returns(Iterable::Response) }
     def users(list_id)
       Iterable.request(conf, '/lists/getUsers', listId: list_id).get
     end
@@ -61,9 +65,19 @@ module Iterable
     # Subscribe users to a list
     #
     # @param list_id [String|Integer] The id of the list
-    # @param subscribes [Array[Hash]] An array of hashes of user emails and data fields
+    # @param subscribers [Array[Hash]] An array of hashes of user emails and data fields
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        list_id: T.any(String, Integer),
+        subscribers: T::Array[
+          T::Hash[
+            T.any(Symbol, String), T.any(Symbol, String)
+          ]
+        ]
+      ).returns(Iterable::Response)
+    end
     def subscribe(list_id, subscribers = [])
       attrs = {
         listId: list_id,
@@ -77,9 +91,19 @@ module Iterable
     # Subscribe users to a list
     #
     # @param list_id [String|Integer] The id of the list
-    # @param subscribes [Array[Hash]] An array of hashes with an email
+    # @param subscribers [Array[Hash]] An array of hashes with an email
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        list_id: T.any(String, Integer),
+        subscribers: T::Array[
+          T::Hash[
+            T.any(Symbol, String), T.any(Symbol, String)
+          ]
+        ]
+      ).returns(Iterable::Response)
+    end
     def unsubscribe(list_id, subscribers = [])
       attrs = {
         listId: list_id,

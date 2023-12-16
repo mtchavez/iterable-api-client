@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'sorbet-runtime', '~> 0.5.11116'
-
 group :development, :test do
   gem 'dotenv',               '~> 2.7.1'
   gem 'gemcutter',            '~> 0.7.1'

@@ -89,7 +89,7 @@ RSpec.describe Iterable::MetadataTable, :vcr do
     end
 
     context 'without value' do
-      let(:value) { nil }
+      let(:value) { {} }
 
       it 'is not successful' do
         expect(res).not_to be_success

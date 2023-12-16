@@ -22,10 +22,17 @@ module Iterable
     # @param attrs [Hash] Hash of query attributes like platform, SDKVersion, etc.
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        email: String,
+        count: Integer,
+        attrs: T.any(Integer, String)
+      ).returns(Iterable::Response)
+    end
     def messages_for_email(email, count: 1, **attrs)
       attrs[:email] = email
       attrs[:count] = count
-      messages(**attrs)
+      messages(attrs)
     end
 
     ##
@@ -37,10 +44,17 @@ module Iterable
     # @param attrs [Hash] Hash of query attributes like platform, SDKVersion, etc.
     #
     # @return [Iterable::Response] A response object
+    sig do
+      params(
+        user_id: T.any(String, Integer),
+        count: Integer,
+        attrs: T.any(Integer, String)
+      ).returns(Iterable::Response)
+    end
     def messages_for_user_id(user_id, count: 1, **attrs)
       attrs[:userId] = user_id
       attrs[:count] = count
-      messages(**attrs)
+      messages(attrs)
     end
 
     ##
@@ -48,12 +62,18 @@ module Iterable
     # Send an In-App notification to a specific user. User Email or ID along
     # with campaign ID must be provided
     #
-    # @param email [String] (optional) User email used to identify user
     # @param campaign_id [Integer] Campaign ID
     # @param attrs [Hash] Additional data to update or add
+    # @param email [String] (optional) User email used to identify user
     #
     # @return [Iterable::Response] A response object
-    #
+    sig do
+      params(
+        campaign_id: T.any(String, Integer),
+        attrs: T::Hash[T.any(Symbol, String), T.any(Integer, String)],
+        email: T.nilable(String)
+      ).returns(Iterable::Response)
+    end
     def target(campaign_id:, attrs: {}, email: nil)
       attrs['recipientEmail'] = email if email
       attrs['campaignId'] = campaign_id
@@ -66,13 +86,20 @@ module Iterable
     # Must include either an email address AND campaignId, or
     # just a scheduledMessageId provided in the attrs
     #
-    # @param email [String] User email to cancel push
     # @param campaign_id [Integer] campaignID used to cancel push
     # @param attrs [Hash] Additional data to update or add
+    # @param email [String] User email to cancel push
     #
     # @return [Iterable::Response] A response object
     #
     # @note An email or UserId is required
+    sig do
+      params(
+        campaign_id: T.nilable(T.any(String, Integer)),
+        attrs: T::Hash[T.any(Symbol, String), T.any(Integer, String)],
+        email: T.nilable(String)
+      ).returns(Iterable::Response)
+    end
     def cancel(campaign_id: nil, attrs: {}, email: nil)
       attrs['email'] = email if email
       attrs['campaignId'] = campaign_id if campaign_id

@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   # Runtime dependencies
   s.add_dependency 'multi_json', '>= 1.12.0'
+  s.add_dependency 'sorbet-runtime'
 
   s.metadata['rubygems_mfa_required'] = 'true'
 end
