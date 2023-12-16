@@ -46,7 +46,7 @@ RSpec.describe Iterable::Lists, :vcr do
     end
 
     context 'without name' do
-      let(:name) { nil }
+      let(:name) { '' }
 
       it 'is not successful' do
         expect(res).not_to be_success

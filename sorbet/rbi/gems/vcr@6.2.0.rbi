@@ -19,17 +19,17 @@ module VCR
 
   # @private
   #
-  # source://vcr//lib/vcr.rb#335
+  # source://vcr//lib/vcr.rb#385
   def cassette_persisters; end
 
   # @private
   #
-  # source://vcr//lib/vcr.rb#330
+  # source://vcr//lib/vcr.rb#380
   def cassette_serializers; end
 
   # @return [Enumerable] list of all cassettes currently being used
   #
-  # source://vcr//lib/vcr.rb#312
+  # source://vcr//lib/vcr.rb#362
   def cassettes(context = T.unsafe(nil)); end
 
   # @deprecated Use #configure instead.
@@ -40,7 +40,7 @@ module VCR
 
   # @return [VCR::Configuration] the VCR configuration.
   #
-  # source://vcr//lib/vcr.rb#210
+  # source://vcr//lib/vcr.rb#239
   def configuration; end
 
   # Used to configure VCR.
@@ -53,7 +53,7 @@ module VCR
   # @yield the configuration block
   # @yieldparam config [VCR::Configuration] the configuration object
   #
-  # source://vcr//lib/vcr.rb#205
+  # source://vcr//lib/vcr.rb#234
   def configure; end
 
   # Sets up `Before` and `After` cucumber hooks in order to
@@ -69,7 +69,7 @@ module VCR
   # @yield the cucumber tags configuration block
   # @yieldparam t [VCR::CucumberTags] Cucumber tags config object
   #
-  # source://vcr//lib/vcr.rb#227
+  # source://vcr//lib/vcr.rb#256
   def cucumber_tags(&block); end
 
   # The currently active cassette.
@@ -77,7 +77,7 @@ module VCR
   # @return [nil, VCR::Cassette] The current cassette or nil if there is
   #   no current cassette.
   #
-  # source://vcr//lib/vcr.rb#49
+  # source://vcr//lib/vcr.rb#48
   def current_cassette; end
 
   # Ejects the current cassette. The cassette will no longer be used.
@@ -88,24 +88,24 @@ module VCR
   # @param options [Hash] Eject options.
   # @return [VCR::Cassette, nil] the ejected cassette if there was one
   #
-  # source://vcr//lib/vcr.rb#154
+  # source://vcr//lib/vcr.rb#159
   def eject_cassette(options = T.unsafe(nil)); end
 
   # @private
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr.rb#358
+  # source://vcr//lib/vcr.rb#408
   def fibers_available?; end
 
   # @private
   #
-  # source://vcr//lib/vcr.rb#295
+  # source://vcr//lib/vcr.rb#345
   def http_interactions; end
 
   # Inserts the named cassette using the given cassette options.
   # New HTTP interactions, if allowed by the cassette's `:record` option, will
   # be recorded to the cassette. The cassette's existing HTTP interactions
-  # will be used to stub requests, unless prevented by the cassete's
+  # will be used to stub requests, unless prevented by the cassette's
   # `:record` option.
   #
   # @example
@@ -131,6 +131,7 @@ module VCR
   # @option options
   # @option options
   # @option options
+  # @option options
   # @param name [#to_s] The name of the cassette. VCR will sanitize
   #   this to ensure it is a valid file name.
   # @param options [Hash] The cassette options. The given options will
@@ -142,38 +143,38 @@ module VCR
   #   is used and the ERB template requires variables that you did not provide.
   # @return [VCR::Cassette] the inserted cassette
   #
-  # source://vcr//lib/vcr.rb#127
+  # source://vcr//lib/vcr.rb#132
   def insert_cassette(name, options = T.unsafe(nil)); end
 
   # @private
   #
-  # source://vcr//lib/vcr.rb#325
+  # source://vcr//lib/vcr.rb#375
   def library_hooks; end
 
   # @private
   #
-  # source://vcr//lib/vcr.rb#348
+  # source://vcr//lib/vcr.rb#398
   def link_context(from_thread, to_key); end
 
   # @private
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr.rb#301
+  # source://vcr//lib/vcr.rb#351
   def real_http_connections_allowed?; end
 
   # @private
   #
-  # source://vcr//lib/vcr.rb#340
+  # source://vcr//lib/vcr.rb#390
   def record_http_interaction(interaction); end
 
   # @private
   #
-  # source://vcr//lib/vcr.rb#320
+  # source://vcr//lib/vcr.rb#370
   def request_ignorer; end
 
   # @return [RequestMatcherRegistry] the request matcher registry
   #
-  # source://vcr//lib/vcr.rb#307
+  # source://vcr//lib/vcr.rb#357
   def request_matchers; end
 
   # Turns VCR off, so that it no longer handles every HTTP request.
@@ -184,7 +185,7 @@ module VCR
   # @raise [ArgumentError] if you pass an invalid option
   # @return [void]
   #
-  # source://vcr//lib/vcr.rb#260
+  # source://vcr//lib/vcr.rb#290
   def turn_off!(options = T.unsafe(nil)); end
 
   # Turns on VCR, if it has previously been turned off.
@@ -193,8 +194,9 @@ module VCR
   # @see #turn_off!
   # @see #turned_off
   # @see #turned_on?
+  # @see #turned_on
   #
-  # source://vcr//lib/vcr.rb#280
+  # source://vcr//lib/vcr.rb#327
   def turn_on!; end
 
   # Turns VCR off for the duration of a block.
@@ -203,12 +205,24 @@ module VCR
   # @raise [VCR::Errors::CassetteInUseError] if there is currently a cassette in use
   # @raise [ArgumentError] if you pass an invalid option
   # @return [void]
+  # @see #turned_on
   # @see #turn_off!
   # @see #turn_on!
   # @see #turned_on?
   #
-  # source://vcr//lib/vcr.rb#240
+  # source://vcr//lib/vcr.rb#270
   def turned_off(options = T.unsafe(nil)); end
+
+  # Turns on VCR, for the duration of a block.
+  #
+  # @param options [Hash] hash of options
+  # @return [void]
+  # @see #turn_off!
+  # @see #turned_off
+  # @see #turned_on?
+  #
+  # source://vcr//lib/vcr.rb#311
+  def turned_on(options = T.unsafe(nil)); end
 
   # @note Normally VCR is _always_ turned on; it will only be off if you have
   #   explicitly turned it off.
@@ -217,12 +231,12 @@ module VCR
   # @see #turn_off!
   # @see #turned_off
   #
-  # source://vcr//lib/vcr.rb#290
+  # source://vcr//lib/vcr.rb#337
   def turned_on?; end
 
   # @private
   #
-  # source://vcr//lib/vcr.rb#353
+  # source://vcr//lib/vcr.rb#403
   def unlink_context(key); end
 
   # Inserts a cassette using the given name and options, runs the given
@@ -232,6 +246,7 @@ module VCR
   #   VCR.use_cassette('twitter', :record => :new_episodes) do
   #   # make an HTTP request
   #   end
+  # @option options
   # @option options
   # @option options
   # @option options
@@ -262,8 +277,22 @@ module VCR
   # @yieldparam cassette [(optional) VCR::Cassette] the cassette that has
   #   been inserted.
   #
-  # source://vcr//lib/vcr.rb#179
+  # source://vcr//lib/vcr.rb#184
   def use_cassette(name, options = T.unsafe(nil), &block); end
+
+  # Inserts multiple cassettes the given names
+  #
+  # @example
+  #   cassettes = [
+  #   { name: 'github' },
+  #   { name: 'apple', options: { erb: true } }
+  #   ]
+  #   VCR.use_cassettes(cassettes) do
+  #   # make multiple HTTP requests
+  #   end
+  #
+  # source://vcr//lib/vcr.rb#213
+  def use_cassettes(cassettes, &block); end
 
   # @note This string also has singleton methods:
   #
@@ -278,33 +307,33 @@ module VCR
 
   private
 
-  # source://vcr//lib/vcr.rb#398
+  # source://vcr//lib/vcr.rb#448
   def context_cassettes; end
 
-  # source://vcr//lib/vcr.rb#377
+  # source://vcr//lib/vcr.rb#427
   def context_value(name); end
 
-  # source://vcr//lib/vcr.rb#363
+  # source://vcr//lib/vcr.rb#413
   def current_context; end
 
-  # source://vcr//lib/vcr.rb#385
+  # source://vcr//lib/vcr.rb#435
   def dup_context(context); end
 
-  # source://vcr//lib/vcr.rb#367
+  # source://vcr//lib/vcr.rb#417
   def get_context(thread_key, fiber_key = T.unsafe(nil)); end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr.rb#394
+  # source://vcr//lib/vcr.rb#444
   def ignore_cassettes?; end
 
-  # source://vcr//lib/vcr.rb#402
+  # source://vcr//lib/vcr.rb#452
   def initialize_fibers; end
 
-  # source://vcr//lib/vcr.rb#411
+  # source://vcr//lib/vcr.rb#461
   def initialize_ivars; end
 
-  # source://vcr//lib/vcr.rb#381
+  # source://vcr//lib/vcr.rb#431
   def set_context_value(name, value); end
 
   class << self
@@ -328,8 +357,18 @@ class VCR::Cassette
   # @return [Cassette] a new instance of Cassette
   # @see VCR#insert_cassette
   #
-  # source://vcr//lib/vcr/cassette.rb#45
+  # source://vcr//lib/vcr/cassette.rb#58
   def initialize(name, options = T.unsafe(nil)); end
+
+  # @return [Boolean, nil] Should outdated interactions be recorded back to file
+  #
+  # source://vcr//lib/vcr/cassette.rb#47
+  def clean_outdated_http_interactions; end
+
+  # @return [Boolean] Should unused requests be dropped from the cassette?
+  #
+  # source://vcr//lib/vcr/cassette.rb#50
+  def drop_unused_requests; end
 
   # Ejects the current cassette. The cassette will no longer be used.
   # In addition, any newly recorded HTTP interactions will be written to
@@ -338,14 +377,14 @@ class VCR::Cassette
   # @note This is not intended to be called directly. Use `VCR.eject_cassette` instead.
   # @see VCR#eject_cassette
   #
-  # source://vcr//lib/vcr/cassette.rb#64
+  # source://vcr//lib/vcr/cassette.rb#78
   def eject(options = T.unsafe(nil)); end
 
   # @return [Boolean, Hash] The cassette's ERB option. The file will be treated as an
   #   ERB template if this has a truthy value. A hash, if provided, will be used as local
   #   variables for the ERB template.
   #
-  # source://vcr//lib/vcr/cassette.rb#34
+  # source://vcr//lib/vcr/cassette.rb#41
   def erb; end
 
   # @note VCR will take care of sanitizing the cassette name to make it a valid file name.
@@ -353,23 +392,23 @@ class VCR::Cassette
   #   does not support resolving file paths.
   # @return [String] The file for this cassette.
   #
-  # source://vcr//lib/vcr/cassette.rb#99
+  # source://vcr//lib/vcr/cassette.rb#132
   def file; end
 
   # @private
   #
-  # source://vcr//lib/vcr/cassette.rb#73
+  # source://vcr//lib/vcr/cassette.rb#102
   def http_interactions; end
 
   # @return [Boolean] false unless wrapped with LinkedCassette
   #
-  # source://vcr//lib/vcr/cassette.rb#138
+  # source://vcr//lib/vcr/cassette.rb#171
   def linked?; end
 
   # @return [Array<Symbol, #call>] List of request matchers. Used to find a response from an
   #   existing HTTP interaction to play back.
   #
-  # source://vcr//lib/vcr/cassette.rb#29
+  # source://vcr//lib/vcr/cassette.rb#36
   def match_requests_on; end
 
   # @return [#to_s] The name of the cassette. Used to determine the cassette's file name.
@@ -380,7 +419,7 @@ class VCR::Cassette
 
   # @private
   #
-  # source://vcr//lib/vcr/cassette.rb#91
+  # source://vcr//lib/vcr/cassette.rb#124
   def new_recorded_interactions; end
 
   # @example
@@ -393,17 +432,17 @@ class VCR::Cassette
   # @return [Time, nil] The `recorded_at` time of the first HTTP interaction
   #   or nil if the cassette has no prior HTTP interactions.
   #
-  # source://vcr//lib/vcr/cassette.rb#133
+  # source://vcr//lib/vcr/cassette.rb#166
   def originally_recorded_at; end
 
   # @return [Integer, nil] How frequently (in seconds) the cassette should be re-recorded.
   #
-  # source://vcr//lib/vcr/cassette.rb#37
+  # source://vcr//lib/vcr/cassette.rb#44
   def re_record_interval; end
 
   # @private
   #
-  # source://vcr//lib/vcr/cassette.rb#83
+  # source://vcr//lib/vcr/cassette.rb#116
   def record_http_interaction(interaction); end
 
   # @return [Symbol] The record mode. Determines whether the cassette records HTTP interactions,
@@ -412,84 +451,117 @@ class VCR::Cassette
   # source://vcr//lib/vcr/cassette.rb#25
   def record_mode; end
 
+  # @return [Boolean] The cassette's record_on_error mode. When the code that uses the cassette
+  #   raises an error (for example a test failure) and record_on_error is set to false, no
+  #   cassette will be recorded. This is useful when you are TDD'ing an API integration: when
+  #   an error is raised that often means your request is invalid, so you don't want the cassette
+  #   to be recorded.
+  #
+  # source://vcr//lib/vcr/cassette.rb#32
+  def record_on_error; end
+
   # @return [Boolean] Whether or not the cassette is recording.
   #
-  # source://vcr//lib/vcr/cassette.rb#107
+  # source://vcr//lib/vcr/cassette.rb#140
   def recording?; end
+
+  # @private
+  #
+  # source://vcr//lib/vcr/cassette.rb#87
+  def run_failed!; end
+
+  # @private
+  # @return [Boolean]
+  #
+  # source://vcr//lib/vcr/cassette.rb#92
+  def run_failed?; end
 
   # @return [Hash] The hash that will be serialized when the cassette is written to disk.
   #
-  # source://vcr//lib/vcr/cassette.rb#116
+  # source://vcr//lib/vcr/cassette.rb#149
   def serializable_hash; end
+
+  # @return [Boolean]
+  #
+  # source://vcr//lib/vcr/cassette.rb#97
+  def should_write_recorded_interactions_to_disk?; end
 
   # @return [Array<Symbol>] If set, {VCR::Configuration#before_record} and
   #   {VCR::Configuration#before_playback} hooks with a corresponding tag will apply.
   #
-  # source://vcr//lib/vcr/cassette.rb#41
+  # source://vcr//lib/vcr/cassette.rb#54
   def tags; end
 
   private
 
-  # source://vcr//lib/vcr/cassette.rb#144
+  # source://vcr//lib/vcr/cassette.rb#177
   def assert_valid_options!; end
 
-  # source://vcr//lib/vcr/cassette.rb#172
+  # source://vcr//lib/vcr/cassette.rb#205
   def assign_tags; end
 
-  # source://vcr//lib/vcr/cassette.rb#277
+  # source://vcr//lib/vcr/cassette.rb#324
   def deserialized_hash; end
 
-  # source://vcr//lib/vcr/cassette.rb#157
+  # source://vcr//lib/vcr/cassette.rb#191
   def extract_options; end
 
-  # source://vcr//lib/vcr/cassette.rb#253
+  # source://vcr//lib/vcr/cassette.rb#300
   def interactions_to_record; end
 
-  # source://vcr//lib/vcr/cassette.rb#269
+  # source://vcr//lib/vcr/cassette.rb#316
   def invoke_hook(type, interactions); end
 
-  # source://vcr//lib/vcr/cassette.rb#290
+  # source://vcr//lib/vcr/cassette.rb#337
   def log_prefix; end
 
-  # source://vcr//lib/vcr/cassette.rb#240
+  # source://vcr//lib/vcr/cassette.rb#278
   def merged_interactions; end
 
-  # source://vcr//lib/vcr/cassette.rb#180
+  # source://vcr//lib/vcr/cassette.rb#213
   def previously_recorded_interactions; end
 
-  # source://vcr//lib/vcr/cassette.rb#198
+  # source://vcr//lib/vcr/cassette.rb#231
   def raise_error_unless_valid_record_mode; end
 
-  # source://vcr//lib/vcr/cassette.rb#236
+  # source://vcr//lib/vcr/cassette.rb#274
   def raw_cassette_bytes; end
 
-  # source://vcr//lib/vcr/cassette.rb#294
+  # source://vcr//lib/vcr/cassette.rb#341
   def request_summary(request); end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/cassette.rb#232
+  # source://vcr//lib/vcr/cassette.rb#270
   def should_assert_no_unused_interactions?; end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/cassette.rb#204
-  def should_re_record?; end
+  # source://vcr//lib/vcr/cassette.rb#237
+  def should_re_record?(record_mode); end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/cassette.rb#228
+  # source://vcr//lib/vcr/cassette.rb#262
   def should_remove_matching_existing_interactions?; end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/cassette.rb#224
+  # source://vcr//lib/vcr/cassette.rb#266
+  def should_remove_unused_interactions?; end
+
+  # @return [Boolean]
+  #
+  # source://vcr//lib/vcr/cassette.rb#258
   def should_stub_requests?; end
 
-  # source://vcr//lib/vcr/cassette.rb#194
+  # source://vcr//lib/vcr/cassette.rb#227
   def storage_key; end
 
-  # source://vcr//lib/vcr/cassette.rb#261
+  # source://vcr//lib/vcr/cassette.rb#295
+  def up_to_date_interactions(interactions); end
+
+  # source://vcr//lib/vcr/cassette.rb#308
   def write_recorded_interactions_to_disk; end
 
   class << self
@@ -514,7 +586,7 @@ class VCR::Cassette::ERBRenderer
 
   private
 
-  # source://vcr//lib/vcr/cassette/erb_renderer.rb#50
+  # source://vcr//lib/vcr/cassette/erb_renderer.rb#52
   def binding_for_variables; end
 
   # source://vcr//lib/vcr/cassette/erb_renderer.rb#34
@@ -533,7 +605,7 @@ class VCR::Cassette::ERBRenderer
   # source://vcr//lib/vcr/cassette/erb_renderer.rb#30
   def use_erb?; end
 
-  # source://vcr//lib/vcr/cassette/erb_renderer.rb#46
+  # source://vcr//lib/vcr/cassette/erb_renderer.rb#48
   def variables_object; end
 end
 
@@ -565,17 +637,17 @@ class VCR::Cassette::HTTPInteractionList
   #
   # @raise [VCR::Errors::UnusedHTTPInteractionError] if not all interactions were played back.
   #
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#60
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#65
   def assert_no_unused_interactions!; end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#43
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#48
   def has_interaction_matching?(request); end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#49
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#54
   def has_used_interaction_matching?(request); end
 
   # Returns the value of attribute interactions.
@@ -588,7 +660,7 @@ class VCR::Cassette::HTTPInteractionList
   # source://vcr//lib/vcr/cassette/http_interaction_list.rb#16
   def parent_list; end
 
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#53
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#58
   def remaining_unused_interaction_count; end
 
   # Returns the value of attribute request_matchers.
@@ -596,31 +668,31 @@ class VCR::Cassette::HTTPInteractionList
   # source://vcr//lib/vcr/cassette/http_interaction_list.rb#16
   def request_matchers; end
 
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#30
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#31
   def response_for(request); end
 
   private
 
   # @return [Boolean] Whether or not there are unused interactions left in the list.
   #
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#74
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#79
   def has_unused_interactions?; end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#91
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#96
   def interaction_matches_request?(request, interaction); end
 
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#102
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#107
   def log_prefix; end
 
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#82
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#87
   def matching_interaction_index_for(request); end
 
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#86
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#91
   def matching_used_interaction_for(request); end
 
-  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#78
+  # source://vcr//lib/vcr/cassette/http_interaction_list.rb#83
   def request_summary(request); end
 end
 
@@ -717,6 +789,11 @@ module VCR::Cassette::Persisters::FileSystem
   # source://vcr//lib/vcr/cassette/persisters/file_system.rb#47
   def absolute_path_for(path); end
 
+  # @return [Boolean]
+  #
+  # source://vcr//lib/vcr/cassette/persisters/file_system.rb#63
+  def downcase_cassette_names?; end
+
   # source://vcr//lib/vcr/cassette/persisters/file_system.rb#51
   def sanitized_file_name_from(file_name); end
 end
@@ -773,7 +850,7 @@ module VCR::Cassette::Serializers::Compressed
 
   # The file extension to use for this serializer.
   #
-  # @return [String] "gz"
+  # @return [String] "zz"
   #
   # source://vcr//lib/vcr/cassette/serializers/compressed.rb#21
   def file_extension; end
@@ -787,7 +864,7 @@ module VCR::Cassette::Serializers::Compressed
   def serialize(hash); end
 end
 
-# The JSON serializer. Uses `MultiJson` under the covers.
+# The JSON serializer.
 #
 # @see Psych
 # @see Syck
@@ -797,35 +874,41 @@ end
 module VCR::Cassette::Serializers::JSON
   extend ::VCR::Cassette::Serializers::JSON
   extend ::VCR::Cassette::EncodingErrorHandling
+  extend ::VCR::Cassette::SyntaxErrorHandling
 
-  # Deserializes the given string using `MultiJson`.
+  # Deserializes the given string using `JSON`.
   #
   # @param string [String] the JSON string
   # @return [Hash] the deserialized object
   #
-  # source://vcr//lib/vcr/cassette/serializers/json.rb#40
+  # source://vcr//lib/vcr/cassette/serializers/json.rb#44
   def deserialize(string); end
 
   # The file extension to use for this serializer.
   #
   # @return [String] "json"
   #
-  # source://vcr//lib/vcr/cassette/serializers/json.rb#22
+  # source://vcr//lib/vcr/cassette/serializers/json.rb#26
   def file_extension; end
 
-  # Serializes the given hash using `MultiJson`.
+  # Serializes the given hash using `JSON`.
   #
   # @param hash [Hash] the object to serialize
   # @return [String] the JSON string
   #
-  # source://vcr//lib/vcr/cassette/serializers/json.rb#30
+  # source://vcr//lib/vcr/cassette/serializers/json.rb#34
   def serialize(hash); end
 end
 
 # @private
 #
-# source://vcr//lib/vcr/cassette/serializers/json.rb#16
+# source://vcr//lib/vcr/cassette/serializers/json.rb#17
 VCR::Cassette::Serializers::JSON::ENCODING_ERRORS = T.let(T.unsafe(nil), Array)
+
+# @private
+#
+# source://vcr//lib/vcr/cassette/serializers/json.rb#21
+VCR::Cassette::Serializers::JSON::SYNTAX_ERRORS = T.let(T.unsafe(nil), Array)
 
 # The Psych serializer. Psych is the new YAML engine in ruby 1.9.
 #
@@ -837,20 +920,21 @@ VCR::Cassette::Serializers::JSON::ENCODING_ERRORS = T.let(T.unsafe(nil), Array)
 module VCR::Cassette::Serializers::Psych
   extend ::VCR::Cassette::Serializers::Psych
   extend ::VCR::Cassette::EncodingErrorHandling
+  extend ::VCR::Cassette::SyntaxErrorHandling
 
   # Deserializes the given string using Psych.
   #
   # @param string [String] the YAML string
   # @return [Hash] the deserialized object
   #
-  # source://vcr//lib/vcr/cassette/serializers/psych.rb#39
+  # source://vcr//lib/vcr/cassette/serializers/psych.rb#45
   def deserialize(string); end
 
   # The file extension to use for this serializer.
   #
   # @return [String] "yml"
   #
-  # source://vcr//lib/vcr/cassette/serializers/psych.rb#21
+  # source://vcr//lib/vcr/cassette/serializers/psych.rb#25
   def file_extension; end
 
   # Serializes the given hash using Psych.
@@ -858,14 +942,19 @@ module VCR::Cassette::Serializers::Psych
   # @param hash [Hash] the object to serialize
   # @return [String] the YAML string
   #
-  # source://vcr//lib/vcr/cassette/serializers/psych.rb#29
+  # source://vcr//lib/vcr/cassette/serializers/psych.rb#33
   def serialize(hash); end
 end
 
 # @private
 #
-# source://vcr//lib/vcr/cassette/serializers/psych.rb#16
+# source://vcr//lib/vcr/cassette/serializers/psych.rb#17
 VCR::Cassette::Serializers::Psych::ENCODING_ERRORS = T.let(T.unsafe(nil), Array)
+
+# @private
+#
+# source://vcr//lib/vcr/cassette/serializers/psych.rb#20
+VCR::Cassette::Serializers::Psych::SYNTAX_ERRORS = T.let(T.unsafe(nil), Array)
 
 # The Syck serializer. Syck is the legacy YAML engine in ruby 1.8 and 1.9.
 #
@@ -877,20 +966,21 @@ VCR::Cassette::Serializers::Psych::ENCODING_ERRORS = T.let(T.unsafe(nil), Array)
 module VCR::Cassette::Serializers::Syck
   extend ::VCR::Cassette::Serializers::Syck
   extend ::VCR::Cassette::EncodingErrorHandling
+  extend ::VCR::Cassette::SyntaxErrorHandling
 
   # Deserializes the given string using Syck.
   #
   # @param string [String] the YAML string
   # @return [Hash] the deserialized object
   #
-  # source://vcr//lib/vcr/cassette/serializers/syck.rb#39
+  # source://vcr//lib/vcr/cassette/serializers/syck.rb#43
   def deserialize(string); end
 
   # The file extension to use for this serializer.
   #
   # @return [String] "yml"
   #
-  # source://vcr//lib/vcr/cassette/serializers/syck.rb#21
+  # source://vcr//lib/vcr/cassette/serializers/syck.rb#25
   def file_extension; end
 
   # Serializes the given hash using Syck.
@@ -898,19 +988,24 @@ module VCR::Cassette::Serializers::Syck
   # @param hash [Hash] the object to serialize
   # @return [String] the YAML string
   #
-  # source://vcr//lib/vcr/cassette/serializers/syck.rb#29
+  # source://vcr//lib/vcr/cassette/serializers/syck.rb#33
   def serialize(hash); end
 
   private
 
-  # source://vcr//lib/vcr/cassette/serializers/syck.rb#47
+  # source://vcr//lib/vcr/cassette/serializers/syck.rb#53
   def using_syck; end
 end
 
 # @private
 #
-# source://vcr//lib/vcr/cassette/serializers/syck.rb#16
+# source://vcr//lib/vcr/cassette/serializers/syck.rb#17
 VCR::Cassette::Serializers::Syck::ENCODING_ERRORS = T.let(T.unsafe(nil), Array)
+
+# @private
+#
+# source://vcr//lib/vcr/cassette/serializers/syck.rb#20
+VCR::Cassette::Serializers::Syck::SYNTAX_ERRORS = T.let(T.unsafe(nil), Array)
 
 # The YAML serializer. This will use either Psych or Syck, which ever your
 # ruby interpreter defaults to. You can also force VCR to use Psych or Syck by
@@ -924,20 +1019,21 @@ VCR::Cassette::Serializers::Syck::ENCODING_ERRORS = T.let(T.unsafe(nil), Array)
 module VCR::Cassette::Serializers::YAML
   extend ::VCR::Cassette::Serializers::YAML
   extend ::VCR::Cassette::EncodingErrorHandling
+  extend ::VCR::Cassette::SyntaxErrorHandling
 
   # Deserializes the given string using YAML.
   #
   # @param string [String] the YAML string
   # @return [Hash] the deserialized object
   #
-  # source://vcr//lib/vcr/cassette/serializers/yaml.rb#41
+  # source://vcr//lib/vcr/cassette/serializers/yaml.rb#47
   def deserialize(string); end
 
   # The file extension to use for this serializer.
   #
   # @return [String] "yml"
   #
-  # source://vcr//lib/vcr/cassette/serializers/yaml.rb#23
+  # source://vcr//lib/vcr/cassette/serializers/yaml.rb#27
   def file_extension; end
 
   # Serializes the given hash using YAML.
@@ -945,14 +1041,27 @@ module VCR::Cassette::Serializers::YAML
   # @param hash [Hash] the object to serialize
   # @return [String] the YAML string
   #
-  # source://vcr//lib/vcr/cassette/serializers/yaml.rb#31
+  # source://vcr//lib/vcr/cassette/serializers/yaml.rb#35
   def serialize(hash); end
 end
 
 # @private
 #
-# source://vcr//lib/vcr/cassette/serializers/yaml.rb#18
+# source://vcr//lib/vcr/cassette/serializers/yaml.rb#19
 VCR::Cassette::Serializers::YAML::ENCODING_ERRORS = T.let(T.unsafe(nil), Array)
+
+# @private
+#
+# source://vcr//lib/vcr/cassette/serializers/yaml.rb#22
+VCR::Cassette::Serializers::YAML::SYNTAX_ERRORS = T.let(T.unsafe(nil), Array)
+
+# @private
+#
+# source://vcr//lib/vcr/cassette/serializers.rb#59
+module VCR::Cassette::SyntaxErrorHandling
+  # source://vcr//lib/vcr/cassette/serializers.rb#60
+  def handle_syntax_errors; end
+end
 
 # The supported record modes.
 #
@@ -982,7 +1091,7 @@ class VCR::Configuration
 
   # @return [Configuration] a new instance of Configuration
   #
-  # source://vcr//lib/vcr/configuration.rb#483
+  # source://vcr//lib/vcr/configuration.rb#490
   def initialize; end
 
   # Adds a callback that will be called with each HTTP request after it is complete.
@@ -1003,7 +1112,7 @@ class VCR::Configuration
   # @yieldparam request [VCR::Request::Typed] the request that is being made
   # @yieldparam response [VCR::Response] the response from the request
   #
-  # source://vcr//lib/vcr/configuration.rb#359
+  # source://vcr//lib/vcr/configuration.rb#366
   def after_http_request(*filters); end
 
   # Determines how VCR treats HTTP requests that are made when
@@ -1016,13 +1125,13 @@ class VCR::Configuration
   # @overload allow_http_connections_when_no_cassette?
   # @overload allow_http_connections_when_no_cassette=
   #
-  # source://vcr//lib/vcr/configuration.rb#122
+  # source://vcr//lib/vcr/configuration.rb#129
   def allow_http_connections_when_no_cassette=(_arg0); end
 
   # @private (documented above)
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/configuration.rb#124
+  # source://vcr//lib/vcr/configuration.rb#131
   def allow_http_connections_when_no_cassette?; end
 
   # Adds a callback that will be executed around each HTTP request.
@@ -1050,7 +1159,7 @@ class VCR::Configuration
   # @yield the callback
   # @yieldparam request [VCR::Request::FiberAware] the request that is being made
   #
-  # source://vcr//lib/vcr/configuration.rb#388
+  # source://vcr//lib/vcr/configuration.rb#395
   def around_http_request(*filters, &block); end
 
   # Adds a callback that will be called before a previously recorded
@@ -1076,7 +1185,7 @@ class VCR::Configuration
   #   loaded.
   # @yieldparam cassette [(optional) VCR::Cassette] The current cassette.
   #
-  # source://vcr//lib/vcr/configuration.rb#318
+  # source://vcr//lib/vcr/configuration.rb#325
   def before_playback(tag = T.unsafe(nil), &block); end
 
   # Adds a callback that will be called before the recorded HTTP interactions
@@ -1102,7 +1211,7 @@ class VCR::Configuration
   #   serialized and written to disk.
   # @yieldparam cassette [(optional) VCR::Cassette] The current cassette.
   #
-  # source://vcr//lib/vcr/configuration.rb#290
+  # source://vcr//lib/vcr/configuration.rb#297
   def before_record(tag = T.unsafe(nil), &block); end
 
   # Gets the directory to read cassettes from and write cassettes to.
@@ -1138,7 +1247,7 @@ class VCR::Configuration
   #   * `persister[storage_key] = content` # persists given content
   # @return [VCR::Cassette::Persisters] the cassette persister registry object.
   #
-  # source://vcr//lib/vcr/configuration.rb#262
+  # source://vcr//lib/vcr/configuration.rb#269
   def cassette_persisters; end
 
   # Gets the registry of cassette serializers. Use it to register a custom serializer.
@@ -1154,13 +1263,13 @@ class VCR::Configuration
   #   * `deserialize(String) # => Hash`
   # @return [VCR::Cassette::Serializers] the cassette serializer registry object.
   #
-  # source://vcr//lib/vcr/configuration.rb#246
+  # source://vcr//lib/vcr/configuration.rb#253
   def cassette_serializers; end
 
   # Configures RSpec to use a VCR cassette for any example
   # tagged with `:vcr`.
   #
-  # source://vcr//lib/vcr/configuration.rb#411
+  # source://vcr//lib/vcr/configuration.rb#418
   def configure_rspec_metadata!; end
 
   # An object to log debug output to.
@@ -1176,12 +1285,12 @@ class VCR::Configuration
   # @overload debug_logger
   # @overload debug_logger=
   #
-  # source://vcr//lib/vcr/configuration.rb#433
+  # source://vcr//lib/vcr/configuration.rb#440
   def debug_logger; end
 
   # @private (documented above)
   #
-  # source://vcr//lib/vcr/configuration.rb#435
+  # source://vcr//lib/vcr/configuration.rb#442
   def debug_logger=(value); end
 
   # Default options to apply to every cassette.
@@ -1225,7 +1334,7 @@ class VCR::Configuration
   # @yieldparam interaction [(optional) VCR::HTTPInteraction::HookAware] the HTTP interaction
   # @yieldreturn the string to replace
   #
-  # source://vcr//lib/vcr/configuration.rb#218
+  # source://vcr//lib/vcr/configuration.rb#225
   def define_cassette_placeholder(placeholder, tag = T.unsafe(nil), &block); end
 
   # Sets up a {#before_record} and a {#before_playback} hook that will
@@ -1251,24 +1360,22 @@ class VCR::Configuration
   # @yieldparam interaction [(optional) VCR::HTTPInteraction::HookAware] the HTTP interaction
   # @yieldreturn the string to replace
   #
-  # source://vcr//lib/vcr/configuration.rb#218
+  # source://vcr//lib/vcr/configuration.rb#225
   def filter_sensitive_data(placeholder, tag = T.unsafe(nil), &block); end
 
   # Configures which libraries VCR will hook into to intercept HTTP requests.
   #
   # @example
   #   VCR.configure do |c|
-  #   c.hook_into :fakeweb, :typhoeus
+  #   c.hook_into :webmock, :typhoeus
   #   end
-  # @note `:fakeweb` and `:webmock` cannot both be used since they both monkey patch
-  #   `Net::HTTP`. Otherwise, you can use any combination of these.
   # @param hooks [Array<Symbol>] List of libraries. Valid values are
-  #   `:fakeweb`, `:webmock`, `:typhoeus`, `:excon` and `:faraday`.
+  #   `:webmock`, `:typhoeus`, `:excon` and `:faraday`.
   # @raise [ArgumentError] when given an unsupported library name.
   # @raise [VCR::Errors::LibraryVersionTooLowError] when the version
   #   of a library you are using is too low for VCR to support.
   #
-  # source://vcr//lib/vcr/configuration.rb#67
+  # source://vcr//lib/vcr/configuration.rb#65
   def hook_into(*hooks); end
 
   # Specifies host(s) that VCR should ignore.
@@ -1277,7 +1384,7 @@ class VCR::Configuration
   # @see #ignore_localhost=
   # @see #ignore_request
   #
-  # source://vcr//lib/vcr/configuration.rb#77
+  # source://vcr//lib/vcr/configuration.rb#75
   def ignore_host(*hosts); end
 
   # Specifies host(s) that VCR should ignore.
@@ -1286,7 +1393,7 @@ class VCR::Configuration
   # @see #ignore_localhost=
   # @see #ignore_request
   #
-  # source://vcr//lib/vcr/configuration.rb#77
+  # source://vcr//lib/vcr/configuration.rb#75
   def ignore_hosts(*hosts); end
 
   # Sets whether or not VCR should ignore localhost requests.
@@ -1295,7 +1402,7 @@ class VCR::Configuration
   # @see #ignore_hosts
   # @see #ignore_request
   #
-  # source://vcr//lib/vcr/configuration.rb#87
+  # source://vcr//lib/vcr/configuration.rb#94
   def ignore_localhost=(value); end
 
   # Defines what requests to ignore using a block.
@@ -1312,14 +1419,14 @@ class VCR::Configuration
   # @yieldparam request [VCR::Request] the HTTP request
   # @yieldreturn [Boolean] whether or not to ignore the request
   #
-  # source://vcr//lib/vcr/configuration.rb#105
+  # source://vcr//lib/vcr/configuration.rb#112
   def ignore_request(&block); end
 
   # Logger object that provides logging APIs and helper methods.
   #
   # @private
   #
-  # source://vcr//lib/vcr/configuration.rb#447
+  # source://vcr//lib/vcr/configuration.rb#454
   def logger; end
 
   # @param http_message [#body, #headers] the `VCR::Request` or `VCR::Response` object being serialized
@@ -1327,7 +1434,7 @@ class VCR::Configuration
   #   be base64 encoded during serialization in order to preserve the bytes exactly.
   # @see #preserve_exact_body_bytes
   #
-  # source://vcr//lib/vcr/configuration.rb#477
+  # source://vcr//lib/vcr/configuration.rb#484
   def preserve_exact_body_bytes_for?(http_message); end
 
   # Sets a parser for VCR to use when parsing query strings for request
@@ -1345,7 +1452,7 @@ class VCR::Configuration
   # @overload query_parser
   # @overload query_parser=
   #
-  # source://vcr//lib/vcr/configuration.rb#144
+  # source://vcr//lib/vcr/configuration.rb#151
   def query_parser; end
 
   # Sets a parser for VCR to use when parsing query strings for request
@@ -1363,7 +1470,7 @@ class VCR::Configuration
   # @overload query_parser
   # @overload query_parser=
   #
-  # source://vcr//lib/vcr/configuration.rb#144
+  # source://vcr//lib/vcr/configuration.rb#151
   def query_parser=(_arg0); end
 
   # Registers a request matcher for later use.
@@ -1385,7 +1492,7 @@ class VCR::Configuration
   # @yieldreturn [Boolean] whether or not these two requests should be considered
   #   equivalent
   #
-  # source://vcr//lib/vcr/configuration.rb#191
+  # source://vcr//lib/vcr/configuration.rb#198
   def register_request_matcher(name, &block); end
 
   # @deprecated Use #hook_into instead.
@@ -1393,6 +1500,22 @@ class VCR::Configuration
   #
   # source://vcr//lib/vcr/deprecations.rb#26
   def stub_with(*adapters); end
+
+  # Specifies host(s) that VCR should stop ignoring.
+  #
+  # @param hosts [Array<String>] List of hosts to unignore
+  # @see #ignore_hosts
+  #
+  # source://vcr//lib/vcr/configuration.rb#84
+  def unignore_host(*hosts); end
+
+  # Specifies host(s) that VCR should stop ignoring.
+  #
+  # @param hosts [Array<String>] List of hosts to unignore
+  # @see #ignore_hosts
+  #
+  # source://vcr//lib/vcr/configuration.rb#84
+  def unignore_hosts(*hosts); end
 
   # Sets a parser for VCR to use when parsing URIs. The new parser
   # must implement a method `parse` that returns an instance of the
@@ -1417,7 +1540,7 @@ class VCR::Configuration
   # @overload uri_parser
   # @overload uri_parser=
   #
-  # source://vcr//lib/vcr/configuration.rb#170
+  # source://vcr//lib/vcr/configuration.rb#177
   def uri_parser; end
 
   # Sets a parser for VCR to use when parsing URIs. The new parser
@@ -1443,54 +1566,54 @@ class VCR::Configuration
   # @overload uri_parser
   # @overload uri_parser=
   #
-  # source://vcr//lib/vcr/configuration.rb#170
+  # source://vcr//lib/vcr/configuration.rb#177
   def uri_parser=(_arg0); end
 
   private
 
-  # source://vcr//lib/vcr/configuration.rb#519
+  # source://vcr//lib/vcr/configuration.rb#529
   def create_fiber_for(fiber_errors, hook_declaration, proc); end
 
-  # source://vcr//lib/vcr/configuration.rb#501
+  # source://vcr//lib/vcr/configuration.rb#511
   def load_library_hook(hook); end
 
-  # source://vcr//lib/vcr/configuration.rb#568
+  # source://vcr//lib/vcr/configuration.rb#582
   def log_prefix; end
 
-  # source://vcr//lib/vcr/configuration.rb#554
+  # source://vcr//lib/vcr/configuration.rb#564
   def register_built_in_hooks; end
 
-  # source://vcr//lib/vcr/configuration.rb#549
+  # source://vcr//lib/vcr/configuration.rb#559
   def request_filter_from(object); end
 
-  # source://vcr//lib/vcr/configuration.rb#509
+  # source://vcr//lib/vcr/configuration.rb#519
   def resume_fiber(fiber, fiber_errors, response, hook_declaration); end
 
-  # source://vcr//lib/vcr/configuration.rb#538
+  # source://vcr//lib/vcr/configuration.rb#548
   def start_new_fiber_for(request, fibers, fiber_errors, hook_declaration, proc); end
 
-  # source://vcr//lib/vcr/configuration.rb#544
+  # source://vcr//lib/vcr/configuration.rb#554
   def tag_filter_from(tag); end
 end
 
 # source://vcr//lib/vcr/configuration.rb#0
 module VCR::Configuration::DefinedHooks
-  # source://vcr//lib/vcr/util/hooks.rb#54
+  # source://vcr//lib/vcr/util/hooks.rb#55
   def after_http_request(*filters, &hook); end
 
-  # source://vcr//lib/vcr/util/hooks.rb#54
+  # source://vcr//lib/vcr/util/hooks.rb#55
   def after_library_hooks_loaded(*filters, &hook); end
 
-  # source://vcr//lib/vcr/util/hooks.rb#54
+  # source://vcr//lib/vcr/util/hooks.rb#55
   def before_http_request(*filters, &hook); end
 
-  # source://vcr//lib/vcr/util/hooks.rb#54
+  # source://vcr//lib/vcr/util/hooks.rb#55
   def before_playback(*filters, &hook); end
 
-  # source://vcr//lib/vcr/util/hooks.rb#54
+  # source://vcr//lib/vcr/util/hooks.rb#55
   def before_record(*filters, &hook); end
 
-  # source://vcr//lib/vcr/util/hooks.rb#54
+  # source://vcr//lib/vcr/util/hooks.rb#55
   def preserve_exact_body_bytes(*filters, &hook); end
 end
 
@@ -1507,9 +1630,9 @@ class VCR::CucumberTags
   # Adds `Before` and `After` cucumber hooks for the named tags that
   # will cause a VCR cassette to be used for scenarios with matching tags.
   #
-  # @param tag_names [Array<String>] the cucumber scenario tags
-  # @param options [(optional) Hash] the cassette options. Specify
-  #   `:use_scenario_name => true` to automatically name the
+  # @param tag_names [Array<String,Hash>] the cucumber scenario tags. If
+  #   the last argument is a hash it is treated as cassette options.
+  #   - `:use_scenario_name => true` to automatically name the
   #   cassette according to the scenario name.
   #
   # source://vcr//lib/vcr/test_frameworks/cucumber.rb#30
@@ -1518,9 +1641,9 @@ class VCR::CucumberTags
   # Adds `Before` and `After` cucumber hooks for the named tags that
   # will cause a VCR cassette to be used for scenarios with matching tags.
   #
-  # @param tag_names [Array<String>] the cucumber scenario tags
-  # @param options [(optional) Hash] the cassette options. Specify
-  #   `:use_scenario_name => true` to automatically name the
+  # @param tag_names [Array<String,Hash>] the cucumber scenario tags. If
+  #   the last argument is a hash it is treated as cassette options.
+  #   - `:use_scenario_name => true` to automatically name the
   #   cassette according to the scenario name.
   #
   # source://vcr//lib/vcr/test_frameworks/cucumber.rb#30
@@ -1543,29 +1666,29 @@ end
 #
 # @private
 #
-# source://vcr//lib/vcr/test_frameworks/cucumber.rb#73
+# source://vcr//lib/vcr/test_frameworks/cucumber.rb#84
 class VCR::CucumberTags::ScenarioNameBuilder
   # @return [ScenarioNameBuilder] a new instance of ScenarioNameBuilder
   #
-  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#74
+  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#85
   def initialize(test_case); end
 
-  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#79
+  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#90
   def cassette_name; end
 
-  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#89
+  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#100
   def examples_table(*_arg0); end
 
-  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#92
+  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#103
   def examples_table_row(row); end
 
-  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#83
+  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#94
   def feature(feature); end
 
-  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#89
+  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#100
   def scenario(*_arg0); end
 
-  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#83
+  # source://vcr//lib/vcr/test_frameworks/cucumber.rb#94
   def scenario_outline(feature); end
 end
 
@@ -1661,7 +1784,7 @@ class VCR::Errors::TurnedOffError < ::VCR::Errors::Error; end
 #   request in your test suite. The error message will give you
 #   suggestions for how to deal with the request.
 #
-# source://vcr//lib/vcr/errors.rb#64
+# source://vcr//lib/vcr/errors.rb#63
 class VCR::Errors::UnhandledHTTPRequestError < ::VCR::Errors::Error
   # Constructs the error.
   #
@@ -1678,10 +1801,10 @@ class VCR::Errors::UnhandledHTTPRequestError < ::VCR::Errors::Error
 
   private
 
-  # source://vcr//lib/vcr/errors.rb#131
+  # source://vcr//lib/vcr/errors.rb#136
   def cassettes_description; end
 
-  # source://vcr//lib/vcr/errors.rb#143
+  # source://vcr//lib/vcr/errors.rb#148
   def cassettes_list; end
 
   # source://vcr//lib/vcr/errors.rb#81
@@ -1690,53 +1813,61 @@ class VCR::Errors::UnhandledHTTPRequestError < ::VCR::Errors::Error
   # source://vcr//lib/vcr/errors.rb#90
   def current_cassettes; end
 
-  # source://vcr//lib/vcr/errors.rb#121
+  # source://vcr//lib/vcr/errors.rb#118
   def current_matchers; end
 
-  # source://vcr//lib/vcr/errors.rb#178
+  # source://vcr//lib/vcr/errors.rb#183
   def format_bullet_point(lines, index); end
 
-  # source://vcr//lib/vcr/errors.rb#184
+  # source://vcr//lib/vcr/errors.rb#189
   def format_foot_note(url, index); end
 
-  # source://vcr//lib/vcr/errors.rb#163
+  # source://vcr//lib/vcr/errors.rb#128
+  def formatted_headers; end
+
+  # source://vcr//lib/vcr/errors.rb#168
   def formatted_suggestions; end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/errors.rb#290
+  # source://vcr//lib/vcr/errors.rb#295
   def has_used_interaction_matching?; end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/errors.rb#117
+  # source://vcr//lib/vcr/errors.rb#114
   def match_request_on_body?; end
 
-  # source://vcr//lib/vcr/errors.rb#294
+  # @return [Boolean]
+  #
+  # source://vcr//lib/vcr/errors.rb#110
+  def match_request_on_headers?; end
+
+  # source://vcr//lib/vcr/errors.rb#299
   def match_requests_on_suggestion; end
 
-  # source://vcr//lib/vcr/errors.rb#272
+  # source://vcr//lib/vcr/errors.rb#277
   def no_cassette_suggestions; end
 
-  # source://vcr//lib/vcr/errors.rb#278
+  # source://vcr//lib/vcr/errors.rb#283
   def record_mode_suggestion; end
 
   # source://vcr//lib/vcr/errors.rb#77
   def relish_version_slug; end
 
-  # source://vcr//lib/vcr/errors.rb#105
+  # source://vcr//lib/vcr/errors.rb#94
   def request_description; end
 
-  # source://vcr//lib/vcr/errors.rb#254
+  # source://vcr//lib/vcr/errors.rb#259
   def suggestion_for(key); end
 
-  # source://vcr//lib/vcr/errors.rb#261
+  # source://vcr//lib/vcr/errors.rb#266
   def suggestions; end
 end
 
 # List of suggestions for how to configure VCR to handle the request.
 #
-# source://vcr//lib/vcr/errors.rb#189
+# source://vcr//lib/vcr/errors.rb#194
 VCR::Errors::UnhandledHTTPRequestError::ALL_SUGGESTIONS = T.let(T.unsafe(nil), Hash)
 
 # Error raised when you ask VCR to decode a compressed response
@@ -1767,17 +1898,17 @@ class VCR::Errors::UnusedHTTPInteractionError < ::VCR::Errors::Error; end
 # @attr response [Response] the response
 # @attr recorded_at [Time] when this HTTP interaction was recorded
 #
-# source://vcr//lib/vcr/structs.rb#483
+# source://vcr//lib/vcr/structs.rb#501
 class VCR::HTTPInteraction < ::Struct
   # @return [HTTPInteraction] a new instance of HTTPInteraction
   #
-  # source://vcr//lib/vcr/structs.rb#484
+  # source://vcr//lib/vcr/structs.rb#502
   def initialize(*args); end
 
   # @return [HookAware] an instance with additional capabilities
   #   suitable for use in `before_record` and `before_playback` hooks.
   #
-  # source://vcr//lib/vcr/structs.rb#516
+  # source://vcr//lib/vcr/structs.rb#532
   def hook_aware; end
 
   # Builds a serializable hash from the HTTP interaction data.
@@ -1786,7 +1917,7 @@ class VCR::HTTPInteraction < ::Struct
   #   and can be easily serialized.
   # @see HTTPInteraction.from_hash
   #
-  # source://vcr//lib/vcr/structs.rb#494
+  # source://vcr//lib/vcr/structs.rb#512
   def to_hash; end
 
   class << self
@@ -1795,7 +1926,7 @@ class VCR::HTTPInteraction < ::Struct
     # @param hash [Hash] the hash to use to construct the instance.
     # @return [HTTPInteraction] the HTTP interaction
     #
-    # source://vcr//lib/vcr/structs.rb#508
+    # source://vcr//lib/vcr/structs.rb#524
     def from_hash(hash); end
   end
 end
@@ -1803,11 +1934,11 @@ end
 # Decorates an {HTTPInteraction} with additional methods useful
 # for a `before_record` or `before_playback` hook.
 #
-# source://vcr//lib/vcr/structs.rb#522
+# source://vcr//lib/vcr/structs.rb#538
 class VCR::HTTPInteraction::HookAware
   # @return [HookAware] a new instance of HookAware
   #
-  # source://vcr//lib/vcr/structs.rb#523
+  # source://vcr//lib/vcr/structs.rb#539
   def initialize(http_interaction); end
 
   # Replaces a string in any part of the HTTP interaction (headers, request body,
@@ -1816,7 +1947,7 @@ class VCR::HTTPInteraction::HookAware
   # @param text [#to_s] the text to replace
   # @param replacement_text [#to_s] the text to put in its place
   #
-  # source://vcr//lib/vcr/structs.rb#547
+  # source://vcr//lib/vcr/structs.rb#563
   def filter!(text, replacement_text); end
 
   # Flags the HTTP interaction so that VCR ignores it. This is useful in
@@ -1825,21 +1956,21 @@ class VCR::HTTPInteraction::HookAware
   #
   # @see #ignored?
   #
-  # source://vcr//lib/vcr/structs.rb#532
+  # source://vcr//lib/vcr/structs.rb#548
   def ignore!; end
 
   # @return [Boolean] whether or not this HTTP interaction should be ignored.
   # @see #ignore!
   #
-  # source://vcr//lib/vcr/structs.rb#538
+  # source://vcr//lib/vcr/structs.rb#554
   def ignored?; end
 
   private
 
-  # source://vcr//lib/vcr/structs.rb#568
+  # source://vcr//lib/vcr/structs.rb#584
   def filter_hash!(hash, text, replacement_text); end
 
-  # source://vcr//lib/vcr/structs.rb#555
+  # source://vcr//lib/vcr/structs.rb#571
   def filter_object!(object, text, replacement_text); end
 end
 
@@ -1851,41 +1982,43 @@ module VCR::Hooks
 
   mixes_in_class_methods ::VCR::Hooks::ClassMethods
 
-  # source://vcr//lib/vcr/util/hooks.rb#33
+  # source://vcr//lib/vcr/util/hooks.rb#34
   def clear_hooks; end
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/util/hooks.rb#43
+  # source://vcr//lib/vcr/util/hooks.rb#44
   def has_hooks_for?(hook_type); end
 
-  # source://vcr//lib/vcr/util/hooks.rb#37
+  # source://vcr//lib/vcr/util/hooks.rb#38
   def hooks; end
 
-  # source://vcr//lib/vcr/util/hooks.rb#27
+  # source://vcr//lib/vcr/util/hooks.rb#28
   def invoke_hook(hook_type, *args); end
 
   class << self
     # @private
     #
-    # source://vcr//lib/vcr/util/hooks.rb#18
+    # source://vcr//lib/vcr/util/hooks.rb#19
     def included(klass); end
   end
 end
 
 # @private
 #
-# source://vcr//lib/vcr/util/hooks.rb#48
+# source://vcr//lib/vcr/util/hooks.rb#49
 module VCR::Hooks::ClassMethods
-  # source://vcr//lib/vcr/util/hooks.rb#49
+  # source://vcr//lib/vcr/util/hooks.rb#50
   def define_hook(hook_type, prepend = T.unsafe(nil)); end
 end
 
-# source://vcr//lib/vcr/util/hooks.rb#8
+# @private
+#
+# source://vcr//lib/vcr/util/hooks.rb#9
 class VCR::Hooks::FilteredHook < ::Struct
   include ::VCR::VariableArgsBlockCaller
 
-  # source://vcr//lib/vcr/util/hooks.rb#11
+  # source://vcr//lib/vcr/util/hooks.rb#12
   def conditionally_invoke(*args); end
 
   # Returns the value of attribute filters
@@ -1921,17 +2054,17 @@ end
 
 # @private
 #
-# source://vcr//lib/vcr/util/internet_connection.rb#32
+# source://vcr//lib/vcr/util/internet_connection.rb#26
 module VCR::InternetConnection
   extend ::VCR::InternetConnection
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/util/internet_connection.rb#37
+  # source://vcr//lib/vcr/util/internet_connection.rb#31
   def available?; end
 end
 
-# source://vcr//lib/vcr/util/internet_connection.rb#35
+# source://vcr//lib/vcr/util/internet_connection.rb#29
 VCR::InternetConnection::EXAMPLE_HOST = T.let(T.unsafe(nil), String)
 
 # @private
@@ -1961,7 +2094,7 @@ end
 
 # A Cassette wrapper for linking cassettes from another thread
 #
-# source://vcr//lib/vcr/linked_cassette.rb#7
+# source://vcr//lib/vcr/linked_cassette.rb#6
 class VCR::LinkedCassette < ::SimpleDelegator
   # Prevents cassette ejection by raising EjectLinkedCassetteError
   #
@@ -1978,8 +2111,8 @@ class VCR::LinkedCassette < ::SimpleDelegator
   class << self
     # Create a new CassetteList
     #
-    # @param context-owned [Array] cassettes
-    # @param context-unowned [Array] (linked) cassettes
+    # @param cassettes [Array] context-owned cassettes
+    # @param linked_cassettes [Array] context-unowned (linked) cassettes
     #
     # source://vcr//lib/vcr/linked_cassette.rb#57
     def list(cassettes, linked_cassettes); end
@@ -1994,8 +2127,8 @@ class VCR::LinkedCassette::CassetteList
 
   # Creates a new list of context-owned cassettes and linked cassettes
   #
-  # @param context-owned [Array] cassettes
-  # @param context-unowned [Array] (linked) cassettes
+  # @param cassettes [Array] context-owned cassettes
+  # @param linked_cassettes [Array] context-unowned (linked) cassettes
   # @return [CassetteList] a new instance of CassetteList
   #
   # source://vcr//lib/vcr/linked_cassette.rb#14
@@ -2101,7 +2234,7 @@ VCR::MainThread = T.let(T.unsafe(nil), Thread)
 
 # Contains middlewares for use with different libraries.
 #
-# source://vcr//lib/vcr.rb#40
+# source://vcr//lib/vcr.rb#39
 module VCR::Middleware; end
 
 # Object yielded by VCR's {Rack} middleware that allows you to configure
@@ -2249,76 +2382,23 @@ end
 
 # @private
 #
-# source://vcr//lib/vcr/structs.rb#171
-module VCR::OrderedHashSerializer
-  # source://vcr//lib/vcr/structs.rb#172
-  def each; end
-
-  class << self
-    # 1.9+ hashes are already ordered.
-    #
-    # source://vcr//lib/vcr/structs.rb#180
-    def apply_to(*args); end
-  end
-end
-
-# source://vcr//lib/vcr/util/internet_connection.rb#13
+# source://vcr//lib/vcr/util/internet_connection.rb#8
 module VCR::Ping
   private
 
-  # source://vcr//lib/vcr/util/internet_connection.rb#14
+  # source://vcr//lib/vcr/util/internet_connection.rb#9
   def pingecho(host, timeout = T.unsafe(nil), service = T.unsafe(nil)); end
 
   class << self
-    # source://vcr//lib/vcr/util/internet_connection.rb#14
+    # source://vcr//lib/vcr/util/internet_connection.rb#9
     def pingecho(host, timeout = T.unsafe(nil), service = T.unsafe(nil)); end
   end
 end
 
 # Integrates VCR with RSpec.
 #
-# source://vcr//lib/vcr/deprecations.rb#47
+# source://vcr//lib/vcr.rb#35
 module VCR::RSpec; end
-
-# Contains macro methods to assist with VCR usage. These methods are
-# intended to be used directly in an RSpec example group. To make these
-# available in your RSpec example groups, extend the module in an individual
-# example group, or configure RSpec to extend the module in all example groups.
-#
-# @example
-#   RSpec.configure do |c|
-#   c.extend VCR::RSpec::Macros
-#   end
-#
-# source://vcr//lib/vcr/deprecations.rb#58
-module VCR::RSpec::Macros
-  # Sets up a `before` and `after` hook that will insert and eject a
-  # cassette, respectively.
-  #
-  # @deprecated Use RSpec metadata options
-  # @example
-  #   describe "Some API Client" do
-  #   use_vcr_cassette "some_api", :record => :new_episodes
-  #   end
-  # @param name [(optional) String] the cassette name; it will be inferred by the example
-  #   group descriptions if not given.
-  # @param options [(optional) Hash] the cassette options
-  #
-  # source://vcr//lib/vcr/deprecations.rb#75
-  def use_vcr_cassette(*args); end
-
-  private
-
-  # source://vcr//lib/vcr/deprecations.rb#90
-  def infer_cassette_name; end
-
-  class << self
-    # @private
-    #
-    # source://vcr//lib/vcr/deprecations.rb#59
-    def extended(base); end
-  end
-end
 
 # @private
 #
@@ -2326,8 +2406,11 @@ end
 module VCR::RSpec::Metadata
   extend ::VCR::RSpec::Metadata
 
-  # source://vcr//lib/vcr/test_frameworks/rspec.rb#8
+  # source://vcr//lib/vcr/test_frameworks/rspec.rb#30
   def configure!; end
+
+  # source://vcr//lib/vcr/test_frameworks/rspec.rb#8
+  def vcr_cassette_name_for(metadata); end
 end
 
 # The request of an {HTTPInteraction}.
@@ -2337,7 +2420,7 @@ end
 # @attr body [String, nil] the request body
 # @attr headers [Hash{String => Array<String>}] the request headers
 #
-# source://vcr//lib/vcr/structs.rb#195
+# source://vcr//lib/vcr/structs.rb#176
 class VCR::Request < ::Struct
   include ::VCR::Normalizers::Header
   include ::VCR::Normalizers::Body
@@ -2345,21 +2428,21 @@ class VCR::Request < ::Struct
 
   # @return [Request] a new instance of Request
   #
-  # source://vcr//lib/vcr/structs.rb#199
+  # source://vcr//lib/vcr/structs.rb#180
   def initialize(*args); end
 
   # the HTTP method (i.e. :head, :options, :get, :post, :put, :patch or :delete)
   #
   # @return [Symbol] the current value of method
   #
-  # source://vcr//lib/vcr/structs.rb#247
+  # source://vcr//lib/vcr/structs.rb#228
   def method(*args); end
 
   # Parses the URI using the configured `uri_parser`.
   #
   # @return [#schema, #host, #port, #path, #query] A parsed URI object.
   #
-  # source://vcr//lib/vcr/structs.rb#242
+  # source://vcr//lib/vcr/structs.rb#223
   def parsed_uri; end
 
   # Builds a serializable hash from the request data.
@@ -2368,12 +2451,12 @@ class VCR::Request < ::Struct
   #   serialized.
   # @see Request.from_hash
   #
-  # source://vcr//lib/vcr/structs.rb#216
+  # source://vcr//lib/vcr/structs.rb#197
   def to_hash; end
 
   private
 
-  # source://vcr//lib/vcr/structs.rb#334
+  # source://vcr//lib/vcr/structs.rb#315
   def without_standard_port(uri); end
 
   class << self
@@ -2382,20 +2465,20 @@ class VCR::Request < ::Struct
     # @param hash [Hash] the hash to use to construct the instance.
     # @return [Request] the request
     #
-    # source://vcr//lib/vcr/structs.rb#229
+    # source://vcr//lib/vcr/structs.rb#210
     def from_hash(hash); end
   end
 end
 
 # Provides fiber-awareness for the {VCR::Configuration#around_http_request} hook.
 #
-# source://vcr//lib/vcr/structs.rb#315
+# source://vcr//lib/vcr/structs.rb#293
 class VCR::Request::FiberAware
   # Yields the fiber so the request can proceed.
   #
   # @return [VCR::Response] the response from the request
   #
-  # source://vcr//lib/vcr/structs.rb#316
+  # source://vcr//lib/vcr/structs.rb#297
   def proceed; end
 
   # Builds a proc that allows the request to proceed when called.
@@ -2404,43 +2487,43 @@ class VCR::Request::FiberAware
   #
   # @return [Proc] the proc
   #
-  # source://vcr//lib/vcr/structs.rb#325
+  # source://vcr//lib/vcr/structs.rb#306
   def to_proc; end
 end
 
 # Decorates a {Request} with its current type.
 #
-# source://vcr//lib/vcr/structs.rb#254
+# source://vcr//lib/vcr/structs.rb#234
 class VCR::Request::Typed
   # @param request [Request] the request
   # @param type [Symbol] the type. Should be one of `:ignored`, `:stubbed`, `:recordable` or `:unhandled`.
   # @return [Typed] a new instance of Typed
   #
-  # source://vcr//lib/vcr/structs.rb#259
+  # source://vcr//lib/vcr/structs.rb#240
   def initialize(request, type); end
 
   # @return [Boolean] whether or not this request is being stubbed by an
-  #   external library (such as WebMock or FakeWeb).
+  #   external library (such as WebMock).
   # @see #stubbed_by_vcr?
   # @see #stubbed?
   #
-  # source://vcr//lib/vcr/structs.rb#280
+  # source://vcr//lib/vcr/structs.rb#261
   def externally_stubbed?; end
 
   # @return [Boolean] whether or not this request is being ignored
   #
-  # source://vcr//lib/vcr/structs.rb#265
+  # source://vcr//lib/vcr/structs.rb#246
   def ignored?; end
 
   # @note VCR allows `:ignored` and `:recordable` requests to be made for real.
   # @return [Boolean] whether or not this request will be made for real.
   #
-  # source://vcr//lib/vcr/structs.rb#296
+  # source://vcr//lib/vcr/structs.rb#277
   def real?; end
 
   # @return [Boolean] whether or not this request will be recorded.
   #
-  # source://vcr//lib/vcr/structs.rb#285
+  # source://vcr//lib/vcr/structs.rb#266
   def recordable?; end
 
   # @return [Boolean] whether or not this request will be stubbed.
@@ -2448,24 +2531,24 @@ class VCR::Request::Typed
   # @see #stubbed_by_vcr?
   # @see #externally_stubbed?
   #
-  # source://vcr//lib/vcr/structs.rb#304
+  # source://vcr//lib/vcr/structs.rb#285
   def stubbed?; end
 
   # @return [Boolean] whether or not this request is being stubbed by VCR
   # @see #externally_stubbed?
   # @see #stubbed?
   #
-  # source://vcr//lib/vcr/structs.rb#272
+  # source://vcr//lib/vcr/structs.rb#253
   def stubbed_by_vcr?; end
 
   # @return [Symbol] One of `:ignored`, `:stubbed`, `:recordable` or `:unhandled`.
   #
-  # source://vcr//lib/vcr/structs.rb#255
+  # source://vcr//lib/vcr/structs.rb#236
   def type; end
 
   # @return [Boolean] whether or not VCR knows how to handle this request.
   #
-  # source://vcr//lib/vcr/structs.rb#290
+  # source://vcr//lib/vcr/structs.rb#271
   def unhandled?; end
 end
 
@@ -2485,24 +2568,32 @@ class VCR::RequestIgnorer
 
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/request_ignorer.rb#32
+  # source://vcr//lib/vcr/request_ignorer.rb#40
   def ignore?(request); end
 
-  # source://vcr//lib/vcr/request_ignorer.rb#28
+  # source://vcr//lib/vcr/request_ignorer.rb#32
   def ignore_hosts(*hosts); end
 
   # source://vcr//lib/vcr/request_ignorer.rb#20
   def ignore_localhost=(value); end
 
+  # @return [Boolean]
+  #
+  # source://vcr//lib/vcr/request_ignorer.rb#28
+  def localhost_ignored?; end
+
+  # source://vcr//lib/vcr/request_ignorer.rb#36
+  def unignore_hosts(*hosts); end
+
   private
 
-  # source://vcr//lib/vcr/request_ignorer.rb#38
+  # source://vcr//lib/vcr/request_ignorer.rb#46
   def ignored_hosts; end
 end
 
 # source://vcr//lib/vcr/request_ignorer.rb#0
 module VCR::RequestIgnorer::DefinedHooks
-  # source://vcr//lib/vcr/util/hooks.rb#54
+  # source://vcr//lib/vcr/util/hooks.rb#55
   def ignore_request(*filters, &hook); end
 end
 
@@ -2626,7 +2717,7 @@ end
 # @attr http_version [nil, String] the HTTP version
 # @attr adapter_metadata [Hash] Additional metadata used by a specific VCR adapter.
 #
-# source://vcr//lib/vcr/structs.rb#350
+# source://vcr//lib/vcr/structs.rb#331
 class VCR::Response < ::Struct
   include ::VCR::Normalizers::Header
   include ::VCR::Normalizers::Body
@@ -2634,21 +2725,21 @@ class VCR::Response < ::Struct
 
   # @return [Response] a new instance of Response
   #
-  # source://vcr//lib/vcr/structs.rb#354
+  # source://vcr//lib/vcr/structs.rb#335
   def initialize(*args); end
 
   # Checks if the type of encoding is one of "gzip" or "deflate".
   #
   # @return [Boolean]
   #
-  # source://vcr//lib/vcr/structs.rb#402
+  # source://vcr//lib/vcr/structs.rb#382
   def compressed?; end
 
   # The type of encoding.
   #
   # @return [String] encoding type
   #
-  # source://vcr//lib/vcr/structs.rb#397
+  # source://vcr//lib/vcr/structs.rb#377
   def content_encoding; end
 
   # Decodes the compressed body and deletes evidence that it was ever compressed.
@@ -2657,8 +2748,16 @@ class VCR::Response < ::Struct
   #   is not a known encoding.
   # @return self
   #
-  # source://vcr//lib/vcr/structs.rb#411
+  # source://vcr//lib/vcr/structs.rb#396
   def decompress; end
+
+  # Recompresses the decompressed body according to adapter metadata.
+  #
+  # @raise [VCR::Errors::UnknownContentEncodingError] if the content encoding
+  #   stored in the adapter metadata is unknown
+  #
+  # source://vcr//lib/vcr/structs.rb#410
+  def recompress; end
 
   # Builds a serializable hash from the response data.
   #
@@ -2666,14 +2765,21 @@ class VCR::Response < ::Struct
   #   and can be easily serialized.
   # @see Response.from_hash
   #
-  # source://vcr//lib/vcr/structs.rb#364
+  # source://vcr//lib/vcr/structs.rb#345
   def to_hash; end
 
   # Updates the Content-Length response header so that it is
   # accurate for the response body.
   #
-  # source://vcr//lib/vcr/structs.rb#390
+  # source://vcr//lib/vcr/structs.rb#370
   def update_content_length_header; end
+
+  # Checks if VCR decompressed the response body
+  #
+  # @return [Boolean]
+  #
+  # source://vcr//lib/vcr/structs.rb#387
+  def vcr_decompressed?; end
 
   class << self
     # Decode string compressed with gzip or deflate
@@ -2681,7 +2787,7 @@ class VCR::Response < ::Struct
     # @raise [VCR::Errors::UnknownContentEncodingError] if the content encoding
     #   is not a known encoding.
     #
-    # source://vcr//lib/vcr/structs.rb#432
+    # source://vcr//lib/vcr/structs.rb#449
     def decompress(body, type); end
 
     # Constructs a new instance from a hash.
@@ -2689,12 +2795,12 @@ class VCR::Response < ::Struct
     # @param hash [Hash] the hash to use to construct the instance.
     # @return [Response] the response
     #
-    # source://vcr//lib/vcr/structs.rb#380
+    # source://vcr//lib/vcr/structs.rb#360
     def from_hash(hash); end
   end
 end
 
-# source://vcr//lib/vcr/structs.rb#423
+# source://vcr//lib/vcr/structs.rb#440
 VCR::Response::HAVE_ZLIB = T.let(T.unsafe(nil), TrueClass)
 
 # The response status of an {HTTPInteraction}.
@@ -2702,7 +2808,7 @@ VCR::Response::HAVE_ZLIB = T.let(T.unsafe(nil), TrueClass)
 # @attr code [Integer] the HTTP status code
 # @attr message [String] the HTTP status message (e.g. "OK" for a status of 200)
 #
-# source://vcr//lib/vcr/structs.rb#462
+# source://vcr//lib/vcr/structs.rb#475
 class VCR::ResponseStatus < ::Struct
   # Builds a serializable hash from the response status data.
   #
@@ -2710,7 +2816,7 @@ class VCR::ResponseStatus < ::Struct
   #   and can be easily serialized.
   # @see ResponseStatus.from_hash
   #
-  # source://vcr//lib/vcr/structs.rb#463
+  # source://vcr//lib/vcr/structs.rb#481
   def to_hash; end
 
   class << self
@@ -2719,7 +2825,7 @@ class VCR::ResponseStatus < ::Struct
     # @param hash [Hash] the hash to use to construct the instance.
     # @return [ResponseStatus] the response status
     #
-    # source://vcr//lib/vcr/structs.rb#473
+    # source://vcr//lib/vcr/structs.rb#491
     def from_hash(hash); end
   end
 end

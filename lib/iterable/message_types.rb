@@ -26,6 +26,7 @@ module Iterable
     # Get all message_types
     #
     # @return [Iterable::Response] A response object
+    sig { returns(Iterable::Response) }
     def all
       Iterable.request(conf, '/messageTypes').get
     end
