@@ -28,7 +28,7 @@ module Iterable
         email: String,
         attrs: T::Hash[
           T.any(Symbol, String),
-          T.any(T::Boolean, String, Integer, Float)
+          T.any(T::Boolean, String, Integer, Float, NilClass)
         ]
       ).returns(Iterable::Response)
     end
